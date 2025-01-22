@@ -51,4 +51,65 @@ nums = [1,2,3,4]
 evens = [x for x in nums if x % 2 ==0] #### % = mod -> find reminder 
 print(evens) # output [2,4] 
 
+##############################################################################
+
+##Hashing
+
+# Create an empty dictionary
+my_dict = {}
+
+# Initialize with key-value pairs
+my_dict = {'a': 1, 'b': 2}
+
+# Using dictionary comprehension
+squares_dict = {x: x**2 for x in range(5)}
+print(squares_dict)  
+# Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+my_dict['c'] = 3   # Add or update key 'c'
+del my_dict['a']   # Delete key 'a'
+print(my_dict)     # Output: {'b': 2, 'c': 3}
+
+def count_frequencies(nums):
+    frequency_dict = {}
+    for num in nums:
+        if num in frequency_dict:
+            frequency_dict[num] += 1
+        else:
+            frequency_dict[num] = 1
+    return frequency_dict
+
+# Usage
+numbers = [1, 2, 2, 3]
+print(count_frequencies(numbers))  
+# Output: {1: 1, 2: 2, 3: 1}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
