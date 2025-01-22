@@ -7,6 +7,9 @@ Python has five standard data types-
   Tuple
   Dictionary
 
+
+# Some key points that each variable noted to know
+
 Numbers
   var1 = 1
   var2 = 10
@@ -16,9 +19,17 @@ Numbers
   ## In python3, are represented in long integers, no separate as long for the datatype
 
 Strings
+  x = 'car'
 Lists
+  x = [1,2,3,4] 
+  .append()
+  .pop()
+  .remove()
 Tuples
 Dictionary
+  x = {'name' : 'Mickey' , 'Color' : 'Blue'}
+  .keys()
+  .values() 
 
 Data Type Conversion
 int(x [,base]): Converts x to an integer. The base specifies the base if x is a string.
