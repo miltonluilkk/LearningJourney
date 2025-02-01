@@ -1,0 +1,95 @@
+import difflib
+import re
+from openpyxl import load_workbook
+
+# Load the existing workbook
+wb = load_workbook("dummy_data.xlsx")
+ws = wb.active  # Get the active sheet
+
+# Get the number of rows dynamically
+max_row = ws.max_row
+
+# Function to generate HTML diff highlighting differences in individual tokens (words/numbers)
+def generate_html_diff(text1, text2):
+    # Split by comma to handle individual tokens (words or numbers)
+    parts1 = text1.split(',')
+    parts2 = text2.split(',')
+
+    # Initialize the HTML output for both texts
+    html_a1 = ""
+    html_b1 = ""
+
+    # Create a diff for parts1 and parts2 using difflib
+    d = difflib.Differ()
+    diff = list(d.compare(parts1, parts2))
+
+    for line in diff:
+        if line.startswith('-'):  # Token exists only in A1
+            html_a1 += f'<span style="background-color: #ffcccc; padding: 0 5px;">{line[2:]}</span>'
+            html_b1 += '&nbsp;'  # Empty space in B1 for removed token
+        elif line.startswith('+'):  # Token exists only in B1
+            html_a1 += '&nbsp;'  # Empty space in A1 for added token
+            html_b1 += f'<span style="background-color: #ccffcc; padding: 0 5px;">{line[2:]}</span>'
+        elif line.startswith(' '):  # Token exists in both A1 and B1
+            # Now compare the tokens for text and numeric differences
+            token = line[2:]
+
+            # If the token contains a number, compare the numeric parts
+            if re.search(r'\d+', token):
+                # Split the token into the non-numeric and numeric parts
+                parts = re.split(r'(\d+)', token)
+                # Compare the numeric parts if there's any difference
+                if len(parts) > 1 and parts[1] != parts[3]:
+                    # Highlight numeric differences
+                    token = f'{parts[0]}<span style="background-color: #ffcccc;">{parts[1]}</span><span style="background-color: #ccffcc;">{parts[3]}</span>'
+            html_a1 += token
+            html_b1 += token
+
+        html_a1 += ',' if line != diff[-1] else ''  # Add commas between tokens
+        html_b1 += ',' if line != diff[-1] else ''
+
+    return html_a1.strip(), html_b1.strip()
+
+
+# Initialize a list to store HTML content for the entire document
+html_content = '''
+<html>
+<body>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Row</th>
+            <th>Text from A</th>
+            <th>Text from B</th>
+        </tr>
+'''
+
+# Loop through the rows dynamically and generate comparisons
+for row in range(1, max_row + 1):  # Go from row 1 to the last row
+    cell_a1 = ws.cell(row=row, column=1).value  # Column 1 (A)
+    cell_b1 = ws.cell(row=row, column=2).value  # Column 2 (B)
+
+    if cell_a1 and cell_b1:  # Ensure the cells are not empty
+        # Generate the HTML diff for the current pair of cells (A and B)
+        html_a1, html_b1 = generate_html_diff(cell_a1, cell_b1)
+        
+        # Append the row comparison to the html_content
+        html_content += f'''
+        <tr>
+            <td>{row}</td>
+            <td>{html_a1}</td>
+            <td>{html_b1}</td>
+        </tr>
+        '''
+
+# Close the HTML structure after the loop
+html_content += '''
+    </table>
+</body>
+</html>
+'''
+
+# Save the result to a single HTML file
+with open("text_comparison_all_rows_with_aligned_tokens.html", "w") as f:
+    f.write(html_content)
+
+print("HTML comparison saved as 'text_comparison_all_rows_with_aligned_tokens.html'")
