@@ -1,0 +1,88 @@
+# Mapping of FIX tags to descriptions and (optionally) to value interpretations.
+tag_info = {
+    "8": {"description": "BeginString", "values": {}},
+    "9": {"description": "BodyLength", "values": {}},
+    "35": {"description": "MsgType", "values": {
+            "D": "New Order – Single",
+            "8": "Execution Report",
+            "F": "Order Cancel Request",
+            "G": "Order Cancel/Replace Request"
+        }},
+    "49": {"description": "SenderCompID", "values": {}},
+    "56": {"description": "TargetCompID", "values": {}},
+    "11": {"description": "ClOrdID (Client Order ID)", "values": {}},
+    "55": {"description": "Symbol", "values": {}},
+    "38": {"description": "OrderQty", "values": {}},
+    "54": {"description": "Side", "values": {
+            "1": "Buy",
+            "2": "Sell"
+        }},
+    "39": {"description": "OrdStatus", "values": {
+            "0": "New",
+            "1": "Partially Filled",
+            "2": "Filled",
+            "4": "Canceled"
+        }},
+    "150": {"description": "ExecType", "values": {
+            "0": "New",
+            "1": "Partial fill",
+            "2": "Fill",
+            "4": "Canceled"
+        }},
+    "17": {"description": "ExecID", "values": {}},
+    "41": {"description": "OrigClOrdID", "values": {}},
+    "10": {"description": "CheckSum", "values": {}}
+}
+
+def parse_fix_message(fix_str, delimiter=";"):
+    """
+    Parses a single FIX message string (fields delimited by the specified delimiter)
+    into a dictionary of tag: value pairs.
+    """
+    # Split on the delimiter and filter out empty fields
+    fields = [field for field in fix_str.strip().split(delimiter) if field]
+    msg = {}
+    for field in fields:
+        if '=' in field:
+            tag, value = field.split("=", 1)
+            msg[tag] = value
+    return msg
+
+def print_message_details(msg):
+    """
+    Given a dictionary representing a FIX message, prints each tag in the format:
+      tag, description, value, description of value
+    """
+    print("Tag, Description, Value, Value Description")
+    print("------------------------------------------------------")
+    for tag, value in msg.items():
+        desc = tag_info.get(tag, {}).get("description", "Unknown Tag")
+        value_desc = tag_info.get(tag, {}).get("values", {}).get(value, "")
+        print(f"{tag}, {desc}, {value}, {value_desc}")
+    print("\n")
+
+# Composite FIX log: each line is a separate FIX message representing an event
+fix_log = """
+8=FIX.4.2;9=120;35=D;49=CLIENT;56=BROKER;11=ORDER123;55=MSFT;38=3000;54=1;10=100;
+8=FIX.4.2;9=130;35=8;49=BROKER;56=CLIENT;11=ORDER123;150=0;39=0;10=101;
+8=FIX.4.2;9=135;35=8;49=BROKER;56=CLIENT;11=ORDER123;150=1;39=1;38=1500;10=102;
+8=FIX.4.2;9=140;35=G;49=CLIENT;56=BROKER;11=ORDER123_AMP;41=ORDER123;55=MSFT;38=4000;54=1;10=103;
+8=FIX.4.2;9=135;35=8;49=BROKER;56=CLIENT;11=ORDER123_AMP;150=2;39=2;38=500;10=104;
+8=FIX.4.2;9=125;35=F;49=CLIENT;56=BROKER;11=ORDER123_CANCEL;41=ORDER123_AMP;10=105;
+8=FIX.4.2;9=130;35=8;49=BROKER;56=CLIENT;11=ORDER123_CANCEL;150=4;39=4;10=106;
+"""
+
+def process_fix_log(fix_log, delimiter=";"):
+    """
+    Processes a composite FIX log (with one message per line), and prints details for each message.
+    """
+    messages = fix_log.strip().splitlines()
+    for idx, message in enumerate(messages, 1):
+        print(f"--- Message {idx} ---")
+        msg = parse_fix_message(message, delimiter)
+        print_message_details(msg)
+
+# Run the processing on our composite FIX log
+if __name__ == "__main__":
+    process_fix_log(fix_log)
+
