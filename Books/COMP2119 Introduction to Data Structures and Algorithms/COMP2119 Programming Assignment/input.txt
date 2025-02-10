@@ -1,0 +1,9 @@
+0
+1 10 Apple
+1 50 Orange
+0
+2 10
+1 30 Banana
+3 50
+1 40 Mango
+0
