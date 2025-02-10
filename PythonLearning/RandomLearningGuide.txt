@@ -1,0 +1,356 @@
+
+答案
+There are numerous resources available to practice Python scripting, covering a wide range of skill levels and topics16.
+Online Platforms:
+PYnative: Offers over 200 free coding exercises for Python developers, covering basics, data structures, and data analytics. Exercises include questions on specific Python topics, tested on Python 3, with solutions provided1.
+Dataquest: Provides text-based exercises with a split-screen interface for efficient learning and retention. It is especially helpful when you have an upcoming job interview2.
+4Geeks Academy: Provides exercises that are ideal for anyone trying to learn Python. The exercises begin with simple challenges and gradually increase in difficulty3.
+Practice Python: This platform is helpful for beginners. The platform offers a collection of Python exercises that cover a variety of topics—from basic syntax to built-in data structures, f-Strings, and error handling6.
+w3resource: This website offers Python exercises and solutions to help improve your coding skills7.
+Freecodecamp: Has several Python courses where you can code on the website. It teaches you concepts, and you apply it to mini projects for a free8.
+Exercise Examples from Pynative:
+Basic Exercises: Cover variables, operators, loops, strings, and numbers1.
+Input and Output: Practice file handling and using print() and input()1.
+Loops: Focus on branching and looping techniques using if-else statements, for loops, and while loops1.
+Functions: Practice creating and using functions, nested functions, and function arguments1.
+Strings: String operations and manipulations1.
+Data Structures: List, Set, Dictionary, and Tuple operations1.
+Date and Time: Date, time, DateTime, and Calendar1.
+OOP: Object, Classes, and Inheritance1.
+JSON: JSON creation, manipulation, Encoding, Decoding, and parsing1.
+Tips for practicing:
+Start with basic exercises to build a strong foundation15.
+Focus on specific topics to improve targeted skills2.
+Utilize online code editors to practice each exercise1.
+Review solutions after solving problems to identify better approaches6.
+Consider doing projects to practice your new found knowledge. This will help you remember new syntax2.
+
+Python Tutorial For Beginners - 200 Labs & Exercises - YouTube
+Python Tutorial For Beginners - 200 Labs & Exercises - YouTube
+Watch
+python scripting I mean, please give me
+答案
+Okay, focusing on Python scripting exercises you can realistically do during work (assuming you have some downtime and access to a Python environment):
+Focus: Automating Simple Tasks & Data Manipulation
+These exercises are designed to be relatively quick, focused, and applicable to everyday tasks. They emphasize practical scripting over complex algorithms.
+1. File Renamer:
+Goal: Write a script that renames multiple files in a directory based on a pattern.
+Scenario: You have a folder with files named like report_01-01-2025.txt, report_02-01-2025.txt, etc., and you want to rename them to 2025-01-01_report.txt, 2025-01-02_report.txt.
+Skills: File system interaction (os module), string manipulation, regular expressions (optional, but good practice).
+python
+import os, re
+
+def rename_files(directory):
+    for filename in os.listdir(directory):
+        if filename.startswith("report_"):
+            match = re.match(r"report_(\d{2})-(\d{2})-(\d{4})\.txt", filename)
+            if match:
+                day, month, year = match.groups()
+                new_filename = f"{year}-{month}-{day}_report.txt"
+                os.rename(os.path.join(directory, filename), os.path.join(directory, new_filename))
+                print(f"Renamed {filename} to {new_filename}")
+
+
+# Example Usage
+directory_to_rename = "/path/to/your/folder" # Replace with the actual path
+rename_files(directory_to_rename)
+
+2. CSV to TXT Converter:
+Goal: Convert a simple CSV file to a text file where each row is a line, and columns are separated by a tab.
+Scenario: You have a CSV export from some system and need it in a more human-readable format for quick review.
+Skills: CSV parsing (csv module), file I/O.
+python
+import csv
+
+def csv_to_txt(csv_filepath, txt_filepath):
+    with open(csv_filepath, 'r') as csvfile, open(txt_filepath, 'w') as txtfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            txtfile.write('\t'.join(row) + '\n')
+
+
+# Example Usage
+csv_file = "/path/to/your/data.csv"
+txt_file = "/path/to/your/data.txt"
+csv_to_txt(csv_file, txt_file)
+3. Simple Webpage Downloader:
+Goal: Download the content of a webpage and save it to a local file.
+Scenario: You need to quickly grab the HTML of a specific webpage for offline viewing or analysis.
+Skills: HTTP requests (requests module - install with pip install requests), file I/O.
+python
+import requests
+
+def download_webpage(url, filepath):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
+        with open(filepath, 'w', encoding=response.encoding) as file:
+            file.write(response.text)
+        print(f"Downloaded {url} to {filepath}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading {url}: {e}")
+
+# Example Usage
+webpage_url = "https://www.example.com"  # Replace with the URL you want to download
+local_file = "/path/to/your/example.html"
+download_webpage(webpage_url, local_file)
+4. Log File Analyzer (Simple):
+Goal: Find all lines in a log file that contain a specific keyword.
+Scenario: You're troubleshooting an issue and want to quickly find error messages in a large log file.
+Skills: File I/O, string searching.
+python
+def find_keyword_in_log(log_filepath, keyword):
+    with open(log_filepath, 'r') as logfile:
+        for line in logfile:
+            if keyword in line:
+                print(line.strip()) # Print the line without leading/trailing whitespace
+
+
+# Example Usage
+log_file = "/path/to/your/application.log"
+search_keyword = "ERROR"
+find_keyword_in_log(log_file, search_keyword)
+5. List Duplicates Remover:
+Goal: Remove duplicate entries from a list.
+Scenario: you have a list of names with repeating entries
+Skills: list comprehension.
+python
+def remove_duplicates(list_):
+    no_duplicates = []
+    [no_duplicates.append(x) for x in list_ if x not in no_duplicates]
+    print (no_duplicates)
+
+# Example Usage
+list_with_duplicates = [1, 1, 2, 3, 4, 5, 1, 2]
+remove_duplicates(list_with_duplicates)
+Important Considerations for "At Work" Practice:
+Data Sensitivity: Never use real, sensitive data in these scripts without explicit permission and a clear understanding of your company's data security policies. Use anonymized or sample data.
+Resource Usage: Be mindful of resource usage. Don't write scripts that will consume excessive CPU or memory, potentially impacting other users. Avoid long-running processes if possible.
+IT Policies: Make sure you're following your company's IT policies regarding software installation and running custom scripts. If in doubt, check with your IT department.
+Error Handling: Always include basic error handling (try-except blocks) to prevent scripts from crashing unexpectedly.
+Testing: Thoroughly test your scripts with small, representative datasets before running them on larger files or more critical systems.
+These exercises are designed to be relatively short and sweet, so you can practice during brief periods of downtime. Remember to adapt them to your specific needs and the types of tasks you encounter in your work environment. Good luck!
+give me some more exercise
+答案
+Okay, here are some more Python scripting exercises, keeping in mind the "at work" context – focusing on utility, quick execution, and applicability to common tasks. These are slightly more advanced than the previous set:
+1. JSON Data Extractor:
+Goal: Extract specific data fields from a JSON file and output them to a CSV file.
+Scenario: You receive a JSON data dump from an API and need to extract only a few key fields for analysis or reporting.
+Skills: JSON parsing (json module), file I/O, CSV writing (csv module).
+python
+import json
+import csv
+
+def extract_json_to_csv(json_filepath, csv_filepath, fields_to_extract):
+    """
+    Extracts specific fields from a JSON file and writes them to a CSV file.
+
+    Args:
+        json_filepath (str): Path to the JSON file.
+        csv_filepath (str): Path to the output CSV file.
+        fields_to_extract (list): A list of field names to extract from the JSON data.
+    """
+    try:
+        with open(json_filepath, 'r') as jsonfile, open(csv_filepath, 'w', newline='') as csvfile:
+            data = json.load(jsonfile)
+
+            # Check if the JSON data is a list of objects or a single object
+            if isinstance(data, list):
+                # Assuming it's a list of dictionaries
+                if data:  # Ensure the list is not empty
+                    # Get header from the first dictionary
+                    csv_writer = csv.DictWriter(csvfile, fieldnames=fields_to_extract)
+                    csv_writer.writeheader()
+
+                    for item in data:
+                        row = {field: item.get(field, '') for field in fields_to_extract}
+                        csv_writer.writerow(row)
+                else:
+                    print("JSON file contains an empty list.")
+
+            elif isinstance(data, dict):
+                # If it's a single dictionary
+                csv_writer = csv.DictWriter(csvfile, fieldnames=fields_to_extract)
+                csv_writer.writeheader()
+                row = {field: data.get(field, '') for field in fields_to_extract}
+                csv_writer.writerow(row)
+
+            else:
+                print("JSON file does not contain a list or a dictionary.")
+            print(f"Extracted data from {json_filepath} to {csv_filepath}")
+
+    except FileNotFoundError:
+        print(f"Error: File not found.")
+    except json.JSONDecodeError:
+        print(f"Error: Invalid JSON format in {json_filepath}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+
+# Example Usage
+json_file = "/path/to/your/data.json"  # Replace with the path to your JSON file
+csv_file = "/path/to/your/extracted_data.csv"  # Replace with the desired output CSV file path
+fields = ["id", "name", "email"]  # Replace with the fields you want to extract
+extract_json_to_csv(json_file, csv_file, fields)
+2. Automated Email Sender (Simple):
+Goal: Send a simple email with a predefined subject and body.
+Scenario: You need to send a quick notification to a colleague or a group of people. Important: Only use this with explicit permission and for legitimate work-related purposes. Avoid sending unsolicited emails.
+Skills: SMTP (smtplib module), email message creation (email.message module).
+python
+import smtplib
+from email.message import EmailMessage
+
+def send_email(sender_email, recipient_email, subject, body, smtp_server, smtp_port, smtp_password=None):
+    """
+    Sends an email using the specified SMTP server.
+
+    Args:
+        sender_email (str): The email address of the sender.
+        recipient_email (str): The email address of the recipient. Can be a single email or a list of emails.
+        subject (str): The subject of the email.
+        body (str): The body of the email.
+        smtp_server (str): The hostname or IP address of the SMTP server.
+        smtp_port (int): The port number of the SMTP server.
+        smtp_password (str, optional): The password for the sender's email account.  Defaults to None.  If None, it assumes no authentication is needed.
+    """
+    msg = EmailMessage()
+    msg.set_content(body)
+    msg['Subject'] = subject
+    msg['From'] = sender_email
+    msg['To'] = recipient_email  # Can be a single email or a comma-separated string
+
+    try:
+        with smtplib.SMTP(smtp_server, smtp_port) as s:
+            s.starttls()  # Secure the connection
+            if smtp_password:
+                s.login(sender_email, smtp_password)  # Authenticate
+            s.send_message(msg)
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
+
+# Example Usage
+sender = "your_email@example.com"  # Replace with your email address
+recipient = "recipient@example.com"  # Replace with the recipient's email address
+subject = "Automated Email Notification"
+body = "This is a test email sent from a Python script."
+smtp_server = "smtp.example.com"  # Replace with your SMTP server address
+smtp_port = 587  # Common port for TLS
+password = "your_password" # Replace with your email password (use app password if required)
+
+send_email(sender, recipient, subject, body, smtp_server, smtp_port, password)
+Important Security Note: Storing your email password directly in the script is extremely insecure. If you're going to use this script regularly, consider these secure alternatives:
+Environment Variables: Store the password in an environment variable and retrieve it using os.environ.get("EMAIL_PASSWORD").
+Keyring: Use the keyring library to securely store and retrieve the password from your system's credential store.
+3. Basic System Information Reporter:
+Goal: Gather basic system information (OS, hostname, CPU usage, memory usage) and print it to the console.
+Scenario: You need to quickly check the status of your machine or a remote server.
+Skills: os module, platform module, psutil module (install with pip install psutil).
+python
+import os
+import platform
+import psutil
+
+def get_system_info():
+    """
+    Gathers and prints basic system information.
+    """
+    print("Operating System:", platform.system(), platform.release())
+    print("Hostname:", platform.node())
+    print("CPU Usage:", psutil.cpu_percent(), "%")
+    print("Memory Usage:")
+    mem = psutil.virtual_memory()
+    print(f"  Total: {mem.total / (1024 * 1024):.2f} MB")
+    print(f"  Available: {mem.available / (1024 * 1024):.2f} MB")
+    print(f"  Used: {mem.used / (1024 * 1024):.2f} MB")
+
+
+# Example Usage
+get_system_info()
+4. Find and Replace in Multiple Files:
+Goal: Write a script that finds and replaces a specific string in multiple files within a directory.
+Scenario: You need to update a common piece of text in a large number of configuration files or code files.
+Skills: File system interaction (os module), file I/O, string manipulation.
+python
+import os
+
+def find_and_replace(directory, find_string, replace_string):
+    """
+    Finds and replaces a string in multiple files within a directory.
+
+    Args:
+        directory (str): The directory to search in.
+        find_string (str): The string to find.
+        replace_string (str): The string to replace with.
+    """
+    for filename in os.listdir(directory):
+        filepath = os.path.join(directory, filename)
+        if os.path.isfile(filepath):
+            try:
+                with open(filepath, 'r') as f:
+                    content = f.read()
+
+                new_content = content.replace(find_string, replace_string)
+
+                if new_content != content:  # Only write if changes were made
+                    with open(filepath, 'w') as f:
+                        f.write(new_content)
+                    print(f"Replaced '{find_string}' with '{replace_string}' in {filename}")
+            except Exception as e:
+                print(f"Error processing {filename}: {e}")
+
+
+# Example Usage
+directory_to_search = "/path/to/your/files"  # Replace with the directory to search
+string_to_find = "old_text"  # Replace with the string to find
+string_to_replace = "new_text"  # Replace with the string to replace with
+find_and_replace(directory_to_search, string_to_find, string_to_replace)
+5. Simple Directory Size Calculator:
+Goal: Calculate the total size of a directory (including all subdirectories) in MB or GB.
+Scenario: You need to quickly determine the size of a directory for storage management purposes.
+Skills: File system interaction (os module).
+python
+import os
+
+def get_directory_size(directory):
+    """
+    Calculates the total size of a directory (including subdirectories) in bytes.
+
+    Args:
+        directory (str): The directory to calculate the size of.
+
+    Returns:
+        int: The total size of the directory in bytes.
+    """
+    total_size = 0
+    try:
+        for dirpath, dirnames, filenames in os.walk(directory):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                # Skip if it is symbolic link
+                if not os.path.islink(fp):
+                    total_size += os.path.getsize(fp)
+    except OSError as e:
+        print(f"Error accessing {directory}: {e}")
+        return None
+    return total_size
+
+
+# Example Usage
+directory_path = "/path/to/your/directory"  # Replace with the directory you want to calculate the size of
+size_in_bytes = get_directory_size(directory_path)
+
+if size_in_bytes is not None:
+    size_in_mb = size_in_bytes / (1024 * 1024)
+    print(f"Size of {directory_path}: {size_in_mb:.2f} MB")
+
+Key Considerations (Repeating for Emphasis):
+Data Sensitivity: Absolutely crucial. Never handle sensitive data without proper authorization and security measures.
+Error Handling: Robust error handling is essential for scripts that will be used in a professional environment.
+Testing: Test thoroughly before deploying.
+Security: Be aware of potential security implications, especially when dealing with file system access or network communication.
+Company Policies: Always adhere to your company's IT and security policies.
+These exercises should give you more practice with common Python scripting tasks that are relevant to a work environment. Remember to break down each problem into smaller steps, test your code frequently, and consult the Python documentation or online resources when you need help. Good luck!
+
