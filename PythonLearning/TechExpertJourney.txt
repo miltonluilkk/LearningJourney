@@ -72,6 +72,41 @@ for i in range(10):
 print(x)  # Output: 45
 
 
+2. Basic syntax in python 
+
+#Python syntax refers to the rules that govern the structure of a Python program
+#It's similar to how grammar works in a spoken language.  
+
+2.1 Indentation 
+# Python uses indentation (spaces at the beginning of a line) to define code blocks, instead of curly braces or keywords like
+if 5 > 2:
+ print("Five is greater than two!")
+ 
+2.2 Variables: 
+#Variables are created when you first assign a value to them1. Python has no command for declaring a variable1.
+x = 5
+y = "Hello, World!"
+
+2.3 Comments: 
+#Comments are used to add explanatory notes to your code1. They are ignored by the Python interpreter1. Single-line comments start with a "#"
+# This is a comment
+print("Hello, World!")
+
+2.4 Multi-line comments are enclosed in triple quotes
+"""
+This is a multi-line comment.
+It can span multiple lines.
+"""
+print("Hello, World!")
+
+2.5 Statements
+#Usually, Python statements are written one statement per line. 
+However, Python does allow the use of multiple statements on a single line if they are separated by semicolons. 
+
+
+
+
+
 
 
 
