@@ -1,0 +1,89 @@
+Python 
+1. what's python?
+
+#Python is a high-level, interpreted, and object-oriented programming language known for its readability and versatility
+#Portable - run in different platforms without modifications
+#Dynamic - dynamically typed lang - variable determined during the run time offering flexibility and efficiency 
+#Multi-paradigm: Python supports different programming styles, including procedural, object-oriented, and functional programming
+#Interpreted: Python code is executed line by line by an interpreter, allowing for rapid development and easier debugging
+
+
+When referring to Python as a high-level language, it means that Python has a strong level of abstraction
+ from the details of the computer13. Instead of dealing with registers, memory addresses, and call stacks, 
+ Python uses variables, objects, and complex expressions3. It focuses on usability rather than optimal program efficiency3.
+ 
+ In contrast to low-level languages, high-level languages like Python allow 
+ programmers to focus on solving the problem without concerning themselves with the machine's architecture2.
+
+Dynamic Typing: Python is a dynamically typed language5. Unlike statically typed languages (such as Java or C++), you don't need to declare the type of a variable explicitly. The Python interpreter infers the type of a variable based on the value assigned to it5.
+Runtime Determination: The type of a variable is determined at runtime when the value is assigned to it5. This means you can assign a value of one type to a variable, and later reassign a value of a different type to the same variable5.
+Flexibility: This dynamic nature provides a lot of flexibility. You can write code that works with different types of data without having to specify those types in advance2.
+
+x = 10       # x is an integer
+print(type(x))  # Output: <class 'int'>
+
+x = "Hello"  # x is now a string
+print(type(x))  # Output: <class 'str'>
+
+In summary, "variable determined during runtime" means that Python's dynamic typing allows variables to be assigned and reassigned different data types as the program executes5.
+
+
+Here's a breakdown of the flow of execution24:
+1. Beginning: Execution starts at the first statement of the program246.
+2. Order: Statements are executed one at a time, in order, from top to bottom246.
+3. Function Definitions: Function definitions do not alter the flow of execution but the statements inside a function are not executed until the function is called24.
+4. Function Calls: A function call is like a detour in the flow of execution. The flow jumps to the body of the function, executes all the statements there, and then comes back to pick up where it left off24. Python keeps track of where it is, so each time a function completes, the program picks up where it left off in the function that called it24.
+5. Interpreter execution: The interpreter executes operations and functions in the order that it encounters them8. The Python interpreter reads a program line by line, from left to right and top to bottom8.
+6. Termination: When the program gets to the end, it terminates24.
+
+Procedural Programming: This involves organizing code into procedures or functions, which can then be reused throughout the program1.
+
+def add(x, y):
+    return x + y
+
+result = add(5, 3)
+print(result)  # Output: 8
+
+Object-Oriented Programming (OOP): This paradigm uses classes and objects to structure the code1.
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    def bark(self):
+        print("Woof!")
+
+my_dog = Dog("Buddy", "Golden Retriever")
+print(my_dog.name)  # Output: Buddy
+my_dog.bark()        # Output: Woof!
+
+
+Functional Programming: Python supports functional programming through features like lambda functions, higher-order functions, and tools like map, filter, and reduce3.
+python
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # Output: [1, 4, 9, 16, 25]
+
+Imperative Programming: Python incorporates imperative programming by allowing you to write programs in a step-by-step manner, directly changing the state of the program using assignments, loops, and function calls1.
+python
+x = 0
+for i in range(10):
+    x += i
+print(x)  # Output: 45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
