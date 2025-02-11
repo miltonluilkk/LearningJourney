@@ -1,0 +1,103 @@
+答案
+Okay, you're right. Using a Virtual Machine (VM) is a safer and more versatile way to explore Linux and Python without directly modifying your existing operating system.
+Here's a step-by-step guide using VirtualBox, a popular and free virtualization software:
+1. Download and Install VirtualBox:
+Go to the VirtualBox Website: Visit the VirtualBox downloads page: https://www.virtualbox.org/wiki/Downloads
+Download the Appropriate Package: Choose the appropriate installer for your host operating system (Windows, macOS, or Linux) and download it.
+Install VirtualBox: Run the downloaded installer and follow the on-screen instructions to install VirtualBox.
+2. Download the Ubuntu ISO Image:
+Go to the Ubuntu Website: Visit the Ubuntu desktop download page: https://ubuntu.com/download/desktop
+Download the ISO File: Download the desired Ubuntu version's ISO file.
+3. Create a New Virtual Machine:
+Open VirtualBox: Launch the VirtualBox application.
+Click "New": Click on the "New" button in the VirtualBox Manager window.
+Name and Operating System:
+Name: Enter a name for your virtual machine (e.g., "Ubuntu VM").
+Type: Select "Linux" as the type.
+Version: Choose "Ubuntu (64-bit)" or "Ubuntu (32-bit)" depending on the version you downloaded.
+Memory Size:
+Allocate memory (RAM) to the virtual machine. A minimum of 2048 MB (2 GB) is recommended, but 4096 MB (4 GB) or more is ideal if your host machine has enough RAM.
+Hard Disk:
+Select "Create a virtual hard disk now."
+Click "Create."
+Hard Disk File Type:
+Choose "VDI (VirtualBox Disk Image)."
+Click "Next."
+Storage on Physical Hard Disk:
+Select "Dynamically allocated." This allows the virtual hard disk file to grow as needed up to the maximum size.
+Click "Next."
+File Location and Size:
+Choose a location to save the virtual hard disk file.
+Set the maximum size of the virtual hard disk. 25 GB is usually sufficient for basic usage.
+Click "Create."
+4. Configure the Virtual Machine:
+Select the VM: In the VirtualBox Manager, select your newly created virtual machine from the list on the left.
+Click "Settings": Click on the "Settings" button.
+Storage:
+In the "Storage" section, you'll see a "Controller: IDE" with an empty disc icon.
+Click on the disc icon.
+On the right-hand side, under "Attributes," click the small disc icon next to "Optical Drive."
+Choose "Choose a disk file" and select the Ubuntu ISO file you downloaded earlier.
+Network (Optional, but Recommended):
+In the "Network" section, make sure the "Attached to" field is set to "NAT" (Network Address Translation) by default. This allows your VM to access the internet through your host machine's network connection.
+Display (Optional):
+Increase video memory to at least 128MB for better graphics performance.
+Click "OK": Save the settings.
+5. Start the Virtual Machine and Install Ubuntu:
+Select the VM: Make sure your VM is selected in VirtualBox Manager.
+Click "Start": Click the "Start" button (the green arrow).
+Boot from ISO: The virtual machine will start and boot from the Ubuntu ISO file.
+Follow the Ubuntu Installation Steps:
+Choose "Try Ubuntu" or "Install Ubuntu" from the boot menu.
+Follow the on-screen instructions to install Ubuntu on the virtual hard disk you created.
+Choose installation options:
+Keyboard layout
+Updates and other software: Decide whether to install updates while installing Ubuntu. It’s recommended to select “Install updates while installing Ubuntu.”
+Installation type: Choose “Erase disk and install Ubuntu” (this will only erase the virtual hard disk, not your host machine's disk).
+Time zone
+Account details: Create a user account (username, password, etc.).
+Complete Installation: Wait for the installation to complete. This may take some time.
+Restart: Once the installation is finished, you will be prompted to restart the virtual machine.
+6. Install Guest Additions (Recommended):
+After installing Ubuntu and restarting the VM:
+Boot Up. Boot up the new Ubuntu installation.
+Log In. Log in to your Ubuntu virtual machine.
+Insert Guest Additions CD Image:
+In the VirtualBox window, go to "Devices" -> "Insert Guest Additions CD Image..."
+Run the Installer:
+A CD icon should appear on the Ubuntu desktop. Open the CD and look for a file like
+text
+VBoxLinuxAdditions.run
+.
+Open a terminal.
+Navigate to the CD directory in the terminal:
+bash
+cd /media/$USER/VBox_GAs_*   # Replace $USER with your username and the asterisk with what the name looks like on the virtual CD.
+Run the installer with elevated privileges:
+bash
+sudo ./VBoxLinuxAdditions.run
+Reboot: After the installation is complete, reboot the virtual machine.
+With Guest Additions installed, you'll have better graphics support, shared clipboard functionality, and the ability to share folders between your host machine and the VM.
+Now you should have a fully functional Ubuntu virtual machine running on your host system! You can now install Python and begin development.
+7. Verify network connection
+Open a Terminal: Launch the terminal application within Ubuntu.
+Test Network Connection: Type the following command into the terminal:
+bash
+ping google.com
+If you see replies from Google's servers, that means your virtual machine has a working internet connection. Press Ctrl+C to stop the ping command.
+Install Python on VM
+Update Package Lists:
+Open a terminal and run:
+bash
+sudo apt update
+Install Python 3:
+Run the following command to install Python 3 and the
+text
+pip
+package manager:
+bash
+sudo apt install python3 python3-pip
+Verify Installation:
+Check the Python version again:
+bash
+python3 --version

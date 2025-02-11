@@ -354,3 +354,98 @@ Security: Be aware of potential security implications, especially when dealing w
 Company Policies: Always adhere to your company's IT and security policies.
 These exercises should give you more practice with common Python scripting tasks that are relevant to a work environment. Remember to break down each problem into smaller steps, test your code frequently, and consult the Python documentation or online resources when you need help. Good luck!
 
+
+Python has three primary numeric data types: integers, floating-point numbers, and complex numbers. Here's a breakdown of each:
+
+1. Integers (int)
+Represents whole numbers (positive, negative, or zero).
+
+Unlimited precision in Python 3 (no overflow).
+
+Examples:
+
+python
+复制
+a = 42
+b = -100
+c = 0b1010  # Binary literal (10 in decimal)
+d = 0o12    # Octal literal (10 in decimal)
+e = 0x1F    # Hexadecimal literal (31 in decimal)
+2. Floating-Point Numbers (float)
+Represents real numbers with a decimal point.
+
+Stored as double-precision (64-bit) floating-point numbers (may have precision issues).
+
+Examples:
+
+python
+复制
+f = 3.14
+g = -2.5
+h = 4.0
+i = 2e3     # Scientific notation (2000.0)
+j = float('inf')  # Infinity
+3. Complex Numbers (complex)
+Represented as a + bj, where a is the real part and b is the imaginary part.
+
+Examples:
+
+python
+复制
+k = 2 + 3j
+l = complex(1, -4)  # 1 - 4j
+Key Operations
+Operator	Description	Example
++	Addition	3 + 2 → 5
+-	Subtraction	3 - 2 → 1
+*	Multiplication	3 * 2 → 6
+/	Division (float)	3 / 2 → 1.5
+//	Floor Division (int)	3 // 2 → 1
+%	Modulus (remainder)	3 % 2 → 1
+**	Exponentiation	3 ** 2 → 9
+Type Conversion
+Use explicit casting:
+
+python
+复制
+int(3.9)    # → 3 (truncates decimal)
+float(5)    # → 5.0
+complex(3)  # → 3 + 0j
+Key Behaviors
+Mixed-Type Arithmetic:
+
+Operations between int and float return float.
+
+python
+复制
+3 + 4.5 → 7.5  # Result is float
+Operations with complex return complex.
+
+Boolean Subtype:
+
+bool is a subclass of int:
+
+python
+复制
+True == 1   # → True
+False == 0   # → True
+Precision Issues:
+
+Floating-point arithmetic can be imprecise:
+
+python
+复制
+0.1 + 0.2 == 0.3  # → False (due to binary rounding)
+Underscores in Numbers (Python 3.6+):
+
+python
+复制
+big_num = 1_000_000  # → 1000000 (improves readability)
+Special Modules
+decimal: For precise decimal arithmetic.
+
+fractions: For rational numbers (e.g., 1/3).
+
+math: Common mathematical functions.
+
+Let me know if you'd like deeper examples or use cases! 😊
