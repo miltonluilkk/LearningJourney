@@ -1,8 +1,0 @@
-## Functions and methods 
-
-user input 
-
-x = input("Write the first value")
-y = input("Write the second value ") 
-z = x + y 
-print(z)
