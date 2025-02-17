@@ -9,9 +9,12 @@ Grammar
 6. -습니까?/-ㅂ니까?  # ask questions.It is used in situations that shows formality. 좋습니다 / 좋습니까?
 7. 도 # also , 음식도, 동생도
 8.  을/를 # before a verb to indicate the object in a sentence # 저는 밥을 먹습니다.
-
+9. 명사 + 와/과, 명사 + 하고 Noun+ 와/과, Noun+ 하고 # multiple objs 
 Common words 
 그리고 and
+자주 often
+
+
 
 otherwords
 한국 Korea
@@ -57,17 +60,18 @@ otherwords
 작다 small
 예쁘다 pretty
 좋다 good
-
-
-
-
-
-
-
-
-
-
-
-
-
+야채 vegetable
+공부하다 study
+만나다 meet
+학교 school
+교실 classroom
+도서관 library
+건물 building
+식당 restaurant
+있다 there is[are]
+없다 there is[are] no
+많다 a lot of
+넓다 wide (big)
+질문 question
+모르다 do not know, don’t understand
 
