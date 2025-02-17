@@ -1,0 +1,186 @@
+DataType : String
+
+String : 
+#represent text and are enclosed either by ' ', " " , ''' ''' , """ """ 
+#immutable - once the string created, the content could not be changed 
+
+Basic creations: 
+# Single-line strings
+s1 = 'Hello, World!'
+s2 = "Python Programming"
+
+# Multi-line strings
+s3 = '''This is a
+multi-line string.'''
+
+s4 = """Another
+multi-line string."""
+
+Features
+s = 'Hello'
+s[0] = 'A' --> It will return an error becuase it's immutable 
+
+Indexing/Slicing
+s = 'Python Programming'
+s[0] # 'P' 
+s[-1] # 'g'
+s[0:6] # 'Python'
+s[7:] # 'Programming'
+s[::2] # 'Pto rgamn' # start from 0, jumping 2.. so it's s[0]+s[2]+.....
+s[-2:] # the second last number till the end # 'ng'
+s[:-2] # number before the second last number # 'Python Programmi' 
+
+Concatenation 
+# using '+' sign 
+s1 = "Hello"
+s2 = "World"
+print(s1 + " " + s2)  # Output: 'Hello World'
+
+Repetition 
+# using '*' sign 
+s = 'Python'
+print(s * 3) # output --> 'PythonPythonPython'
+
+Membership
+# to check word in the string 
+# using 'in' operating 
+
+s = "Python Programming"
+print("Python" in s)  # Output: True
+print("Java" in s)    # Output: False
+
+String Methods 
+s = 'Python' 
+.upper() # change to uppercase --> 'PYTHON'
+.lower() # change to lower case -->'python'
+
+s = '   Python   '
+.strip() # remove leading and trailing white space -->'Python' 
+
+s = 'Hello World'
+.replace(old,new) #  s.replace('World', 'Python') --> 'Hello Python'
+
+key usage : .split()
+s ="Python,Java,C++" 
+s.split() # s.split(",") # # Output: ['Python', 'Java', 'C++']
+
+.join() 
+lst = ["Python", "Java", "C++"]
+print(", ".join(lst))  # Output: 'Python, Java, C++'
+
+find 
+# return the index for the first occurence , -1 if not found 
+s = "Python Programming"
+print(s.find("Pro"))  # Output: 7
+print(s.find("Java")) # Output: -1
+
+.count()
+# numbers of occurence
+
+s = "Python Programming"
+print(s.count("m"))  # Output: 2
+
+str.startswith() and str.endswith()
+#start with or end with particular string ? 
+
+s = "Python Programming"
+print(s.startswith("Python"))  # Output: True
+print(s.endswith("ing"))       # Output: True
+
+Validations : 
+isalpha(): Checks if all characters are alphabets.
+isdigit(): Checks if all characters are digits.
+isalnum(): Checks if all characters are alphanumeric.
+
+**str.format() #decorations 
+name = "Alice"
+age = 25
+print("My name is {} and I am {} years old.".format(name, age))
+
+name = "Alice"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+
+** Escape 
+
+\n: Newline
+\t: Tab
+\\: Backslash
+\': Single quote
+\": Double quote
+
+s = "Hello\nWorld"
+print(s)
+# Output:
+# Hello
+# World
+
+What's difference between .find() vs .index() 
+
+str.find() returns -1 if the substring is not found.
+str.index() raises a ValueError if the substring is not found.
+
+How to reverse the string ?
+a = 'Python' 
+a[::-1] # full string step -1 
+
+s = "12345"
+print(s.isdigit())  # Output: True
+
+How do you covert the string to list 
+
+s = "Python"
+print(list(s))  # Output: ['P', 'y', 't', 'h', 'o', 'n']
+
+How do you remove all whitespace from a string not using strip.() ?
+s = "  Python  "
+print(s.replace(" ", ""))  # Output: 'Python'
+
+Formating in a look 
+name = "Alice"
+age = 25
+print("My name is {} and I am {} years old.".format(name, age))
+print(f"My name is {name} and I am {age} years old.")
+print("My name is %s and I am %d years old." % (name, age)) ## old version no one use 
+
+RawString  (not recommended) 
+s = r"C:\Users\Alice\Documents"
+print(s)  # Output: C:\Users\Alice\Documents
+
+Align string 
+s = "Python"
+print(s.ljust(10, '-'))  # Output: 'Python----'
+print(s.rjust(10, '-'))  # Output: '----Python'
+print(s.center(10, '-')) # Output: '--Python--'
+
+Use the str.translate() method with str.maketrans() to replace multiple characters at once.
+s = "hello world"
+trans_table = str.maketrans("hw", "HW")
+print(s.translate(trans_table))  # Output: 'Hello World'
+
+Padding zero 
+s = "42"
+print(s.zfill(5))  # Output: '00042'
+
+isspace() # check whitespace
+s = "   "
+print(s.isspace())  # Output: True
+
+What is the difference between str.strip(), str.lstrip(), and str.rstrip()?
+str.strip() removes leading and trailing whitespace.
+str.lstrip() removes only leading whitespace.
+str.rstrip() removes only trailing whitespace.
+
+////////////////////////////
+Practice problems 
+
+Write a Python program to count the number of vowels in a string.
+Reverse a string without using slicing.
+Check if a string is a palindrome.
+Replace all spaces in a string with hyphens (-).
+Convert a string to title case (e.g., hello world → Hello World).
+How do you split a string into a list of words?
+How do you check if a string starts or ends with a specific substring?
+How do you count the occurrences of a substring in a string?
+Write a program to check if a string is a valid email address (basic check: contains @ and .).
+
