@@ -1,0 +1,100 @@
+Datatype - numbers / numerical values
+
+Python supports multiple numeric datatype : 
+Integers(Int) 
+Floating-point(Float) 
+Complex numbers
+
+a) Integers (Int) 
+# whole numbers (+ / - / zero) - without any fractional component
+# unlimited precision (as large as memory allows)
+a = 5 
+b = -10 
+c = 0
+
+b) Floating-point numbers (Float) 
+# Floating-point numbers, which is the real numbers with decimal point(s)
+# stored in a fixed amount of memory, limited precision
+x = 3.14
+y = -0.001
+z = 2.0
+
+c) complex numbers(complex) 
+# real part and imaginary part -> a + bj , (a is the real part and b is imaginary part)
+c1 = 2+3j
+c2 = -1j
+
+Manipulations 
+1. Type conversion 
+# covert between numeric types using built-in functions
+int(): Converts to an integer.
+float(): Converts to a float.
+complex(): Converts to a complex number.
+
+a = 5.7
+b = int(a)  # b = 5
+c = float(b)  # c = 5.0
+d = complex(a)  # d = 5.7 + 0j
+
+2. calculations 
+Addition (+), Subtraction (-), Multiplication (*), Division (/), Floor Division (//), Modulus (%), Exponentiation (**).
+x = 10
+y = 3
+print(x + y)  # 13
+print(x / y)  # 3.333...
+print(x // y)  # 3 (floor division)
+print(x % y)   # 1  (remainder)
+print(x ** y)  # 1000 (exponentiation)
+
+3. special functions and modules
+abs(): Returns the absolute value of a number.
+round(): Rounds a floating-point number to the nearest integer.
+math module: Provides advanced mathematical functions like sqrt(), sin(), cos(), etc.
+
+import math
+print(abs(-5))  # 5
+print(round(3.14159, 2))  # 3.14
+print(math.sqrt(16))  # 4.0
+
+4. some other important functions/methods
+pow() # same like **
+pow(2,3) # 2^3 = 8 
+
+divmod() # divmod(10,3) -> Output (3,1)
+
+x = 5
+y = 5.7 
+>>x.is_integer()  # True 
+>>y.is_integer()  # False
+
+import math
+
+math.sqrt() # math.sqrt(16) ->4
+math.ceil() # math.ceil(3.14) -> 4 //// roudn up nearest integer 
+math.floor() # math.ceil(3.14) -> 3 //// roudn down nearest integer 
+math.factorial() # math.factorial(5) -> 120 
+
+import random 
+
+random.random() # output a random float between 0.0 - 1.0 
+random.randint() # output a random integer within the range indicate ( rd.randint(1,10) -> 7  ) 
+
+ 
+
+///////////////////////////////////////////
+
+
+Practice Problems
+#Write a Python program to convert a float to an integer and print the result.
+#Calculate the area of a circle with radius 5 using the math module.
+#Perform the following operations and print the results:
+15 / 4
+15 // 4
+15 % 4
+#Write a program to find the absolute value of -7.5.
+#Round the number 3.14159 to 3 decimal places.
+#Use the math module to calculate the square root of 25.
+#Round the number 4.5678 to 3 decimal places.
+#Generate a random float between 10.0 and 20.0.
+#Check if the float 5.0 is an integer.
+#Find the greatest common divisor (GCD) of 24 and 36 using the math module.
