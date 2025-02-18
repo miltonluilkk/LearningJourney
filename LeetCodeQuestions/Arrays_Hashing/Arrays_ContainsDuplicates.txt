@@ -1,0 +1,33 @@
+### some questions and some solutions 
+
+#Question 1 
+#given interger array nums , return appears more than once in array other false
+#nums [1,2,3,3] --> True
+#nums [1,2,3,4] --> False
+
+
+####Answer 
+
+#### creating a map
+#### if the num in the map --> False (it means already existed with this num) 
+#### if the num not in --> adding this to the map
+
+class Solution:  ### This is just the class of the topic, it has no meaning , just create because of OOO
+    def hasDuplicate(self, nums: List[int]) -> bool: ## this is to define the function, self.xxx would be own object , 
+        dup ={}
+        for i in nums:
+            if i in dup:
+                return True
+            else:
+                dup[i] = 1
+        return False
+
+
+####
+
+class Solution:  ### This is just the class of the topic, it has no meaning , just create because of OOO
+    def hasDuplicate(self, nums: List[int]) -> bool: ## this is to define the function, self.xxx would be own object , 
+        for i in nums:
+            if nums.count(i) > 1:
+                return(True)
+        return(False)

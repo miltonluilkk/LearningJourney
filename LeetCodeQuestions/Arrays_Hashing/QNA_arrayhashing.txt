@@ -23,5 +23,46 @@ class Solution:  ### This is just the class of the topic, it has no meaning , ju
         return False
 
 
+####
+
+class Solution:  ### This is just the class of the topic, it has no meaning , just create because of OOO
+    def hasDuplicate(self, nums: List[int]) -> bool: ## this is to define the function, self.xxx would be own object , 
+        for i in nums:
+            if nums.count(i) > 1:
+                return(True)
+        return(False)
 
 
+#Question 2 : Valid Anagram
+Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
+
+Input: s = "racecar", t = "carrace" # True 
+Input: s = "jar", t = "jam"         # False
+
+
+##Solution , sorted the string 
+## they must be the same if sorted are right 
+##
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return(sorted(s)==sorted(t))
+		
+		
+### count the numbers of the list 
+### if not in the map originally then 0, and if there then extract + 1 
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        hm_s, hm_t = {} , {}
+        len_s = len(s)
+        #if the length is different, it means the string must not be the same 
+        if len(s) != len(t):
+            return(False)
+        ### if the len the same 
+        ### for loop the string 
+        #crucil knowledge hashmap.get(value, 0)
+        for i in range(len_s):
+            hm_s[s[i]] = hm_s.get(s[i],0) + 1
+            hm_t[t[i]] = hm_t.get(t[i],0) + 1
+        return(hm_s==hm_t)
