@@ -1,0 +1,102 @@
+Suggested Order of Learning
+Tuples (immutable lists)
+Dictionaries (key-value pairs)
+Sets (unique elements)
+Booleans (True/False logic)
+NoneType (null values)
+Bytes and Bytearray (binary data)
+Arrays (efficient homogeneous data)
+Queues and Stacks (FIFO/LIFO structures)
+Custom Data Types (Classes) (OOP)
+
+Datatype - Tuples 
+# Tuple = ordered immutable collection of elements
+# defined using pararenthes ()
+
+Features
+#Ordered: The elements in a tuple have a defined order, and that order will not change.
+#Immutable: Once a tuple is created, you cannot add, remove, or change its elements.
+#Heterogeneous: Tuples can store elements of different data types (e.g., integers, strings, floats, etc.).
+#Allows Duplicates: Tuples can have multiple elements with the same value.
+
+Creations 
+You can create a tuple by placing elements inside parentheses ().
+fruits = ("apple", "banana", "cherry")
+
+If you have only one element, you must include a trailing comma to distinguish it from a regular variable.
+single_element_tuple = (42,)  # Note the comma
+
+You can also create a tuple using the tuple() constructor.
+numbers = tuple([1, 2, 3])  # Convert a list to a tuple
+
+Accessing elements 
+Tuples are indexed, and you can access elements using their index.
+Indexing starts from 0 for the first element.
+fruits = ("apple", "banana", "cherry")
+print(fruits[0])  # Output: "apple"
+print(fruits[-1]) # Output: "cherry" (negative indexing starts from the end)
+
+Slicing a Tuple
+Syntax: tuple[start:stop:step]
+numbers = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+print(numbers[2:5])   # Output: (2, 3, 4)
+print(numbers[::2])   # Output: (0, 2, 4, 6, 8) (step of 2)
+print(numbers[::-1])  # Output: (9, 8, 7, 6, 5, 4, 3, 2, 1, 0) (reverse the tuple)
+
+Immutability of Tuples
+Tuples are immutable, meaning you cannot change their elements after creation.
+fruits = ("apple", "banana", "cherry")
+fruits[1] = "blueberry"  # This will raise a TypeError
+
+Concatenation
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+combined = tuple1 + tuple2  # Output: (1, 2, 3, 4, 5, 6)
+
+Repetition
+repeated = tuple1 * 3  # Output: (1, 2, 3, 1, 2, 3, 1, 2, 3)
+
+Membership Testing
+Check if an element exists in a tuple using in.
+print("apple" in fruits)  # Output: True
+
+.count()
+.index()
+
+fruits = ("apple", "banana", "cherry")
+a, b, c = fruits
+print(a, b, c)  # Output: apple banana cherry
+
+You can also use * to unpack remaining elements into a list.
+numbers = (1, 2, 3, 4, 5)
+a, b, *rest = numbers
+print(a, b, rest)  # Output: 1 2 [3, 4, 5]
+
+Nested Tuples
+Tuples can contain other tuples, creating a nested structure.
+matrix = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+print(matrix[1][2])  # Output: 6
+
+When to Use Tuples
+#You want to ensure the data cannot be modified (immutability)
+#You need a fixed collection of elements (e.g., coordinates, RGB values).
+#You want to use a collection as a key in a dictionary (tuples are hashable, unlike lists).
+
+////
+Practices
+
+
+Create a tuple with mixed data types and access its elements.
+Try to modify a tuple (observe the error).
+Unpack a tuple into variables.
+Concatenate two tuples and repeat one of them.
+Find the index of a specific element in a tuple.
+Count the occurrences of a value in a tuple.
+Create a nested tuple and access its elements.
+Use tuple unpacking to assign values to multiple variables.
+Convert a list to a tuple and vice versa.
+
+
+
+
+
