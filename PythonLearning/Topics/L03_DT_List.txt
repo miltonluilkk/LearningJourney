@@ -1,0 +1,200 @@
+DataType - list 
+
+# collections of items that are ordered and mutable
+# defined using []
+# a number of compound data types, used to group together other values - group multiple datatypes tgt 
+# most versatile is list 
+# comma-separated values (items) between square brackets.
+# List can contain different datatype items, but usually be the SAME
+
+Features 
+#Ordered: Items have a defined order, and that order will not change unless you explicitly change it.
+#Mutable: You can add, remove, or change items after the list is created.
+#Heterogeneous: Lists can contain items of different data types (e.g., integers, strings, floats, etc.).
+#Allows Duplicates: Lists can have multiple items with the same value.
+
+Creations
+fruits = ["apple", "banana", "cherry"]
+numbers = list((1, 2, 3))  # Note the double parentheses
+
+Accessing items 
+#Lists are indexed, and you can access elements using their index.
+#Indexing starts from 0 for the first element.
+
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])  # Output: "apple"
+print(fruits[-1]) # Output: "cherry" (negative indexing starts from the end)
+
+similiarly, can be slicied :: Syntax: list[start:stop:step]
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(numbers[2:5])   # Output: [2, 3, 4]
+print(numbers[::2])   # Output: [0, 2, 4, 6, 8] (step of 2)
+print(numbers[::-1])  # Output: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] (reverse the list)
+
+Modifying the list 
+#mutable , and can be updated by replacing the index =
+fruits = ["apple", "banana", "cherry"]
+fruits[1] = "blueberry"  # Change the second element
+print(fruits)  # Output: ["apple", "blueberry", "cherry"]
+
+Append: Add an element to the end of the list.
+fruits.append("orange")
+
+Insert: Insert an element at a specific index.
+fruits.insert(1, "mango")  # Insert "mango" at index 1
+
+Extend: Add multiple elements from another iterable (e.g., list, tuple).
+fruits.extend(["grape", "kiwi"])
+
+Remove: Remove the first occurrence of a value.
+fruits.remove("banana")
+
+Pop: Remove an element at a specific index (default is the last element).
+fruits.pop(1)  # Remove element at index 1
+
+Clear: Remove all elements from the list.
+fruits.clear()
+
+Concatenation 
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+combined = list1 + list2
+
+Repetition: Repeat a list using *.
+repeated = list1 * 3  # Output: [1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+Methods
+
+len(): Get the number of elements in the list.
+print(len(fruits))  # Output: 3
+
+index(): Find the index of the first occurrence of a value.
+print(fruits.index("cherry"))  # Output: 2
+
+count(): Count the number of occurrences of a value.
+print(fruits.count("apple"))  # Output: 1
+
+sort(): Sort the list in ascending order (in-place).
+numbers.sort()
+
+reverse(): Reverse the elements of the list (in-place).
+numbers.reverse()
+
+List creations in quick 
+# A concise way to create lists.
+# Syntax: [expression for item in iterable if condition]
+
+squares = [x**2 for x in range(10)]
+even_numbers = [x for x in range(20) if x % 2 == 0]
+
+Nested list 
+# Lists can contain other lists, creating a nested structure.
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print(matrix[1][2])  # Output: 6
+
+Copy list 
+# Shallow Copy: Copies the reference to the list, not the actual elements.
+list1 = [1, 2, 3]
+list2 = list1  # Both list1 and list2 point to the same list
+
+Deep Copy: Creates a new list with new elements.
+import copy
+list2 = copy.deepcopy(list1)
+
+Some more methods 
+.copy() # shallow copy of list 
+.count() # returns the number of the occurrences of a value in list 
+.index() # returns the index of the first occurrence of the value 
+.sort() with Custom Key ## --> Sorts the list based on a custom key (e.g., length of strings).
+fruits = ["apple", "banana", "cherry", "kiwi"]
+fruits.sort(key=len)  # Sort by length of strings
+print(fruits)  # Output: ['kiwi', 'apple', 'banana', 'cherry']
+
+sorted() with Reverse : Returns a new sorted list in descending order.
+numbers = [3, 1, 4, 1, 5, 9]
+sorted_numbers = sorted(numbers, reverse=True)
+print(sorted_numbers)  # Output: [9, 5, 4, 3, 1, 1]
+
+any() and all()
+any(): Returns True if at least one element in the list is True.
+numbers = [0, 1, 2]
+print(any(numbers))  # Output: True (1 is True)
+
+all(): Returns True only if all elements in the list are True.
+numbers = [1, 2, 3]
+print(all(numbers))  # Output: True (all are True)
+
+Stack: Use append() to push and pop() to pop.
+Queue: Use append() to enqueue and pop(0) to dequeue.
+
+You can unpack a list into variables.
+fruits = ["apple", "banana", "cherry"]
+a, b, c = fruits
+print(a, b, c)  # Output: apple banana cherry
+
+
+
+///Practice problems 
+What is the difference between append() and extend()?
+append(): Adds a single element to the end of the list.
+extend(): Adds multiple elements from an iterable (e.g., list, tuple) to the end of the list.
+
+How do you remove all occurrences of a value from a list?
+What is the difference between pop() and remove()?
+pop(): Removes an element at a specific index and returns it. If no index is specified, it removes the last element.
+remove(): Removes the first occurrence of a specified value.
+
+How do you check if an element exists in a list?
+Use the in keyword.
+if "apple" in fruits:
+    print("Apple is in the list!")
+
+How do you reverse a list?
+fruits.reverse()  # In-place reversal
+reversed_fruits = fruits[::-1]  # Creates a new reversed list
+
+What is the difference between sort() and sorted()?
+sort(): Sorts the list in-place (modifies the original list).
+sorted(): Returns a new sorted list without modifying the original list.
+
+How do you copy a list without modifying the original?
+list2 = list1.copy()
+list2 = list1[:]
+
+What is the difference between a list and a tuple?
+List: Mutable, can be modified after creation.
+Tuple: Immutable, cannot be modified after creation.
+
+How do you find the index of an element in a list?
+Use the index() method.
+
+How do you check if a list is empty?
+if not fruits:
+    print("List is empty")
+if len(fruits) == 0:
+    print("List is empty")
+
+How do you remove duplicates from a list?
+Convert the list to a set (since sets don’t allow duplicates) and back to a list.
+numbers = [1, 2, 2, 3, 4, 4, 5]
+unique_numbers = list(set(numbers))
+
+How do you find the largest or smallest element in a list?
+numbers = [1, 2, 3, 4, 5]
+print(max(numbers))  # Output: 5
+print(min(numbers))  # Output: 1
+
+How do you iterate over a list with both index and value?
+fruits = ["apple", "banana", "cherry"]
+for index, value in enumerate(fruits):
+    print(index, value)
+
+What happens if you slice beyond the list’s bounds?
+Python handles it gracefully and returns elements up to the end.
+numbers = [1, 2, 3, 4, 5]
+print(numbers[2:10])  # Output: [3, 4, 5]
+
+What is the difference between list() and []?
+Both create a list, but list() can convert other iterables (e.g., tuples, strings) into lists.
+list1 = list("hello")  # Output: ['h', 'e', 'l', 'l', 'o']
+list2 = [1, 2, 3]
