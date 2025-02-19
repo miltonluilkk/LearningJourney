@@ -9,7 +9,16 @@ Grammar
 6. -습니까?/-ㅂ니까?  # ask questions.It is used in situations that shows formality. 좋습니다 / 좋습니까?
 7. 도 # also , 음식도, 동생도
 8.  을/를 # before a verb to indicate the object in a sentence # 저는 밥을 먹습니다.
-9. 명사 + 와/과, 명사 + 하고 Noun+ 와/과, Noun+ 하고 # multiple objs 
+9. 명사 + 와/과, 명사 + 하고 Noun+ 와/과, Noun+ 하고 # multiple objs ** and 
+선생님하고 / 동생과 / 학교와 /학교하고
+10. 의 ## 's ,  shows that the first noun possesses the second noun. 
+선생님의
+** 11. 동사, 형용사 + -어요/-아요
+
+
+
+
+
 Common words 
 그리고 and
 자주 often
@@ -74,4 +83,29 @@ otherwords
 넓다 wide (big)
 질문 question
 모르다 do not know, don’t understand
+책상 desk
+지도 map
+시계 clock
+의자 chair
+칠판 blackboard
+칠판 blackboard
+날씨 weather
+맑다 clear
+흐리다 cloudy
+비 rain
+눈 snow
+오다 fall 
+덥다 hot
+춥다 cold
+따뜻하다 warm
+시원하다 cool
+봄 spring
+여름 summer
+가을 autumn
+겨울 winter
+날씨가 어떻습니까? # How is the weather?
+눈이 내립니까? # Is it snowing?
+
+
+
 

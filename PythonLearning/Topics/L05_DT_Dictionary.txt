@@ -1,0 +1,188 @@
+Datatype : Dictionary 
+
+Python dictionary : 
+
+# unordered collection of items which each item is stored as a key-value pair
+# mutable - change their content without changing their identity
+# dynamic, allowing you to add or remove items.
+
+*** Key: A unique identifier for a value. Keys must be immutable (e.g., strings, numbers, tuples). ( you cant put a list here ) 
+Value: The data associated with the key. Values can be of any type (e.g., integers, strings, lists, other dictionaries). (basically anything) 
+
+Syntax 
+1. Keys and values are separated by a colon :
+2. Key-value pairs are separated by commas ,
+3. The entire dictionary is enclosed in curly braces {}
+
+my_dict = {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": "value3"
+}
+
+Creations 
+
+Empty Dictionary 
+###  my_dict = {}
+
+Dictionary with Initial Values 
+### my_dict = {"name": "Alice", "age": 25, "city": "New York"}
+
+
+### not recommended 
+Using dict() Constructor:
+my_dict = dict(name="Alice", age=25, city="New York")
+
+Accessing values 
+Use the key to access the corresponding value:
+###print(my_dict["name"])  # Output: Alice
+
+If the key doesn't exist, it raises a KeyError. To avoid this, use the get() method:
+##print(my_dict.get("name"))  # Output: Alice
+###print(my_dict.get("gender", "Unknown"))  # Output: Unknown (default value)
+
+Adding new pair  / modifying pairs
+Add a new key-value pair:
+#my_dict["gender"] = "Female"
+
+Update an existing key:
+#my_dict["age"] = 26
+
+Use the update() method to merge another dictionary:
+my_dict.update({"age": 26, "job": "Engineer"})
+
+Removing 
+Use del to remove a key-value pair:
+#del my_dict["city"]
+
+Use pop() to remove a key and return its value:
+#age = my_dict.pop("age")
+
+Use popitem() to remove and return the last inserted key-value pair:
+# key, value = my_dict.popitem()
+
+Use clear() to remove all items:
+#my_dict.clear()
+
+keys(): Returns a view of all keys.
+#print(my_dict.keys())  # Output: dict_keys(['name', 'age', 'city'])
+
+values(): Returns a view of all values.
+#print(my_dict.values())  # Output: dict_values(['Alice', 25, 'New York'])
+
+items(): Returns a view of all key-value pairs as tuples.
+#print(my_dict.items())  # Output: dict_items([('name', 'Alice'), ('age', 25), ('city', 'New York')])
+
+copy(): Returns a shallow copy of the dictionary.
+#new_dict = my_dict.copy()
+
+nested diict 
+#dictionary inside a dictionary 
+nested_dict = {
+    "person1": {"name": "Alice", "age": 25},
+    "person2": {"name": "Bob", "age": 30}
+}
+print(nested_dict["person1"]["name"])  # Output: Alice
+
+Iterating
+Iterate over keys:
+for key in my_dict:
+    print(key, my_dict[key])
+	
+Iterate over key-value pairs:
+for key, value in my_dict.items():
+    print(key, value)
+	
+Checking for Key Existence
+if "name" in my_dict:
+    print("Name exists")
+	
+Dictionary Views
+#keys(), values(), and items() return view objects that reflect changes in the dictionary:
+#keys_view = my_dict.keys()
+my_dict["gender"] = "Female"
+print(keys_view)  # Output: dict_keys(['name', 'age', 'city', 'gender'])
+
+In Python 3.7+, dictionaries maintain insertion order. In earlier versions, dictionaries were unordered.
+////////////	
+Practice probelms::
+What is the difference between a dictionary and a list?
+#Dictionary: Stores key-value pairs. Keys are unique and immutable. Access is via keys.
+#List: Stores ordered elements. Access is via indices (positions).
+
+Can a dictionary have duplicate keys?
+#No, keys must be unique. If you assign a value to an existing key, it will overwrite the previous value.
+
+What happens if you try to access a key that doesn't exist?
+#It raises a KeyError. Use the get() method to avoid this:
+# value = my_dict.get("nonexistent_key", "default_value")
+
+Can a dictionary key be a list or another dictionary?
+No, keys must be immutable. 
+Lists and dictionaries are mutable, so they cannot be used as keys. Tuples can be used as keys if they contain only immutable elements.
+	
+How do you merge two dictionaries?
+#.update()
+dict1 = {"a": 1, "b": 2}
+dict2 = {"c": 3, "d": 4}
+dict1.update(dict2)
+	
+In Python 3.9+, you can use the | operator:
+merged_dict = dict1 | dict2
+
+What is the difference between pop() and popitem()?
+pop(): Removes a specific key and returns its value.
+##value = my_dict.pop("key")
+popitem(): Removes and returns the last inserted key-value pair.
+##key, value = my_dict.popitem()
+
+How do you create a dictionary from two lists (keys and values)?
+##Use the zip() function:
+keys = ["a", "b", "c"]
+values = [1, 2, 3]
+my_dict = dict(zip(keys, values))
+
+What is a dictionary comprehension?
+squares = {x: x**2 for x in range(1, 6)}
+
+How do you check if a value exists in a dictionary?
+#Use the in keyword with the values() method:
+if "Alice" in my_dict.values():
+    print("Value exists")
+
+What is the time complexity of dictionary operations?
+Access, insertion, and deletion operations are O(1) on average due to hashing.
+
+
+Shallow copy -> just referencing 
+#changes to those elements will be reflected in both the original and the shallow copy.
+
+Is Dictionary the Fastest?
+##Yes, dictionaries are one of the fastest data structures in Python for certain operations, particularly lookup, insertion, and deletion.
+This is because dictionaries are implemented using hash tables, which provide average-case O(1) time complexity for these operations.
+
+Why Are Dictionaries Fast?
+#Hashing: Keys are hashed to compute an index where the corresponding value is stored. This allows for fast access.
+#Collision Handling: Python uses techniques like open addressing to handle hash collisions efficiently.
+#Optimized Implementation: Dictionaries are highly optimized in Python's core implementation (CPython).
+
+Comparison with Other Data Structures:
+Operation	Dictionary	List	Set
+Lookup (by key)	O(1)	O(n)	O(1)
+Insertion	O(1)	O(n)	O(1)
+Deletion	O(1)	O(n)	O(1)
+Iteration	O(n)	O(n)	O(n)
+
+
+When to Use Dictionaries:
+#When you need fast lookups, insertions, or deletions based on keys.
+#When you need to store key-value pairs.
+#When the order of elements is not important (or you're using Python 3.7+, where dictionaries maintain insertion order).
+
+
+
+
+
+
+
+
