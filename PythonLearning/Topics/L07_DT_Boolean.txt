@@ -1,0 +1,127 @@
+Datatype: Booleans 
+
+A Boolean in Python is a data type that represents one of two values: True or False.
+#Either True or False 
+#Booleans are used to represent the truth value of an expression or condition. 
+#They are fundamental in control flow (e.g., if statements, loops) and logical operations.
+#Doing the operations/logicical actions 
+
+Boolean Values
+True: Represents a true condition.
+False: Represents a false condition.
+
+is_valid = True
+is_empty = False
+
+Boolean Operations
+
+and: Returns True if both operands are True.
+print(True and False)  # Output: False
+
+or: Returns True if at least one operand is True.
+print(True or False)  # Output: True
+
+not: Returns the opposite Boolean value.
+print(not True)  # Output: False
+
+Truthy and Falsy Values
+#In Python, non-Boolean values can also be evaluated in a Boolean context. These are called truthy and falsy values.
+
+Falsy Values: (EVERYTHING = 0 OR EMPTY) 
+False
+None
+0 (integer)
+0.0 (float)
+"" (empty string)
+[] (empty list)
+{} (empty dictionary)
+set() (empty set)
+
+Truthy Values:
+Everything else is considered True.
+
+Boolean Context
+
+if Statements: (the below basically shows if sth is true )
+
+if some_value:
+    print("Truthy")
+else:
+    print("Falsy")
+	
+while Loops:
+while some_condition:
+    # Do something
+	
+Comparison Operators	
+#Comparison operators return Boolean values (True or False):
+==: Equal to
+!=: Not equal to
+>: Greater than
+<: Less than
+>=: Greater than or equal to
+<=: Less than or equal to
+
+Boolean Functions
+bool(): Converts a value to a Boolean.
+print(bool(0))  # Output: False
+print(bool(1))  # Output: True
+
+Short-Circuit Evaluation
+and: Stops evaluating as soon as a False value is found.
+or: Stops evaluating as soon as a True value is found.
+	
+a = True
+b = True
+print(a is b)  # Output: True
+	
+Practice :
+
+Q1: What is the difference between == and is?
+==: Checks if two values are equal.
+is: Checks if two variables refer to the same object in memory.
+
+Q2: Can a Boolean be used in arithmetic operations?
+Yes, True is treated as 1 and False as 0 in arithmetic operations.
+print(True + True)  # Output: 2
+
+Q3: What is the output of bool([])?
+False, because an empty list is a falsy value.
+
+Q4: What is the difference between and and &?
+and: A logical operator that returns a Boolean value.
+&: A bitwise operator that performs a bitwise AND operation.
+
+Q5: What is the output of not not True?
+True, because not True is False, and not False is True.
+
+Q6: Can a Boolean be a key in a dictionary?
+Yes, Booleans are immutable and can be used as dictionary keys.
+
+my_dict = {True: "Yes", False: "No"}
+
+Q7: What is the output of bool("False")?
+True, because a non-empty string is truthy.
+
+Q8: What is the difference between False and None?
+False: A Boolean value representing falsity.
+None: Represents the absence of a value or a null value.
+
+Q9: What is the output of True == 1?
+True, because True is treated as 1 in a numeric context.
+
+Q10: What is the output of False == 0?
+True, because False is treated as 0 in a numeric context.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
