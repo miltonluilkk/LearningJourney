@@ -1,0 +1,141 @@
+Datatype : Set 
+#A set in Python is an unordered collection of unique elements. 
+# Mutable - meaning you can add or remove elements, but the elements themselves must be immutable (e.g., numbers, strings, tuples).
+
+Sets are commonly used for:
+#Removing duplicates from a sequence.
+# Performing mathematical set operations like union, intersection, and difference.
+
+Syntax
+my_set = {1, 2, 3, 4, 5}
+#Elements are enclosed in curly braces {}.
+#Elements are separated by commas ,.
+#An empty set is created using set(), not {} (which creates an empty dictionary).
+
+Creation
+my_set = set()
+my_set = {1, 2, 3, 4, 5}
+my_set = set([1, 2, 3, 4, 5])
+
+Features
+#Unordered: Sets do not maintain any order of elements.
+#Unique Elements: Duplicates are automatically removed.
+#Mutable: You can add or remove elements.
+#Immutable Elements: Elements must be hashable (immutable). Lists or dictionaries cannot be elements of a set.
+
+Modifying
+
+my_set.add(6)
+my_set.update([7, 8, 9])
+my_set.remove(5)  # Raises KeyError if the element is not found
+my_set.discard(5)  # Does not raise an error if the element is not found
+element = my_set.pop()
+my_set.clear()
+
+Set usages
+#Union (FULL JOINING the items)
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+union_set = set1 | set2  # Output: {1, 2, 3, 4, 5}
+
+#Intersection (& or intersection()): 
+intersection_set = set1 & set2  # Output: {3}
+
+#Diff
+difference_set = set1 - set2  # Output: {1, 2}
+
+#Symmetric Difference (^ or symmetric_difference()):
+#Returns elements in either set but not in both.
+symmetric_diff_set = set1 ^ set2  # Output: {1, 2, 4, 5}
+
+Methods
+len()
+in #inside the set?
+###if 3 in my_set:
+    print("Element exists")
+
+issubset(): Checks if one set is a subset of another.
+set1 = {1, 2}
+set2 = {1, 2, 3, 4}
+print(set1.issubset(set2))  # Output: True
+
+issuperset(): Checks if one set is a superset of another.
+print(set2.issuperset(set1))  # Output: True
+
+Set Comprehensions
+squares = {x**2 for x in range(1, 6)}
+print(squares)  # Output: {1, 4, 9, 16, 25}
+
+Frozen Sets (A frozen set is an immutable version of a set. It cannot be modified after creation.)
+frozen_set = frozenset([1, 2, 3, 4, 5])
+
+Use a for loop:
+for element in my_set:
+    print(element)
+
+////////////////////////////
+Practice
+
+Q1: What is the difference between a set and a list?
+Set: Unordered, contains unique elements, and is optimized for membership tests.
+List: Ordered, allows duplicates, and is optimized for indexed access.
+
+Q2: Can a set contain mutable elements like lists or dictionaries?
+#No, sets can only contain immutable (hashable) elements. 
+#Lists and dictionaries are mutable and cannot be elements of a set.
+
+Q3: How do you remove duplicates from a list? ( this is very useful) 
+Convert the list to a set:
+
+my_list = [1, 2, 2, 3, 4, 4, 5]
+unique_elements = list(set(my_list))
+
+Q4: What happens if you try to add a duplicate element to a set?
+The duplicate is ignored, and the set remains unchanged.
+
+Q5: What is the difference between remove() and discard()?
+#remove(): Raises a KeyError if the element is not found.
+#discard(): Does not raise an error if the element is not found.
+
+Q6: How do you check if two sets are equal?
+Use the == operator:
+
+set1 = {1, 2, 3}
+set2 = {3, 2, 1}
+print(set1 == set2)  # Output: True
+
+
+Q7: What is the time complexity of set operations?
+Lookup, insertion, and deletion operations are O(1) on average due to hashing.
+Union, intersection, and difference operations are O(n) in the worst case.
+
+Q8: What is a frozen set?
+A frozen set is an immutable version of a set. It cannot be modified after creation.
+
+Q9: How do you create a set from a list of lists?
+You cannot directly create a set from a list of lists because lists are mutable. Convert the inner lists to tuples first:
+
+list_of_lists = [[1, 2], [3, 4], [1, 2]]
+set_of_tuples = {tuple(inner_list) for inner_list in list_of_lists}
+
+
+Q10: What is the difference between a set and a dictionary?
+Set: Contains only keys (unique elements).
+Dictionary: Contains key-value pairs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
