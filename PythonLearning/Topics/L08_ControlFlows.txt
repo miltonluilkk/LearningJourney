@@ -1,0 +1,287 @@
+Python : Control flows 
+
+#The order in which statements and expressions are executed in a program
+# control flow structures based on 
+1. conditions 
+2. loops 
+3. exceptions 
+
+Conditional 
+#Conditional statements allow you to execute code based on whether a condition is True or False.
+
+if Statement
+#The if statement checks a condition and executes a block of code if the condition is True.
+if condition:
+    # Code to execute if condition is True
+
+b. if-else Statement
+#The else block is executed if the if condition is False.
+if condition:
+    # Code to execute if condition is True
+else:
+    # Code to execute if condition is False
+c. if-elif-else Statement
+#The elif (else-if) allows you to check multiple conditions in sequence.
+if condition1:
+    # Code to execute if condition1 is True
+elif condition2:
+    # Code to execute if condition2 is True
+else:
+    # Code to execute if all conditions are False
+
+x = 10
+if x > 10:
+    print("x is greater than 10")
+elif x == 10:
+    print("x is equal to 10")
+else:
+    print("x is less than 10")
+	
+
+
+Loops 
+
+Loops allow you to repeatedly execute a block of code.
+
+a. for Loop
+#The for loop iterates over a sequence (e.g., list, tuple, string, or range).
+for item in sequence:
+    # Code to execute for each item in the sequence
+
+b. while Loop
+#The while loop executes a block of code as long as a condition is True.
+while condition:
+    # Code to execute while condition is True
+
+# for loop
+for i in range(5):
+    print(i)  # Output: 0, 1, 2, 3, 4
+
+# while loop
+count = 0
+while count < 5:
+    print(count)  # Output: 0, 1, 2, 3, 4
+    count += 1
+
+&****Loop Control Statements
+break: Exits the loop immediately.
+continue: Skips the rest of the code in the current iteration and moves to the next iteration.
+pass: A placeholder that does nothing (used when syntax requires a statement but no action is needed).
+
+Very good example :: please read -
+
+for i in range(10):
+    if i == 3:
+        continue  # Skip iteration when i is 3
+    if i == 7:
+        break  # Exit loop when i is 7
+    print(i)  # Output: 0, 1, 2, 4, 5, 6
+
+
+Exceptions : 
+
+#Exception handling allows you to handle errors gracefully using try, except, else, and finally.
+try-except Block
+#The try block contains code that might raise an exception.
+#The except block handles the exception if it occurs.
+
+try:
+    # Code that might raise an exception
+except ExceptionType:
+    # Code to handle the exception
+
+
+else Block
+#The else block is executed if no exception occurs in the try block.
+try:
+    # Code that might raise an exception
+except ExceptionType:
+    # Code to handle the exception
+else:
+    # Code to execute if no exception occurs
+
+#finally Block
+The finally block is always executed, regardless of whether an exception occurred.
+try:
+    # Code that might raise an exception
+except ExceptionType:
+    # Code to handle the exception
+finally:
+    # Code that always executes
+
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+else:
+    print("Division successful:", result)
+finally:
+    print("Execution complete.")
+
+
+Context Managers (with Statement) ::-- this is not done.. needed to be on the excel training
+#Context managers are used to manage resources (e.g., files, database connections) and ensure they are properly initialized and cleaned up.
+with expression as variable:
+    # Code to execute with the resource
+# Opening a file using a context manager
+with open("file.txt", "r") as file:
+    content = file.read()
+    print(content)
+# File is automatically closed after the block
+
+Match-Case (Python 3.10+)
+#The match statement is used for structural pattern matching, similar to a switch-case statement in other languages.
+match value:
+    case pattern1:
+        # Code to execute if value matches pattern1
+    case pattern2:
+        # Code to execute if value matches pattern2
+    case _:
+        # Default case (if no pattern matches)
+
+status = 404
+match status:
+    case 200:
+        print("Success")
+    case 404:
+        print("Not Found")
+    case _:
+        print("Unknown status")
+
+Functions and Control Flow
+#Functions can also influence control flow by encapsulating reusable code and returning values.
+def check_even_odd(num):
+    if num % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
+
+result = check_even_odd(5)
+print(result)  # Output: Odd
+
+Generators and Iterators
+#Generators (yield) and iterators allow you to create custom iterable sequences, which can be used in loops.
+
+def count_up_to(n):
+    i = 1
+    while i <= n:
+        yield i
+        i += 1
+
+for num in count_up_to(5):
+    print(num)  # Output: 1, 2, 3, 4, 5
+\
+Conditionals: if, elif, else
+Loops: for, while, break, continue, pass
+Exception Handling: try, except, else, finally
+Context Managers: with
+Pattern Matching: match-case (Python 3.10+)
+Functions: Encapsulate reusable logic
+Generators: Create custom iterators with yield
+
+More on generators :
+#just like debug mode, it's gonna to pause and return the value
+# similiar to return but different 
+# yield vs return : 
+
+yield
+Used in generator functions to produce a sequence of values.
+Pauses the function and saves its state. The function can resume later.
+Memory-efficient: Produces values on-the-fly, one at a time.
+Creates an iterable generator object.
+Retains the function’s state (local variables, execution point) between calls.
+Ideal for large datasets, infinite sequences, or streaming data.
+
+return
+Used in regular functions to return a single value and terminate the function.
+Ends the function immediately.
+Stores all results in memory: Returns a single value or a collection (e.g., list, tuple).
+Returns a single value or object.
+Does not retain state; the function starts fresh each time it’s called.
+Ideal for small datasets or when you need a single result.
+
+
+
+def simple_generator():
+    print("Start")
+    yield 0
+    print("Resumed")
+    yield 1
+    print("Resumed again")
+    yield 2
+    print("End")
+
+# Using the generator in a for loop
+for value in simple_generator():
+    print("Value:", value)
+	
+	
+Start
+Value: 0
+Resumed
+Value: 1
+Resumed again
+Value: 2
+End
+
+
+
+Practice : 
+Can you have multiple elif blocks in a single if statement? If yes, how does Python evaluate them?
+What happens if you omit the else block in an if-elif statement?
+Can you nest if statements inside another if statement? Give an example.
+What is the difference between a for loop and a while loop?
+When would you use a for loop instead of a while loop, and vice versa?
+What is the purpose of the break and continue statements in loops?
+What is an infinite loop, and how can you avoid it?
+What is the purpose of the try-except block?
+What is the difference between else and finally in exception handling?
+Can you have multiple except blocks for a single try block? If yes, how does Python handle them?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
