@@ -1,0 +1,236 @@
+Python Function
+#Functions : reusable block of code that performs a specific task. 
+# helps in organize code 
+# avoid repetition, and making programs easier to read 
+
+define a function 
+#Use the def keyword to define a function.
+def function_name(parameters):
+    # Function body
+    return result
+
+Call function 
+Use the function name followed by parentheses to call it.
+def greet():
+    print("Hello, World!")
+greet()  # Calls the function
+
+
+Parameters and Arguments:
+#Parameters: Variables listed in the function definition.
+#Arguments: Actual values passed to the function when it’s called.
+
+def add(a, b):  # a and b are parameters
+    return a + b
+add(2, 3)  # 2 and 3 are arguments
+
+Return Statement:
+#The return statement exits the function and optionally returns a value.
+#If no return is specified, the function returns None.
+
+Scope:
+#Local Variables: Defined inside a function and accessible only within that function.
+#Global Variables: Defined outside functions and accessible everywhere.
+
+Types of Arguments:
+#Positional Arguments: Passed in the order of parameters.
+#Keyword Arguments: Passed with explicit parameter names.
+#Default Arguments: Parameters with default values.
+#Variable-Length Arguments: *args (for positional arguments) and **kwargs (for keyword arguments).
+
+Lambda Functions:
+#Small, anonymous functions defined using the lambda keyword.
+#Syntax: lambda parameters: expression
+
+A lambda function is a small, anonymous function defined using the lambda keyword. Unlike regular functions defined with def, lambda functions are:
+Anonymous: They don’t have a name (unless assigned to a variable).
+Concise: They are typically written in a single line.
+Inline: They are often used where a function is needed temporarily.
+
+lambda arguments: expression
+
+lambda: Keyword to define a lambda function.
+arguments: Input parameters (similar to a regular function).
+expression: A single expression that is evaluated and returned.
+
+Single Expression:
+Lambda functions can only contain a single expression. They cannot include multiple statements or complex logic.
+
+# Valid
+square = lambda x: x ** 2
+
+# Invalid (multiple statements)
+invalid_lambda = lambda x: print(x); return x ** 2
+
+No Name (Anonymous):
+Lambda functions don’t have a name unless explicitly assigned to a variable.
+# Anonymous lambda function
+(lambda x: x ** 2)(5)  # Output: 25
+
+Lambda functions are often used inline, where a function is needed temporarily (e.g., as an argument to another function).
+
+Basic Lambda Function
+
+# Regular function
+def square(x):
+    return x ** 2
+
+# Equivalent lambda function
+square = lambda x: x ** 2
+
+print(square(5))  # Output: 25
+
+# Regular function
+def add(a, b):
+    return a + b
+
+# Equivalent lambda function
+add = lambda a, b: a + b
+
+print(add(2, 3))  # Output: 5
+
+ Inline Usage
+Lambda functions are often used with functions like map(), filter(), and sorted().
+map(): Applies a function to all items in an iterable.
+numbers = [1, 2, 3, 4]
+squared = map(lambda x: x ** 2, numbers)
+print(list(squared))  # Output: [1, 4, 9, 16]
+
+filter(): Filters items based on a condition.
+numbers = [1, 2, 3, 4, 5, 6]
+evens = filter(lambda x: x % 2 == 0, numbers)
+print(list(evens))  # Output: [2, 4, 6]
+
+sorted(): Sorts items based on a key.
+data = [(1, 2), (3, 1), (5, 0)]
+sorted_data = sorted(data, key=lambda x: x[1])  # Sort by the second element
+print(sorted_data)  # Output: [(5, 0), (3, 1), (1, 2)]
+
+When to Use Lambda Functions
+Short, One-Time Use:
+
+Use lambda functions for simple operations that are used only once.
+
+Example:
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x ** 2, numbers))
+As Arguments to Higher-Order Functions:
+
+Lambda functions are often used with functions like map(), filter(), and sorted().
+
+Example:
+evens = list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4]))
+Readability:
+
+Use lambda functions when they make the code more readable and concise.
+
+Example:
+sorted_data = sorted(data, key=lambda x: x[1])
+When NOT to Use Lambda Functions
+Complex Logic:
+
+If the logic is complex or requires multiple statements, use a regular function instead.
+
+Example:
+# Bad (complex logic in lambda)
+bad_lambda = lambda x: True if x > 10 else False
+
+# Good (use a regular function)
+def is_greater_than_ten(x):
+    return x > 10
+Reusability:
+
+If the function is needed multiple times, define it with def for better reusability and readability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////
+Practices :
+What is a function, and why is it useful?
+#A function is a reusable block of code that performs a specific task. It helps in organizing code, avoiding repetition, and improving readability.
+
+What is the difference between parameters and arguments?
+#Parameters are variables in the function definition.
+#Arguments are the actual values passed to the function when it’s called.
+
+Can a function return multiple values?
+Yes, a function can return multiple values as a tuple. Example:
+def get_name_and_age():
+    return "Alice", 25
+
+What are positional arguments?
+#Positional arguments are passed in the order of parameters. Example:
+def add(a, b):
+    return a + b
+add(2, 3)  # 2 is assigned to a, 3 is assigned to b
+
+What are keyword arguments?
+#Keyword arguments are passed with explicit parameter names. Example:
+add(a=2, b=3)  # a and b are explicitly assigned
+
+What are default arguments?
+#Default arguments have predefined values if no argument is provided. Example:
+def greet(name="Guest"):
+    return f"Hello, {name}!"
+greet()  # Uses default value: "Hello, Guest!"
+
+
+What are *args and **kwargs?
+*args allows passing a variable number of positional arguments as a tuple.
+**kwargs allows passing a variable number of keyword arguments as a dictionary.
+
+def func(*args, **kwargs):
+    print(args)  # Tuple of positional arguments
+    print(kwargs)  # Dictionary of keyword arguments
+func(1, 2, a=3, b=4)
+
+What is the difference between local and global variables?
+#Local variables: Defined inside a function and accessible only within that function.
+#Global variables: Defined outside functions and accessible everywhere.
+
+x = 10
+def modify_global():
+    global x
+    x = 20
+modify_global()
+print(x)  # Output: 20
+
+What is a lambda function?
+A small, anonymous function defined using the lambda keyword. Example:
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+
+
+
+
+
+
+
+
+
+
+
+
+
