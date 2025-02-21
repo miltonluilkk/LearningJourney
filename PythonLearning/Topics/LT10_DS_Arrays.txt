@@ -1,0 +1,16 @@
+DataStructures 
+
+Python : arrays are typically represented using lists
+# lists are dynamic - size can change 
+# can hold elements of different types 
+# best practice use homogeneous data types for arrays
+
+Key Characteristics of Python Lists:
+#Dynamic Size: Lists can grow or shrink as needed.
+#Indexed: Elements are accessed using indices (starting from 0).
+#Mutable: Elements can be modified after creation.
+#Heterogeneous: Can store elements of different types (but avoid this for arrays).
+
+# Declare a list (array) of integers
+arr = [10, 20, 30, 40, 50]
+print(arr)  # Output: [10, 20, 30, 40, 50]
