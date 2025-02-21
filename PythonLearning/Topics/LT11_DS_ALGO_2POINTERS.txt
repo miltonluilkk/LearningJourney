@@ -1,0 +1,28 @@
+Two-Pointer Technique
+
+What is the Two-Pointer Technique?
+The two-pointer technique is a common strategy used to solve problems involving arrays, strings, or linked lists.
+It involves using two pointers (indices) to traverse the data structure from different directions or at different speeds.
+
+** traverse the data structures ** this is key
+
+When to Use It:
+###Problems involving pairs (e.g., finding two numbers that add up to a target).
+###Problems requiring in-place modifications (e.g., reversing an array).
+###Problems involving subarrays or substrings (e.g., finding the longest substring without repeating characters).
+
+How It Works
+The two-pointer technique can be implemented in two main ways:
+
+a. Opposite Direction (Left and Right Pointers)
+##One pointer starts at the beginning (left) and moves forward.
+##The other pointer starts at the end (right) and moves backward.
+##This is commonly used for problems like reversing an array or finding pairs.
+
+b. Same Direction (Slow and Fast Pointers)
+##Both pointers start at the beginning.
+##One pointer moves faster than the other.
+##This is commonly used for problems like detecting cycles in linked lists or removing duplicates.
+
+Problems to check :
+1. reverse string 

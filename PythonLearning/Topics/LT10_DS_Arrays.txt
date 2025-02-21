@@ -14,3 +14,91 @@ Key Characteristics of Python Lists:
 # Declare a list (array) of integers
 arr = [10, 20, 30, 40, 50]
 print(arr)  # Output: [10, 20, 30, 40, 50]
+
+Python lists are implemented as dynamic arrays.
+This means they automatically resize when elements are added or removed.
+
+Under the hood, Python lists store references to objects, not the objects themselves.
+This makes them flexible but slightly less memory-efficient for primitive data types.
+
+arr = [10, 20, 30, 40, 50]
+for i in range(len(arr)):
+    print(f"Index {i}: {arr[i]}")
+	
+Insertion
+arr = [10, 20, 30, 40, 50]
+arr.insert(2, 25)  # Insert 25 at index 2
+print(arr)  # Output: [10, 20, 25, 30, 40, 50]
+
+Deletion
+arr = [10, 20, 30, 40, 50]
+arr.pop(2)  # Remove element at index 2
+print(arr)  # Output: [10, 20, 40, 50]
+
+arr.remove(40)  # Remove the first occurrence of 40
+print(arr)  # Output: [10, 20, 50]
+
+Searching
+arr = [10, 20, 30, 40, 50]
+index = arr.index(30)  # Find the index of 30
+print(index)  # Output: 2
+
+Updating
+arr = [10, 20, 30, 40, 50]
+arr[2] = 35  # Update element at index 2
+print(arr)  # Output: [10, 20, 35, 40, 50]
+
+Time Complexity of Array Operations
+
+Operation	Time Complexity	Explanation
+Access (arr[i])	O(1)	Direct access using index.
+Append (arr.append(x))	O(1)	Adding to the end of the list.
+Insert (arr.insert(i, x))	O(n)	Inserting requires shifting elements.
+Delete (arr.pop(i))	O(n)	Deleting requires shifting elements.
+Search (x in arr)	O(n)	Linear search through the list.
+Traversal	O(n)	Visiting each element once.
+
+Strings - skip - refer to dt 
+
+
+Operation	Time Complexity	Explanation
+Access (s[i])	O(1)	Direct access using index.
+Slicing (s[i:j])	O(k)	Extracting a substring of length k.
+Concatenation	O(n + m)	Combining two strings of length n and m.
+Length (len(s))	O(1)	Length is precomputed.
+Search (x in s)	O(n)	Linear search through the string.
+
+
+-----------------------------------------------------------------------
+
+Common Pitfalls
+Immutable Strings: Remember that strings cannot be modified in place. Always create a new string if you need to make changes.
+Off-by-One Errors: Be careful with indices when slicing or accessing elements.
+Mixed Data Types: Avoid mixing data types in lists if you’re using them as arrays.
+
+---> time to start practice <---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
