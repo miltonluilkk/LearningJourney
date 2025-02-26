@@ -1,0 +1,6 @@
+Practice Problems:
+
+Reverse an array or string.
+Find the maximum/minimum element in an array.
+Check if a string is a palindrome.
+Count the frequency of elements in an array or characters in a string.

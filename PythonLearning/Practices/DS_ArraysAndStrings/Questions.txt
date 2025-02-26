@@ -15,3 +15,42 @@ Example 2:
 
 Input: s = ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
+
+2. Finding maxmium / minimum element in the array 
+
+def findMax(nums):
+    maxNum = nums[0]
+    for i in nums:
+        maxNum = max(maxNum , i)
+    return(maxNum)
+
+
+b = findMax([1,2,3,4,5,46,546,546,435,6,234,234,1234,235,12345,43])
+print(b)
+
+Practice Problems:
+
+Reverse an array or string.
+
+Find the maximum/minimum element in an array.
+
+Check if a string is a palindrome.
+
+Count the frequency of elements in an array or characters in a string.
+
+Practice Problems:
+
+Remove duplicates from a list using a set.
+
+Count the frequency of words in a string using a dictionary.
+
+Merge two dictionaries.
+
+3. Dive into Algorithms
+Learn and implement basic algorithms using arrays and strings:
+
+Sorting Algorithms: Bubble sort, selection sort, insertion sort, merge sort, quicksort.
+
+Searching Algorithms: Linear search, binary search.
+
+String Algorithms: Pattern matching (e.g., using the Knuth-Morris-Pratt algorithm).
