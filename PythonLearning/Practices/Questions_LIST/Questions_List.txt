@@ -1,0 +1,283 @@
+1. Basic List Operations
+Question: Write a function that takes a list of numbers and returns the sum of all the elements.
+
+Example Input: [1, 2, 3, 4, 5]
+Example Output: 15
+
+
+def sum_list(nums):
+    return(sum(nums))
+
+b = sum_list([1,2,3,4,5])
+print(b)
+
+def sum_list(nums):
+    len_num = len(nums)
+    sum_num = 0
+    for i in nums:
+        sum_num = sum_num + i
+    return(sum_num/len_num)
+
+b = sum_list([1,2,3,4,5])
+print(b)
+
+
+
+2. List Manipulation
+Question: Write a function that takes a list of numbers and returns a new list with only the even numbers.
+
+Example Input: [1, 2, 3, 4, 5, 6]
+
+Example Output: [2, 4, 6]
+
+def even_num(nums):
+    new_list =[]
+    for i in nums:
+        if i % 2 == 0:
+            new_list.append(i)
+    return(new_list)
+b = even_num([1,1,1,1,1,2,3,4,5,6])
+print(b)
+
+
+3. List Sorting
+Question: Write a function that takes a list of numbers and returns the list sorted in descending order.
+
+Example Input: [3, 1, 4, 1, 5, 9, 2]
+
+Example Output: [9, 5, 4, 3, 2, 1, 1]
+
+4. List Searching
+Question: Write a function that takes a list of strings and a target string, and returns True if the target string exists in the list, otherwise False.
+
+Example Input: ["apple", "banana", "cherry"], target = "banana"
+
+Example Output: True
+
+5. List Slicing
+Question: Write a function that takes a list and returns the first 3 elements.
+
+Example Input: [10, 20, 30, 40, 50]
+
+Example Output: [10, 20, 30]
+
+6. List Comprehension
+Question: Write a function that takes a list of numbers and returns a new list where each element is squared.
+
+Example Input: [1, 2, 3, 4]
+
+Example Output: [1, 4, 9, 16]
+
+7. Nested Lists
+Question: Write a function that takes a nested list (a list of lists) and returns the sum of all elements in the nested list.
+
+Example Input: [[1, 2], [3, 4], [5, 6]]
+
+Example Output: 21
+
+8. List Reversal
+Question: Write a function that takes a list and returns a new list with the elements in reverse order.
+
+Example Input: [1, 2, 3, 4, 5]
+
+Example Output: [5, 4, 3, 2, 1]
+
+9. Removing Duplicates
+Question: Write a function that takes a list and returns a new list with duplicates removed.
+
+Example Input: [1, 2, 2, 3, 4, 4, 5]
+
+Example Output: [1, 2, 3, 4, 5]
+
+10. Combining Lists
+Question: Write a function that takes two lists and returns a new list that combines them (alternating elements from each list).
+
+Example Input: [1, 3, 5], [2, 4, 6]
+
+Example Output: [1, 2, 3, 4, 5, 6]
+
+
+
+
+Dictionaries: Concept-Clearing Questions
+1. Basic Dictionary Operations
+Question: Write a function that takes a dictionary and returns the sum of all the values.
+
+Example Input: {"a": 10, "b": 20, "c": 30}
+
+Example Output: 60
+
+2. Dictionary Manipulation
+Question: Write a function that takes a dictionary and a key, and returns the value associated with that key. If the key doesn’t exist, return None.
+
+Example Input: {"name": "Alice", "age": 25}, key = "age"
+
+Example Output: 25
+
+3. Dictionary Keys and Values
+Question: Write a function that takes a dictionary and returns a list of all the keys.
+
+Example Input: {"a": 1, "b": 2, "c": 3}
+
+Example Output: ["a", "b", "c"]
+
+4. Dictionary Sorting
+Question: Write a function that takes a dictionary and returns a new dictionary sorted by keys.
+
+Example Input: {"b": 2, "a": 1, "c": 3}
+
+Example Output: {"a": 1, "b": 2, "c": 3}
+
+5. Dictionary Merging
+Question: Write a function that takes two dictionaries and merges them into one. If there are duplicate keys, the value from the second dictionary should overwrite the value from the first.
+
+Example Input: {"a": 1, "b": 2}, {"b": 3, "c": 4}
+
+Example Output: {"a": 1, "b": 3, "c": 4}
+
+6. Dictionary Comprehension
+Question: Write a function that takes a list of numbers and returns a dictionary where the keys are the numbers and the values are their squares.
+
+Example Input: [1, 2, 3, 4]
+
+Example Output: {1: 1, 2: 4, 3: 9, 4: 16}
+
+7. Dictionary Filtering
+Question: Write a function that takes a dictionary and returns a new dictionary containing only the key-value pairs where the value is greater than a given threshold.
+
+Example Input: {"a": 10, "b": 20, "c": 5}, threshold = 15
+
+Example Output: {"b": 20}
+
+8. Nested Dictionaries
+Question: Write a function that takes a nested dictionary and returns the value associated with a given key path (e.g., "a.b.c").
+
+Example Input: {"a": {"b": {"c": 10}}}, key_path = "a.b.c"
+
+Example Output: 10
+
+9. Dictionary Frequency Count
+Question: Write a function that takes a string and returns a dictionary where the keys are characters and the values are their frequencies in the string.
+
+Example Input: "hello"
+
+Example Output: {"h": 1, "e": 1, "l": 2, "o": 1}
+
+10. Dictionary Inversion
+Question: Write a function that takes a dictionary and returns a new dictionary where the keys and values are swapped.
+
+Example Input: {"a": 1, "b": 2, "c": 3}
+
+Example Output: {1: "a", 2: "b", 3: "c"}
+
+
+Key Topics for LeetCode
+1. Two Pointers
+Description: A technique where two pointers traverse a data structure (e.g., an array or linked list) to solve problems efficiently.
+
+Use Cases: Problems involving sorted arrays, palindromes, or sliding windows.
+
+Example Problem: Two Sum II - Input Array Is Sorted
+
+Example Input: numbers = [2, 7, 11, 15], target = 9
+
+Example Output: [1, 2] (indices of the two numbers that add up to the target).
+
+2. Sliding Window
+Description: A technique to efficiently solve problems involving subarrays or substrings by maintaining a "window" that slides through the data.
+
+Use Cases: Problems involving subarrays with a specific condition (e.g., maximum sum, longest substring with unique characters).
+
+Example Problem: Maximum Subarray
+
+Example Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+Example Output: 6 (the subarray [4, -1, 2, 1] has the largest sum).
+
+3. Binary Search
+Description: An efficient algorithm to search for an element in a sorted array by repeatedly dividing the search interval in half.
+
+Use Cases: Problems involving searching in sorted arrays or finding the boundary of a condition.
+
+Example Problem: Search Insert Position
+
+Example Input: nums = [1, 3, 5, 6], target = 5
+
+Example Output: 2 (the index where 5 is found or should be inserted).
+
+4. Depth-First Search (DFS)
+Description: A traversal algorithm that explores as far as possible along each branch before backtracking.
+
+Use Cases: Problems involving trees, graphs, or backtracking.
+
+Example Problem: Number of Islands
+
+Example Input: grid = [["1","1","0","0","0"], ["1","1","0","0","0"], ["0","0","1","0","0"], ["0","0","0","1","1"]]
+
+Example Output: 3 (number of islands in the grid).
+
+5. Breadth-First Search (BFS)
+Description: A traversal algorithm that explores all neighbors at the present depth before moving on to nodes at the next depth level.
+
+Use Cases: Problems involving shortest paths or level-order traversal.
+
+Example Problem: Binary Tree Level Order Traversal
+
+Example Input: root = [3, 9, 20, null, null, 15, 7]
+
+Example Output: [[3], [9, 20], [15, 7]] (nodes grouped by level).
+
+6. Dynamic Programming (DP)
+Description: A method to solve problems by breaking them down into simpler subproblems and storing the results of these subproblems to avoid redundant computations.
+
+Use Cases: Problems involving optimization, counting, or combinatorial decisions.
+
+Example Problem: Climbing Stairs
+
+Example Input: n = 3
+
+Example Output: 3 (number of ways to climb to the top).
+
+7. Backtracking
+Description: A technique to solve problems by trying out possible solutions and abandoning them if they don't work.
+
+Use Cases: Problems involving permutations, combinations, or constraint satisfaction.
+
+Example Problem: Subsets
+
+Example Input: nums = [1, 2, 3]
+
+Example Output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]] (all possible subsets).
+
+8. Greedy Algorithms
+Description: A strategy that makes the locally optimal choice at each step with the hope of finding a global optimum.
+
+Use Cases: Problems involving scheduling, partitioning, or optimization.
+
+Example Problem: Maximum Subarray
+
+Example Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+Example Output: 6 (the subarray [4, -1, 2, 1] has the largest sum).
+
+9. Hash Tables
+Description: A data structure that maps keys to values for efficient lookup, insertion, and deletion.
+
+Use Cases: Problems involving frequency counting, duplicates, or lookups.
+
+Example Problem: Two Sum
+
+Example Input: nums = [2, 7, 11, 15], target = 9
+
+Example Output: [0, 1] (indices of the two numbers that add up to the target).
+
+10. Graphs
+Description: A data structure consisting of nodes (vertices) connected by edges.
+
+Use Cases: Problems involving networks, paths, or relationships.
+
+Example Problem: Clone Graph
+
+Example Input: adjList = [[2, 4], [1, 3], [2, 4], [1, 3]]
+
+Example Output: A deep copy of the graph.
