@@ -3,7 +3,7 @@ Datatype - numbers / numerical values
 Python supports multiple numeric datatype : 
 Integers(Int) 
 Floating-point(Float) 
-Complex numbers
+Complex numbers (uncommon) 
 
 a) Integers (Int) 
 # whole numbers (+ / - / zero) - without any fractional component
@@ -71,7 +71,7 @@ import math
 
 math.sqrt() # math.sqrt(16) ->4
 math.ceil() # math.ceil(3.14) -> 4 //// roudn up nearest integer 
-math.floor() # math.ceil(3.14) -> 3 //// roudn down nearest integer 
+math.floor() # math.floor(3.14) -> 3 //// roudn down nearest integer 
 math.factorial() # math.factorial(5) -> 120 
 
 import random 
@@ -94,7 +94,5 @@ Practice Problems
 #Write a program to find the absolute value of -7.5.
 #Round the number 3.14159 to 3 decimal places.
 #Use the math module to calculate the square root of 25.
-#Round the number 4.5678 to 3 decimal places.
 #Generate a random float between 10.0 and 20.0.
 #Check if the float 5.0 is an integer.
-#Find the greatest common divisor (GCD) of 24 and 36 using the math module.
