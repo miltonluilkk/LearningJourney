@@ -18,7 +18,7 @@ multi-line string."""
 
 Features
 s = 'Hello'
-s[0] = 'A' --> It will return an error becuase it's immutable 
+s[0] = 'A' --> It will return an error becuase it's immutable. It means the original word could not be changed
 
 Indexing/Slicing
 s = 'Python Programming'
@@ -55,7 +55,7 @@ s = 'Python'
 .lower() # change to lower case -->'python'
 
 s = '   Python   '
-.strip() # remove leading and trailing white space -->'Python' 
+.strip() # remove leading and trailing white space -->'Python'  ## excel trim
 
 s = 'Hello World'
 .replace(old,new) #  s.replace('World', 'Python') --> 'Hello Python'
@@ -70,6 +70,7 @@ print(", ".join(lst))  # Output: 'Python, Java, C++'
 
 find 
 # return the index for the first occurence , -1 if not found 
+# membership "in" returns True/False, returns Index
 s = "Python Programming"
 print(s.find("Pro"))  # Output: 7
 print(s.find("Java")) # Output: -1
@@ -115,10 +116,12 @@ print(s)
 # Hello
 # World
 
-What's difference between .find() vs .index() 
+///////////////////////////////////////////////////////////
+What's difference between .find() vs .index() ??
 
 str.find() returns -1 if the substring is not found.
 str.index() raises a ValueError if the substring is not found.
+memebership?
 
 How to reverse the string ?
 a = 'Python' 
