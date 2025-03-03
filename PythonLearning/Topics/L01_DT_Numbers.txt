@@ -94,5 +94,5 @@ Practice Problems
 #Write a program to find the absolute value of -7.5.
 #Round the number 3.14159 to 3 decimal places.
 #Use the math module to calculate the square root of 25.
-#Generate a random float between 10.0 and 20.0.
+#Generate a random float between 10.0 and 20.0. (random.uniform() , instead of radint)
 #Check if the float 5.0 is an integer.
