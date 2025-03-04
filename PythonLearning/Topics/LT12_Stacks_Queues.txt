@@ -1,0 +1,144 @@
+oh I found myself not having these knowledges ::
+please go through me and also including the concept cleaning questions and answers
+Stacks and Queues: LIFO (Last In, First Out) and FIFO (First In, First Out) principles.
+Linked Lists: Singly and doubly linked lists (basic understanding).
+Trees: Binary trees, binary search trees (BST), and traversals (in-order, pre-order, post-order).
+Graphs: Nodes, edges, and basic traversal algorithms (BFS, DFS).
+
+Stacks (basically this is the same as list, but using the last in first out concept) 
+
+
+Definition: A stack is a linear data structure that follows the LIFO (Last In, First Out) principle. 
+The last element added is the first one to be removed.
+
+Key Operations
+Push: Add an element to the top of the stack.
+Pop: Remove and return the top element from the stack.
+Peek (or Top): Return the top element without removing it.
+IsEmpty: Check if the stack is empty.
+Size: Return the number of elements in the stack.
+
+stack = []  # Initialize an empty stack
+
+# Push elements
+stack.append(1)  # Stack: [1]
+stack.append(2)  # Stack: [1, 2]
+stack.append(3)  # Stack: [1, 2, 3]
+
+# Pop elements
+print(stack.pop())  # Output: 3 (Stack: [1, 2])
+print(stack.pop())  # Output: 2 (Stack: [1])
+
+# Peek at the top element
+print(stack[-1])  # Output: 1
+
+# Check if the stack is empty
+print(len(stack) == 0)  # Output: False
+
+# Get the size of the stack
+print(len(stack))  # Output: 1
+
+Use Cases
+Undo/Redo Operations: Stacks are used in text editors to implement undo/redo functionality.
+Balancing Symbols: Stacks can check if parentheses, brackets, or braces are balanced in an expression.
+Function Call Stack: Programming languages use stacks to manage function calls and recursion.
+Backtracking Algorithms: Stacks are used in algorithms like Depth-First Search (DFS).
+
+Common Problems on Stacks
+Balanced Parentheses:
+Problem: Check if a string of parentheses is balanced.
+Example: ()[]{} is balanced, but ([)] is not.
+Solution: Use a stack to track opening brackets and ensure they match closing brackets.
+
+Next Greater Element:
+Problem: For each element in an array, find the next greater element to its right.
+
+Example: Input: [4, 5, 2, 25], Output: [5, 25, 25, -1].
+Solution: Use a stack to keep track of elements and find the next greater element efficiently.
+
+Min Stack:
+Problem: Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Solution: Use an auxiliary stack to track the minimum element.
+
+Queues
+Definition ( simiilar to stack, but pop the leftmost ) 
+
+A queue is a linear data structure that follows the FIFO (First In, First Out) principle. 
+This means the first element added to the queue is the first one to be removed.
+
+Key Operations
+Enqueue: Add an element to the back of the queue.
+Dequeue: Remove and return the front element from the queue.
+Peek (or Front): Return the front element without removing it.
+IsEmpty: Check if the queue is empty.
+Size: Return the number of elements in the queue.
+from collections import deque
+
+queue = deque()  # Initialize an empty queue
+
+# Enqueue elements
+queue.append(1)  # Queue: [1]
+queue.append(2)  # Queue: [1, 2]
+queue.append(3)  # Queue: [1, 2, 3]
+
+# Dequeue elements
+print(queue.popleft())  # Output: 1 (Queue: [2, 3])
+print(queue.popleft())  # Output: 2 (Queue: [3])
+
+# Peek at the front element
+print(queue[0])  # Output: 3
+
+# Check if the queue is empty
+print(len(queue) == 0)  # Output: False
+
+# Get the size of the queue
+print(len(queue))  # Output: 1
+
+
+Use Cases
+Task Scheduling: Queues are used in operating systems to manage processes in a fair manner.
+Breadth-First Search (BFS): Queues are used in graph traversal algorithms like BFS.
+Printing Tasks: Printers use queues to manage print jobs in the order they are received.
+Web Servers: Queues are used to handle incoming requests.
+
+
+Common Problems on Queues
+
+Implement a Queue Using Stacks:
+Problem: Implement a queue using two stacks.
+Solution: Use one stack for enqueue operations and another for dequeue operations.
+
+Sliding Window Maximum:
+Problem: Given an array and a window size, find the maximum element in each sliding window.
+Example: Input: [1, 3, -1, -3, 5, 3, 6, 7], Window Size: 3, Output: [3, 3, 5, 5, 6, 7].
+Solution: Use a deque to maintain the indices of potential maximum elements.
+
+Circular Queue:
+Problem: Design a circular queue with a fixed size.
+Solution: Use an array and maintain front and rear pointers to handle wrap-around.
+
+
+Practice Problems
+Stacks
+Balanced Parentheses: Check if a string of parentheses is balanced.
+Next Greater Element: Find the next greater element for each element in an array.
+Min Stack: Design a stack that supports retrieving the minimum element in constant time.
+
+Queues
+Implement Queue Using Stacks: Implement a queue using two stacks.
+Sliding Window Maximum: Find the maximum element in each sliding window of size k.
+Circular Queue: Design a circular queue with a fixed size.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

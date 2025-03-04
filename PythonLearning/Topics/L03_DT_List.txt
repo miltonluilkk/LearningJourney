@@ -198,3 +198,9 @@ What is the difference between list() and []?
 Both create a list, but list() can convert other iterables (e.g., tuples, strings) into lists.
 list1 = list("hello")  # Output: ['h', 'e', 'l', 'l', 'o']
 list2 = [1, 2, 3]
+
+
+Key Takeaway:
+In your original example, the behavior is consistent with a shallow copy because the list contains immutable objects (integers). Appending to the original list does not affect the copied list.
+
+If the list contained mutable objects, a shallow copy would share references to those objects, and changes to the mutable objects would be reflected in both the original and copied lists. A deep copy would avoid this by creating entirely new objects.
