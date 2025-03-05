@@ -1,0 +1,218 @@
+What is a Linked List?
+A Linked List is a linear data structure where each element (called a node) contains two parts:
+Data: The value stored in the node.
+Pointer/Reference: A link to the next node in the sequence.
+Unlike arrays, linked lists are not stored in contiguous memory locations. 
+Instead, each node points to the next node, forming a chain.
+
+Types of Linked Lists
+Singly Linked List:
+Each node points only to the next node.
+The last node points to null (indicating the end of the list)
+
+Doubly Linked List:
+Each node has two pointers: one to the next node and one to the previous node.
+Allows traversal in both directions (forward and backward).
+
+Circular Linked List:
+The last node points back to the first node, forming a loop.
+Can be singly or doubly linked.
+
+Basic Operations on Linked Lists
+Traversal: Accessing each node of the list.
+Insertion: Adding a node at the beginning, end, or a specific position.
+Deletion: Removing a node from the list.
+Search: Finding a node with a specific value.
+
+
+
+Singly Linked List: Implementation in Python
+
+class Node:
+    def __init__(self, data):
+        self.data = data  # Data stored in the node
+        self.next = None   # Pointer to the next node
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None  # Head of the list (starting point)
+
+    # Traverse the list and print all elements
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    # Insert at the beginning of the list
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Insert at the end of the list
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    # Delete a node by value
+    def delete_node(self, key):
+        current = self.head
+        # If the node to be deleted is the head
+        if current and current.data == key:
+            self.head = current.next
+            current = None
+            return
+        # Search for the node to be deleted
+        prev = None
+        while current and current.data != key:
+            prev = current
+            current = current.next
+        # If the node was not found
+        if not current:
+            return
+        # Unlink the node from the list
+        prev.next = current.next
+        current = None
+
+# Example usage
+ll = SinglyLinkedList()
+ll.insert_at_end(10)
+ll.insert_at_end(20)
+ll.insert_at_beginning(5)
+ll.print_list()  # Output: 5 -> 10 -> 20 -> None
+ll.delete_node(10)
+ll.print_list()  # Output: 5 -> 20 -> None
+
+
+
+
+Doubly Linked List: Implementation in Python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None  # Pointer to the next node
+        self.prev = None  # Pointer to the previous node
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Traverse the list and print all elements
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.next
+        print("None")
+
+    # Insert at the beginning of the list
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        if self.head:
+            self.head.prev = new_node
+        self.head = new_node
+
+    # Insert at the end of the list
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+        new_node.prev = current
+
+    # Delete a node by value
+    def delete_node(self, key):
+        current = self.head
+        # If the node to be deleted is the head
+        if current and current.data == key:
+            self.head = current.next
+            if self.head:
+                self.head.prev = None
+            current = None
+            return
+        # Search for the node to be deleted
+        while current and current.data != key:
+            current = current.next
+        # If the node was not found
+        if not current:
+            return
+        # Unlink the node from the list
+        if current.prev:
+            current.prev.next = current.next
+        if current.next:
+            current.next.prev = current.prev
+        current = None
+
+# Example usage
+dll = DoublyLinkedList()
+dll.insert_at_end(10)
+dll.insert_at_end(20)
+dll.insert_at_beginning(5)
+dll.print_list()  # Output: 5 <-> 10 <-> 20 <-> None
+dll.delete_node(10)
+dll.print_list()  # Output: 5 <-> 20 <-> None
+
+Q1: What is the difference between a singly linked list and a doubly linked list?
+Singly Linked List: Each node has only one pointer (next), which points to the next node. Traversal is possible only in one direction (forward).
+
+Doubly Linked List: Each node has two pointers (next and prev), allowing traversal in both directions (forward and backward).
+
+Q2: What is the time complexity of inserting a node at the beginning of a linked list?
+Answer: O(1). You only need to update the head pointer and the next pointer of the new node.
+
+Q3: What is the time complexity of deleting a node from a linked list?
+Answer: O(n) in the worst case. You may need to traverse the entire list to find the node to delete.
+
+Q4: How do you detect a cycle in a linked list?
+Answer: Use Floyd’s Cycle Detection Algorithm (Tortoise and Hare):
+
+Use two pointers: slow (moves one step at a time) and fast (moves two steps at a time).
+
+If they meet, there is a cycle.
+
+def has_cycle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+Q5: How do you reverse a singly linked list?
+Answer: Use three pointers: prev, current, and next.
+
+def reverse_list(head):
+    prev = None
+    current = head
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    return prev
+Q6: What is the advantage of a linked list over an array?
+Answer:
+
+Dynamic size: Linked lists can grow or shrink as needed.
+
+Efficient insertions/deletions: No need to shift elements as in arrays.
+
+Q7: What is the disadvantage of a linked list compared to an array?
+Answer:
+
+Random access is not possible. You must traverse the list to access an element.
+Extra memory is required for storing pointers.

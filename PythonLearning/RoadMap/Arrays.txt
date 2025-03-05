@@ -1,0 +1,118 @@
+Contains Duplicate
+Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
+Example 1:
+Input: nums = [1, 2, 3, 3]
+
+Output: true
+Example 2:
+
+Input: nums = [1, 2, 3, 4]
+Output: false
+
+Valid Anagram
+Solved 
+Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
+Example 1:
+Input: s = "racecar", t = "carrace"
+
+Output: true
+Example 2:
+Input: s = "jar", t = "jam"
+Output: false
+
+Two Sum
+Solved 
+Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
+You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
+Return the answer with the smaller index first.
+
+Example 1:
+
+Input: 
+nums = [3,4,5,6], target = 7
+Output: [0,1]
+Explanation: nums[0] + nums[1] == 7, so we return [0, 1].
+
+Example 2:
+
+Input: nums = [4,5,6], target = 10
+Output: [0,2]
+Example 3:
+
+Input: nums = [5,5], target = 10
+Output: [0,1]
+
+Group Anagrams
+Solved 
+Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
+
+Example 1:
+Input: strs = ["act","pots","tops","cat","stop","hat"]
+Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
+Example 2:
+
+Input: strs = ["x"]
+Output: [["x"]]
+Example 3:
+
+Input: strs = [""]
+Output: [[""]]
+
+
+Top K Frequent Elements
+Solved 
+Given an integer array nums and an integer k, return the k most frequent elements within the array.
+The test cases are generated such that the answer is always unique.
+You may return the output in any order.
+
+Example 1:
+
+Input: nums = [1,2,2,3,3,3], k = 2
+
+Output: [2,3]
+Example 2:
+Input: nums = [7,7], k = 1
+
+Output: [7]
+
+-------More than 1 answers but easy reference ---------------------------------------------------------
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        gm = {}
+        for i in nums:
+            if i in gm:
+                return(True)
+            else:
+                gm[i] = 1
+        return(False)
+		
+		
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        count_s , count_t  = {} , {} 
+        len_strings = len(s)
+        if len(s) != len(t):
+            return(False)
+        for i in range(len_strings):
+            count_s[s[i]] = count_s.get(s[i], 0 ) + 1
+            count_t[t[i]] = count_t.get(t[i], 0 ) + 1
+        return(count_s == count_t)
+		
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hm ={}
+        for k, v in enumerate(nums):
+            if v in hm:
+                return([hm[v], k])
+            else:
+                hm[target - v] = k
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        res = defaultdict(list)
+        for i in strs:
+            sortedS = ''.join(sorted(i))
+            res[sortedS].append(i)
+        return(res.values())

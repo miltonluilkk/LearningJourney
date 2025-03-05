@@ -46,7 +46,7 @@ fruits.insert(1, "mango")  # Insert "mango" at index 1
 Extend: Add multiple elements from another iterable (e.g., list, tuple).
 fruits.extend(["grape", "kiwi"])
 
-Remove: Remove the first occurrence of a value.
+Remove: Remove the first occurrence of a value. ## remove the first value
 fruits.remove("banana")
 
 Pop: Remove an element at a specific index (default is the last element).
