@@ -77,6 +77,27 @@ Input: nums = [7,7], k = 1
 
 Output: [7]
 
+Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
+
+Please implement encode and decode
+
+Example 1:
+
+Input: ["neet","code","love","you"]
+
+Output:["neet","code","love","you"]
+Example 2:
+
+Input: ["we","say",":","yes"]
+
+Output: ["we","say",":","yes"]
+Constraints:
+
+0 <= strs.length < 100
+0 <= strs[i].length < 200
+strs[i] contains only UTF-8 characters.
+
+
 -------More than 1 answers but easy reference ---------------------------------------------------------
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
@@ -116,3 +137,51 @@ class Solution:
             sortedS = ''.join(sorted(i))
             res[sortedS].append(i)
         return(res.values())
+
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hm = {}
+        res =[]
+        for i in nums:
+            hm[i] = hm.get(i, 0) + 1
+        max_k = list(sorted(hm.values() , reverse=True)[0:k])
+        for item,value in hm.items():
+            if value in max_k:
+                res.append(item)
+        return(res)
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        CountS = [[] for i in range(len(nums)+1)]
+        #table for the coutns 
+        hm = {}
+        res = []
+        for i in nums:
+            hm[i] = hm.get(i,0) + 1
+        for key,v  in hm.items():
+            CountS[v].append(key)
+        for i in range(len(CountS)-1, 0 , -1):
+            for num in CountS[i]:
+                res.append(num)
+                if len(res)==k:
+                    return(res)
+					
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        s = ''
+        for i in strs:
+            s += str(len(i)) + "#" + i
+        return(s)
+    def decode(self, s: str) -> List[str]:
+        res , i = [] , 0
+        while i < len(s):
+            j = i
+            while s[j] != "#":
+                j += 1
+            length = int(s[i:j])
+            res.append(s[j+1:j + 1 + length])
+            i = j + 1 + length
+        return(res)
+					

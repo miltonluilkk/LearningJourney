@@ -3,54 +3,37 @@ These are the basics you must be comfortable with:
 
 a. SQL Syntax and Queries
 SELECT statements: Retrieving data from tables.
-
 WHERE clause: Filtering data based on conditions.
-
 ORDER BY: Sorting results.
-
 LIMIT/OFFSET: Limiting the number of rows returned.
-
 DISTINCT: Selecting unique values.
 
 b. Joins
 INNER JOIN: Combining rows from two or more tables based on a related column.
-
 LEFT/RIGHT JOIN: Including all rows from one table and matching rows from another.
-
 FULL OUTER JOIN: Combining all rows from both tables.
-
 Self-Join: Joining a table to itself.
 
 c. Aggregations
 GROUP BY: Grouping rows that have the same values.
-
 HAVING: Filtering groups based on conditions.
-
 Aggregate functions: COUNT(), SUM(), AVG(), MIN(), MAX().
 
 d. Data Manipulation
 INSERT: Adding new rows to a table.
-
 UPDATE: Modifying existing rows.
-
 DELETE: Removing rows from a table.
 
 e. Data Definition
 CREATE TABLE: Creating new tables.
-
 ALTER TABLE: Modifying table structure.
-
 DROP TABLE: Deleting tables.
 
 f. Constraints
 PRIMARY KEY: Uniquely identifying each row.
-
 FOREIGN KEY: Enforcing relationships between tables.
-
 UNIQUE: Ensuring all values in a column are unique.
-
 NOT NULL: Ensuring a column cannot have NULL values.
-
 CHECK: Ensuring values meet specific conditions.
 
 2. Intermediate SQL Concepts
@@ -58,16 +41,12 @@ These are more advanced topics that are often tested in interviews:
 
 a. Subqueries
 Writing nested queries to solve complex problems.
-
 Using subqueries in SELECT, FROM, and WHERE clauses.
 
 b. Window Functions
 ROW_NUMBER(): Assigning a unique number to each row.
-
 RANK(): Assigning a rank to rows within a partition.
-
 DENSE_RANK(): Similar to RANK(), but without gaps.
-
 LEAD()/LAG(): Accessing data from subsequent or previous rows.
 
 c. Common Table Expressions (CTEs)
@@ -75,14 +54,11 @@ Using WITH clauses to create temporary result sets for complex queries.
 
 d. Set Operations
 UNION: Combining results from multiple queries.
-
 INTERSECT: Finding common rows between queries.
-
 EXCEPT: Finding rows in one query but not in another.
 
 e. Indexes
 Understanding how indexes work and when to use them.
-
 Types of indexes: Clustered vs. Non-Clustered.
 
 3. Advanced SQL Concepts
@@ -90,14 +66,11 @@ These are highly relevant for hedge fund roles, as they deal with large datasets
 
 a. Performance Optimization
 Writing efficient queries.
-
 Understanding query execution plans.
-
 Avoiding common pitfalls like SELECT * and unnecessary joins.
 
 b. Transactions
 ACID properties: Atomicity, Consistency, Isolation, Durability.
-
 BEGIN TRANSACTION, COMMIT, ROLLBACK.
 
 c. Stored Procedures and Functions
@@ -107,9 +80,7 @@ Understanding the difference between procedures and functions.
 
 d. Handling Financial Data
 Working with time-series data (e.g., stock prices, trades).
-
 Calculating moving averages, returns, and volatility.
-
 Handling NULL values and missing data.
 
 e. Data Import/Export
