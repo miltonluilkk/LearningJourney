@@ -1,0 +1,42 @@
+#1 To check if the nums of the list duplicate or not 
+[1,2,3,3] # True 
+[1,2,3,4] # False
+
+hints : 
+1. comparing the list and the list(set)
+nums == list(set(nums))
+
+2. put it into the map / list to validate if this is duplicated
+hm={} -> if i in hm -> true ; adding the num to hm 
+
+#2 to check anagram / the words count 
+countS , countT ={} , {}
+comparing the counts of each map --> how to do this? 
+#countS[s[i]] = countS.get(s[i], 0 ) + 1 ### super easy to creat a map 
+
+#3 hash map to find a pair (2 sums) 
+if (target - k) i.e. v in the map -> returns
+else -> creating the map 
+
+#4 group the strings / group anagrams 
+
+not easy because you having different words counts of each map 
+to create this , learning of the concept of 
+
+dict(tuple) : list 
+dict['the arranged string '] = [list of items] 
+SortedS =''.join(sorted(i))
+when the string is sorted(str) -> it will return a list of sorted character... needed to join them 
+bucketsort --> [0] *26 --> [ord(c)- ord('a')] 
+
+
+#5 . Top K elements
+hm -> getting nums : occuring times
+-> adding to temp map -> to pop the left / right items and storing in result
+
+#second way -> to creeate the bucket items , and then for loop the in the end
+
+#6 . decode / encode 
+learnt the positions 
+4# / 5# reading the # and then trace back the nums
+string -> sorted -> will be a list , need to use ''.join to join them up 
