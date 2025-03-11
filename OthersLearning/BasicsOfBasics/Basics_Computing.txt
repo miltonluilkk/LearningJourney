@@ -1,0 +1,115 @@
+A Typical Desktop Computer System
+Power Supply
+Hard Disk(SSD) 
+Main Memory
+CPU
+
+=====
+
+CPU - Central processing unit 
+CPU (Central Processing Unit):
+#The "brain" of a computer.
+#Responsible for executing instructions and performing calculations for all tasks.
+#Processes data and controls other components in the system.
+
+
+CPU usage? 
+#The percentage of the CPU's processing power being used at any given time.
+#Indicates how much of the CPU's capacity is occupied by running 
+programs and system processes.
+Measured in Percentage (%):
+Example: 30% CPU usage means 30% of the CPU's capacity is being used.
+
+High CPU Usage:
+#Indicates heavy workload (e.g., running multiple programs or demanding tasks).
+#Can cause system slowdowns, overheating, or reduced battery life.
+
+Low CPU Usage:
+#Indicates the system is idle or running lightweight tasks.
+
+Monitoring Tools:
+#Task Manager (Windows), Activity Monitor (Mac), htop or top (Linux).
+
+Cores:
+#Single-core: One processing unit.
+#Multi-core: Multiple processing units (e.g., dual-core, quad-core, octa-core).
+#More cores = better multitasking and performance.
+
+Threads:
+
+Hyper-Threading (Intel) / SMT (AMD):
+Allows each core to handle multiple tasks simultaneously.
+Improves performance for multitasking and parallel workloads.
+
+Overclocking:
+
+Increasing the CPU's clock speed beyond its factory setting.
+Boosts performance but requires better cooling and can reduce lifespan.
+
+
+Summary
+CPU: The brain of the computer that processes instructions.
+CPU Usage: Percentage of the CPU's capacity being used.
+Key Features: Cores, threads, clock speed, cache, 
+ISA, TDP, integrated graphics, overclocking, manufacturing process, and compatibility.
+
+
+Cores vs threads 
+
+Cores : 
+#A core is an independent processing unit within the CPU.
+#Each core can execute tasks separately, allowing for parallel processing.
+
+Physical Units: Cores are physical components on the CPU chip.
+Multitasking: More cores = more tasks can be processed simultaneously, Example: A quad-core CPU can handle 4 tasks at the same time.
+Performance : Cores improve performance for multi-threaded applications (e.g., video editing, gaming, rendering).
+
+Threads: A thread is a virtual version of a core. It allows a single core to handle multiple tasks simultaneously by dividing its resources.
+
+Virtual Units:Threads are not physical; they are created using software and hardware techniques.
+Hyper-Threading (Intel) / SMT (AMD): Technology that enables one core to handle multiple threads., Example: A core with Hyper-Threading can handle 2 threads at once.
+Efficiency Threads improve efficiency by keeping the core busy when one thread is waiting (e.g., for data from memory).
+
+Example
+A 4-core, 8-thread CPU:
+
+#Has 4 physical cores.
+#Each core can handle 2 threads (thanks to Hyper-Threading or SMT).
+Can process up to 8 tasks simultaneously.
+
+Registers - provide internal storage to the CPU
+============
+
+– 1G = 1,024M
+– 1M = 1,024K
+– 1K = 1,02
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

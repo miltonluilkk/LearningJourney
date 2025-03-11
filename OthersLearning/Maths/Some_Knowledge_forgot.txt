@@ -1,0 +1,114 @@
+=== ALGEBRA ===
+1. Quadratic Formula:
+   x = [-b ± √(b² - 4ac)] / 2a
+
+2. Exponents:
+   a^m * a^n = a^(m+n)
+   (a^m)^n = a^(mn)
+   a^0 = 1
+
+3. Logarithms:
+   log(ab) = log(a) + log(b)
+   log(a/b) = log(a) - log(b)
+   log(a^b) = b * log(a)
+   logₐ(a) = 1  (e.g., log₁₀(10) = 1, ln(e) = 1)
+
+4. Linear Equations:
+   y = mx + c
+   m = slope, c = y-intercept
+
+=== GEOMETRY ===
+1. Pythagorean Theorem:
+   a² + b² = c²
+
+2. Area:
+   Rectangle: A = l * w
+   Circle: A = πr²
+
+3. Perimeter/Circumference:
+   Rectangle: P = 2(l + w)
+   Circle: C = 2πr
+
+4. Volume:
+   Cylinder: V = πr²h
+   Sphere: V = (4/3)πr³
+
+=== TRIGONOMETRY ===
+1. Basic Identities:
+   sin²θ + cos²θ = 1
+   sin(a ± b) = sin(a)cos(b) ± cos(a)sin(b)
+   cos(a ± b) = cos(a)cos(b) ∓ sin(a)sin(b)
+
+2. Right-Angle Triangles:
+   sinθ = opposite / hypotenuse
+   cosθ = adjacent / hypotenuse
+   tanθ = opposite / adjacent
+
+=== PROBABILITY & STATISTICS ===
+1. Probability:
+   P(A) = (Favorable Outcomes) / (Total Outcomes)
+
+2. Mean (Average):
+   μ = (Σx_i) / N
+
+3. Variance:
+   σ² = (Σ(x_i - μ)²) / N
+
+4. Standard Deviation:
+   σ = √σ²
+
+=== SEQUENCES & SERIES ===
+1. Arithmetic Sequence:
+   nth term: a_n = a₁ + (n-1)d
+   Sum of n terms: S_n = (n/2)(a₁ + a_n)
+
+2. Geometric Sequence:
+   nth term: a_n = a₁ * r^(n-1)
+   Sum of n terms: S_n = a₁(1 - r^n) / (1 - r)
+
+=== CALCULUS BASICS ===
+1. Derivatives:
+   Power Rule: d/dx(x^n) = n*x^(n-1)
+   Chain Rule: d/dx(f(g(x))) = f'(g(x)) * g'(x)
+
+2. Integrals:
+   Power Rule: ∫x^n dx = (x^(n+1))/(n+1) + C
+   Definite Integral: ∫[a to b] f(x) dx = F(b) - F(a)
+
+=== FINANCIAL MATH ===
+1. Simple Interest:
+   I = P * r * t
+
+2. Compound Interest:
+   A = P(1 + r/n)^(nt)
+
+3. Percentage Change:
+   % Change = [(New - Old) / Old] * 100%
+
+=== FUNCTIONS ===
+1. Exponential Function:
+   f(x) = a * b^x
+
+2. Logarithmic Function:
+   f(x) = log_b(x)
+
+=== KEY VALUES ===
+1. Logarithms:
+   log₁₀(10) = 1
+   ln(e) = 1  (where e ≈ 2.718)
+
+2. Constants:
+   π ≈ 3.1416
+   e ≈ 2.718
+
+=== ABBREVIATIONS ===
+1. log = logarithm (base 10)
+2. ln = natural logarithm (base e)
+3. sin = sine
+4. cos = cosine
+5. tan = tangent
+6. μ = mean
+7. σ = standard deviation
+8. P = principal amount
+9. r = interest rate
+10. t = time
