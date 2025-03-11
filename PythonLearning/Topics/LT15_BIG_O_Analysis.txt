@@ -1,0 +1,14 @@
+https://www.bigocheatsheet.com/
+1. What's the need for Complexity Analysis
+which approach is better 
+why care which is better 
+what does better mean  (faster and less memory) 
+
+Time Complexity / Space Complexity
+
+2. Time Complexity 
+different machines are different time. so not only count on time 
+count number of simple operations that computer has to do 
+sometimes more on like which data structure to use in order to implment the solution 
+
+3. Asymptotic Analysis  --> expressed as Big O notation 

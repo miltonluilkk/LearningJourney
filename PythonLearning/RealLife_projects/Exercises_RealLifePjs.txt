@@ -1,0 +1,42 @@
+1. check existing python version 
+import sys
+sys.version 
+
+2. formatting string 
+a = 'Python'
+b = '3.8'
+
+
+///
+
+a = 'Python'
+b = '3.8'
+print(f"I love {a} {b}!")
+
+///
+
+a = 42.99
+b = 30
+
+print(f"Price: ${a}. Weight: {b} lbs.")
+
+////
+
+pi = 3.14
+r = 10
+Area_circle = pi * r**2
+print(f"Area: {Area_circle}")
+
+
+The future value of the investment: 1159.27 USD
+.////
+PV = 1000
+AIR = 0.03
+n = 5
+FV = round(PV * (1+ AIR)**n,2)
+
+print(f"The future value of the investment: {FV} USD")
+
+
+3. 
+
