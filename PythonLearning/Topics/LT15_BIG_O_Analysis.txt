@@ -12,3 +12,86 @@ count number of simple operations that computer has to do
 sometimes more on like which data structure to use in order to implment the solution 
 
 3. Asymptotic Analysis  --> expressed as Big O notation 
+number of operations done 
+
+e.g. f(n) = N + 3
+as N ---> very large 
+
+f(n) = N +3 # we can ignore the constant 
+N--> very large 
+
+O(N) --> as input size increases, time taken increase in protpotion as well
+
+f(n)  --> O(n)
+f(n) = n**2 + 3n ( if it goes infinity , n became insignifican) --> O(n**2)
+
+run time , only interested the trend
+so the proportion is only relaying to the n changes 
+
+4. What's BIG O
+
+f(n) = 5n + 3--> O(N) 
+O(N) -> the operations bounded by the multiple of N
+trend * details --> worst case --> upper bound 
+
+common BIG O
+
+O(1)  --> constant 
+O(log n)  --> binary search 
+O(n)      --> traverse elements of array and add them 
+O(n log n)  --> merge sort  
+O(n**2)     -->[1,2,3] ---> all the combinations 
+O(2^n)      --> FIB 
+O(n!) 
+
+
+5. Space Complexity
+
+also BIG O 
+
+how much auxiliary memory needed to run the program
+ignore the size of hte i/p
+
+
+
+7. Techniques to simplify the BIG O expressions 
+
+drop the numbers 
+
+O(25N**2) --> O(N**2)
+drop the insigificiant part 
+
+O(N**3 + 100 n ) --> O(N**3)
+
+different I/P , cant drop 
+O(N**3 + M) --> cant drop M
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

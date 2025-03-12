@@ -38,5 +38,15 @@ FV = round(PV * (1+ AIR)**n,2)
 print(f"The future value of the investment: {FV} USD")
 
 
-3. 
+3. find mid point 
+
+A = [2,4]
+B = [-4,6]
+C =[]
+for i in range(len(A)):
+    C.append((A[i]+B[i])/2)
+
+print(f"The middle point: ({C[0]}, {C[1]})")
+
+4. 
 
