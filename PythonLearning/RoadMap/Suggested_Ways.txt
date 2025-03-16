@@ -1,0 +1,25 @@
+From others 
+1. Array
+2. Hash Table
+3. Two pointers
+4. sliding window
+5. Binary Search
+6. Recursion
+7. Binary Tree
+8. Backtracking
+9. DFS
+10. BFS
+11. Graphs
+12. Linkedlist
+13. sort
+14. trie
+15. stack
+16. queue
+17. Dynamic Programming (DP)
+
+
+1. 分析代碼 不要浪費時間 
+2. 用手寫能夠較易記憶
+3. 維持狀態需要天天練習
+4. 不要硬幹，不要用太多時間做自己的無用功
+5. 讀明白題目，然後硬幹答案

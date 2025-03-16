@@ -66,7 +66,20 @@ O(N**3 + 100 n ) --> O(N**3)
 different I/P , cant drop 
 O(N**3 + M) --> cant drop M
 
+Logarithms
 
+log n -->
+ 
+log2 16  = 4      / 
+log 8 = 3        /
+
+log n is a very good complexity 
+
+algo that cuts i/p in half at every step 
+\
+8->4 ->2 ->1  ( this would be log n ) 
+16 -> 8 ->4 ->2 ->1
+double the input , --> you just have one more operation 
 
 
 
