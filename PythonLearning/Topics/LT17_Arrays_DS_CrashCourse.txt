@@ -1,0 +1,23 @@
+Access  O(1)  is a basic operation , and take the same time. constant time to access the element
+Set     O(1) 
+
+Traverse / Search   T = O(n)  , S = O(1) , traverse the slots needed per element 
+
+Copy           S, T  = O(n)  new slots so space needed
+
+arr = [1,9,8,5]  , 4 slots per each ... then it needs 4 memory slots to store the numbers
+
+Insert ( static , dynamic arrays) 
+static - fixed size, next memory slot may not be empty 
+dynamic array allow O(1) insertion in the end , OS allocates almost 2 times as much memory as needed
+
+Insert  S=  O(1) 
+at the beginning  1,2,3 --> 0,1,2,3 --> O(n) because it needs a complete copy
+at the end T - O(1)                                                         
+somewhere in between O(n) -> T 
+
+Remove  S = O(1) 
+at the begining - O(N) T 
+at end - O(1) T 
+somewhere in between O(N) - T 
+
