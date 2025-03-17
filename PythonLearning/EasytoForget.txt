@@ -1,0 +1,38 @@
+1. cant return .sort() --> because it will return None
+2. The array new_array should be initialized with a specific size before elements can be assigned to indices
+In Python, attempting to assign a value to an index in a list that does not yet exist will raise an IndexError.
+ Since new_array is initialized as an empty list, there are no indices to assign values to,
+ and the statement new_array[i] = array[i] ** 2 will fail. The correct approach would be to either use append() to add each squared value to the list or 
+initialize the list with predefined size and default values, as was done in the original function.
+3. join() is to concat the items !!! very importantly , it's for the itreable items
+
+words = ["Hello", "world", "this", "is", "Python"]
+sentence = " ".join(words)
+print(sentence)
+#output : Hello world this is Python
+
+
+chars = "Python"
+result = "-".join(chars)
+print(result)
+#Output : P-y-t-h-o-n
+
+
+# Time = O(n) Space = O(n)
+def sorted_squared(array):
+    i = 0
+    j = len(array) - 1
+    new_array = [0] * len(array)
+    for k in reversed(range(len(array))):
+        sq_i = array[i]**2
+        sq_j = array[j]** 2
+        if sq_i > sq_j:
+            new_array[k] = sq_i
+            i += 1
+        else:
+            new_array[k] = sq_j
+            j -= 1
+    return new_array
+
+
+print(sorted_squared([-5,-4,-2, 1, 9,12]))

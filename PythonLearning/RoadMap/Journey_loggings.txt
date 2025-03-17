@@ -99,16 +99,46 @@ return(True)
 # this is very clever solution , as if all = 0 it means they add and subtract later on
 
 
+3. Two Sum 
+
+Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
+
+You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
+
+Return the answer with the smaller index first.
+
+Example 1:
+
+Input: 
+nums = [3,4,5,6], target = 7
+
+Output: [0,1]
 
 
+this is basically the most common question , this is array and hash table answer
+
+so it's using the hash map in order to make it happen, but before that, we should learn about logically how we resolve the issue.. 
+that's it's to use nested loop to loop through the number 
+
+the key point to note is ,
+first is to for loop the n terms, 
+if second would like to loop through the remaining item, it's to do it with 1+i , n
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                currsum = nums[i] + nums[j]
+                if currsum == target:
+                    return([i, j])
+        return[]
 
 
-
-
-
-
-
-
+2. using the hashmap 
+hm ={}
+for k ,v in enumerate(nums):
+	if v in hm:
+		return([hm[v], k]) 
+	else:
+		hm[target - v] = k
 
 
 
