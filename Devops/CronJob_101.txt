@@ -1,0 +1,120 @@
+Structure of cron job
+
+* * * * * command_to_execute
+│ │ │ │ │
+│ │ │ │ └── Day of the Week (0 - 7) (0 and 7 both represent Sunday)
+│ │ │ └──── Month (1 - 12)
+│ │ └────── Day of the Month (1 - 31)
+│ └──────── Hour (0 - 23)
+└────────── Minute (0 - 59)
+
+1. Minute (0 - 59)
+*: Every minute.
+*/5: Every 5 minutes.
+0,15,30,45: At specific minutes (e.g., 0, 15, 30, 45).
+0-30: Every minute from 0 to 30.
+
+2. Hour (0 - 23)
+*: Every hour.
+0: Midnight (12:00 AM).
+12: Noon (12:00 PM).
+*/2: Every 2 hours.
+0,6,12,18: At specific hours (e.g., 12 AM, 6 AM, 12 PM, 6 PM).
+
+3. Day of the Month (1 - 31)
+*: Every day.
+1: On the 1st of the month.
+15: On the 15th of the month.
+1,15,31: On specific days (e.g., 1st, 15th, 31st).
+1-15: Every day from the 1st to the 15th.
+
+4. Month (1 - 12)
+*: Every month.
+1: January.
+12: December.
+1,6,12: Specific months (e.g., January, June, December).
+1-6: Every month from January to June.
+
+5. Day of the Week (0 - 7)
+*: Every day of the week.
+0 or 7: Sunday.
+1: Monday.
+5: Friday
+1-5: Weekdays (Monday to Friday).
+0,6: Weekend (Saturday and Sunday).
+
+Cron expressions support special characters to define more complex schedules:
+
+* (Asterisk):
+Represents "every" for the field.
+Example: * * * * * means "every minute of every hour of every day."
+
+, (Comma):
+Specifies multiple values.
+Example: 0,30 * * * * means "at 0 and 30 minutes of every hour."
+
+- (Hyphen):
+Defines a range of values.
+Example: 0 9-17 * * * means "every hour from 9 AM to 5 PM."
+
+/ (Slash):
+Defines a step value.
+Example: */15 * * * * means "every 15 minutes."
+
+? (Question Mark):
+Used in some cron implementations (e.g., Quartz) to specify "no specific value." It’s often used in place of the "day of the month" or "day of the week" field when the other is specified.
+
+L (Last):
+Used in some cron implementations (e.g., Quartz) to specify the last day of the month or the last specific day of the week.
+Example: 0 0 L * * means "at midnight on the last day of the month."
+
+W (Weekday):
+Used in some cron implementations to specify the nearest weekday to a given day.
+Example: 0 0 15W * * means "at midnight on the nearest weekday to the 15th of the month."
+
+
+*/5 * * * * command # every 5 mins
+0 * * * * command # everyhour 0 min
+0 0 * * * command # every mid night 
+0 0 1 * * command # every 1st 
+0 17 * * 1-5 command # Every Weekday (Monday to Friday) at 5 PM:
+*/15 9-17 * * * command #Every 15 Minutes During Business Hours (9 AM to 5 PM):
+0 0 1 */6 * command # Every 6 Months on the 1st at Midnight:
+
+
+edit 
+crontab -e 
+-> this will go into the crontab file
+
+add a line with the cron expression and command to execute 
+0 2 * * * /path/to/backup_script.sh
+
+list the jobs 
+crontab -l
+
+Use crontab -r to remove all cron jobs for the current user:
+crontab -r
+
+e.g .
+0 2 * * * /path/to/backup_script.sh >> /var/log/backup.log 2>&1
+
+
+echo "Backup started at $(date)"
+tar -czf /backup/backup_$(date +%Y-%m-%d).tar.gz /home/user/important_files
+echo "Backup completed at $(date)"
+
+The log file /var/log/backup.log might look like this:
+Backup started at Mon Oct 30 02:00:01 UTC 2023
+Backup completed at Mon Oct 30 02:05:23 UTC 2023
+
+Why Use >> and 2>&1?
+>>: Ensures that the log file is not overwritten each time the script runs. Instead, new output is added to the end of the file.
+2>&1: Ensures that both normal output and error messages are logged. Without this, only stdout would be logged, and errors would be lost.
+
+
+
+
+
+
+
+

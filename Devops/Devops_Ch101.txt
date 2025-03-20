@@ -1,0 +1,22 @@
+Devops - collection of 2 words - development and operations
+help learn DevOps basics and advanced concepts, including Git, Ansible, Docker, Puppet, Jenkins, a range of DevOps tools, Azure DevOps, Chef, Nagios, and Kubernetes.
+ 
+
+ Definition: DevOps is a software development approach focused on collaboration, automation, and continuous delivery to deliver high-quality products quickly and efficiently.
+
+Core Objective: Breaks down silos between development and operations teams to enable seamless communication, faster time-to-market, and improved customer satisfaction.
+Application Lifecycle Management: Covers the entire lifecycle, including development, testing, operations, and deployment.
+Collaboration: Encourages cooperation between Development and Operations teams to deploy code to production rapidly in an automated and repeatable manner.
+Automation: Heavily automates every phase of the software development lifecycle (planning, coding, testing, deployment, monitoring) to improve productivity, ensure consistency, and reduce errors.
+Continuous Improvement: Promotes a culture of continuous improvement by incorporating feedback loops for faster iteration and better decision-making.
+Benefits: Increases organizational agility, reduces costs, and accelerates innovation.
+
+A DevOps Engineer combines software development and IT operations to improve how software is built and deployed. This role involves creating and managing systems that help teams work together more efficiently, ensuring that updates and new features are released quickly and reliably.
+
+Responsibilities
+Build and Maintain Tools: Create and manage tools that automate software development and deployment processes.
+Collaborate with Teams: Work closely with software developers and IT staff to ensure smooth and fast delivery of applications.
+Monitor Systems: Keep an eye on system performance and fix any issues that arise to ensure everything runs smoothly.
+Improve Processes: Continuously look for ways to make the software development and deployment processes more efficient.
+Ensure Security: Implement practices to keep systems secure from potential threats.
+
