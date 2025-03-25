@@ -20,3 +20,10 @@ Monitor Systems: Keep an eye on system performance and fix any issues that arise
 Improve Processes: Continuously look for ways to make the software development and deployment processes more efficient.
 Ensure Security: Implement practices to keep systems secure from potential threats.
 
+===================================================================================================================
+
+1. Download the virtual box 
+
+2. Install CentOS (This is just recommendations)
+
+2.1 during the installation, it could be hitting the issue of the VT-X not enabled- then it has to go back to BIOS setting to enable back
