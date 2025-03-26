@@ -113,6 +113,14 @@ Why Use >> and 2>&1?
 
 
 
+Step	Command	Output
+Create script	nano /home/user/my_script.sh	Script file created.
+Make script executable	chmod +x /home/user/my_script.sh	Script is now executable.
+Add cron job	crontab -e → * * * * * /home/user/my_script.sh >> /home/user/cron_output.log 2>&1	Cron job scheduled to run every minute.
+Check log file	cat /home/user/cron_output.log	Output like: Script ran at: Mon Oct 30 12:01:01 UTC 2023
+Modify script to add error	nano /home/user/my_script.sh → Add cat /non/existent/file	Script now produces an error.
+Check log file with errors	cat /home/user/cron_output.log	Output like: Script ran at: Mon Oct 30 12:04:01 UTC 2023 followed by cat: /non/existent/file: No such file or directory
+Clean up	crontab -e → Delete the line, then rm /home/user/script_output.log /home/user/cron_output.log	Cron job and log files removed.
 
 
 
