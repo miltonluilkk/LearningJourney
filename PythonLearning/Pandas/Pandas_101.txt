@@ -1,0 +1,156 @@
+pip install pandas numpy
+import pandas as pd
+import numpy as np  # Often used with Pandas
+
+data = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+print(data)
+
+a    10  
+b    20  
+c    30  
+d    40  
+dtype: int64
+
+dataframe
+
+data = {
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Age": [25, 30, 35],
+    "City": ["NY", "LA", "SF"]
+}
+df = pd.DataFrame(data)
+print(df)
+
+      Name  Age City
+0    Alice   25   NY
+1      Bob   30   LA
+2  Charlie   35   SF
+
+df.head(2)    # First 2 rows
+df.tail(1)    # Last 1 row
+df.sample(2)  # Random 2 rows
+df.shape      # (rows, columns)
+df.columns    # List of column names
+df.info()     # Data types & memory
+
+# Select a column (returns Series)
+df["Name"]
+
+# Select multiple columns (returns DataFrame)
+df[["Name", "Age"]]
+
+# Select rows by index
+df.iloc[0]      # First row
+df.loc[0:1]     # Rows 0 to 1
+
+# Filter rows (like SQL WHERE)
+df[df["Age"] > 25]
+
+# Add a new column
+df["Salary"] = [70000, 80000, 90000]
+
+# Remove a column
+df.drop("City", axis=1, inplace=True)
+
+
+df.sort_values("Age", ascending=False)
+
+df = pd.DataFrame({
+    "A": [1, 2, np.nan],
+    "B": [5, np.nan, np.nan]
+})
+
+# Drop rows with NaN
+df.dropna()
+
+# Fill NaN with a value
+df.fillna(0)
+
+# Group by "City" and calculate mean age
+df.groupby("City")["Age"].mean()
+
+# Multiple aggregations
+df.groupby("City").agg({
+    "Age": ["mean", "max"],
+    "Salary": "sum"
+})
+
+df1 = pd.DataFrame({"ID": [1, 2], "Name": ["Alice", "Bob"]})
+df2 = pd.DataFrame({"ID": [1, 3], "Salary": [70000, 80000]})
+
+# Inner Join (default)
+pd.merge(df1, df2, on="ID")
+
+# Left Join
+pd.merge(df1, df2, on="ID", how="left")
+
+# Read CSV
+df = pd.read_csv("data.csv")
+
+# Read Excel
+df = pd.read_excel("data.xlsx")
+
+# Save to CSV
+df.to_csv("output.csv", index=False)
+
+
+# Apply a function to a column
+df["Age"].apply(lambda x: x + 1)
+
+# Vectorized operations (faster)
+df["Age"] + 1
+
+
+# Convert string to datetime
+df["Date"] = pd.to_datetime(df["Date"])
+
+# Filter by date
+df[df["Date"] > "2023-01-01"]
+
+
+
+import pandas as pd
+
+# Load your CSV file
+df = pd.read_csv('order_executions.csv')
+
+# Select only the columns you care about
+cols_to_keep = ['time', 'qty_filled', 'qty_leaves', 'schedule_status']
+df = df[cols_to_keep]
+
+# Drop rows where time or status is blank (essential fields)
+df = df.dropna(subset=['time', 'schedule_status'])
+
+# For quantity fields, fill blanks with 0 (assuming no fill = 0)
+df['qty_filled'] = df['qty_filled'].fillna(0)
+df['qty_leaves'] = df['qty_leaves'].fillna(0)
+# If time is sequential, forward-fill missing schedule statuses
+df['schedule_status'] = df['schedule_status'].fillna(method='ffill')
+
+# Convert to proper datetime format
+df['time'] = pd.to_datetime(df['time'], errors='coerce')
+
+# Drop rows where time couldn't be parsed
+df = df.dropna(subset=['time'])
+
+# Check for any remaining blanks
+print(df.isnull().sum())
+
+# Verify data types
+print(df.dtypes)
+
+# Show the cleaned data
+print(df.head())
+
+# Optionally save to new CSV
+df.to_csv('cleaned_orders.csv', index=False)
+
+# Fill leaves qty differently based on status
+df.loc[df['schedule_status'] == 'COMPLETED', 'qty_leaves'] = \
+    df.loc[df['schedule_status'] == 'COMPLETED', 'qty_leaves'].fillna(0)
+	
+	
+	# For numerical fields in time-series data
+df = df.set_index('time')
+df['qty_filled'] = df['qty_filled'].interpolate(method='time')
+df = df.reset_index()
