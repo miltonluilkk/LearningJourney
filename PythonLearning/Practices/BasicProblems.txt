@@ -148,3 +148,138 @@ a1 = 2
 a2 = 3
 n = 4
 print(nthTermOfAP(a1, a2, n))
+
+-------------------------------
+s = '687' 
+
+The logic is to divide the last one to 10 
+n%10, then it will be left as 7 , then it will be the single digit... and adding up for these
+
+def sumOfDigits(n):
+    sum = 0
+    while n != 0:
+
+        # Extract the last digit
+        last = n % 10
+
+        # Add last digit to sum
+        sum += last
+
+        # Remove the last digit
+        n //= 10
+    return sum
+	
+similiar logic to reverse the digits ...
+
+
+n = 4562
+rev = 0
+
+while(n > 0):
+    a = n % 10
+    rev = rev * 10 + a
+    n = n // 10
+
+Given a positive integer, check if the number is prime or not. 
+A prime is a natural number greater than 1 that has no positive 
+divisors other than 1 and itself. Examples of the first few prime numbers are {2, 3, 5, …}
+
+how to find a prime number 
+
+for loop , n or sqrt n 
+
+Given two positive numbers x and y, check if y is a power of x or not.
+
+
+Summary Table
+Method	Example 3.7	Example -3.7	Behavior
+int(x)	3	-3	Truncate toward zero
+math.floor(x)	3	-4	Round down (toward -∞)
+math.ceil(x)	4	-3	Round up (toward +∞)
+round(x)	4	-4	Round to nearest (ties to even)
+x // 1	3	-4	Same as floor(x)
+
+Given two positive numbers x and y, check if y is a power of x or not.
+
+Input:  x = 10, y = 1
+Output: True
+x^0 = 1
+
+
+Input:  x = 10, y = 1000
+Output: True
+x^3 = 1
+
+
+Input:  x = 10, y = 1001
+Output: False
+
+
+
+def isPower(x, y):
+    # The only power of 1 is 1 itself
+    if x == 1:
+        return y == 1
+
+    # Repeatedly compute power of x
+    pow = 1
+    while pow < y:
+        pow *= x
+
+    # Check if power of x becomes y
+    return pow == y
+
+
+Calculate the distance between two points.
+Input : x1, y1 = (3, 4)
+           x2, y2 = (7, 7)
+Output : 5
+
+Input : x1, y1 = (3, 4) 
+           x2, y2 = (4, 3)
+Output : 1.41421
+
+
+
+
+# Python3 program to calculate 
+# distance between two points
+
+import math
+
+# Function to calculate distance
+def distance(x1 , y1 , x2 , y2):
+    return math.sqrt(math.pow(x2 - x1, 2) +
+                math.pow(y2 - y1, 2))
+
+# Drivers Code
+print("%.6f"%distance(3, 4, 4, 3))
+
+Factorial of a Number
+# Python 3 program to find
+# factorial of given number
+def factorial(n):
+
+    res = 1
+
+    for i in range(2, n + 1):
+        res *= i
+    return res
+
+
+# Driver Code
+num = 5
+print("Factorial of", num, "is", factorial(num))
+
+Given a positive integer n, find its square root. If n is not a perfect square, then return floor of √n.
+
+
+
+
+
+
+
+
+
+
+
