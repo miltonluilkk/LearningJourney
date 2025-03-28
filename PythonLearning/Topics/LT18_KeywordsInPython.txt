@@ -1,0 +1,131 @@
+Category	Keywords
+Value Keywords	True, False, None
+
+print(False == 0)
+print(True == 1)
+
+# True + True + True is  3
+print(True + True + True)
+
+# True + False + False is  1
+print(True + False + False)
+
+# None isn't equal to  0  or an empty list []
+print(None == 0)
+print(None == [])
+
+Operator Keywords	and, or, not, in, is
+
+
+
+Control Flow Keywords	if, else, elif, for, while, break, continue, pass, try, except, finally, raise, assert
+
+break = exit the current iterations
+cotinue = exit the particular this iteration (i=5)
+pass = place holder
+try = try to run (the vlaue will still show)
+except = if try failed then it run 
+finally = it runs in any situation
+asset = try to catch the error, with the assert b !=0, "divide 0 error" <-- means to catch b==0 error
+raise = create manual error for the condition
+
+
+Function and Class	def, return, lambda, yield, class
+
+def = define a function
+return --> exit the function and return the final result immediately
+yield = create a generator, allows the function to yield multiple values without exiting 
+
+# Lambda keyword
+g = lambda x: x*x*x
+
+print(g(7))
+
+Context Management	with, as
+
+with keyword is used to wrap the execution of block of code within methods defined by context manager
+# using with statement
+with open('file_path', 'w') as file: ## w means write mode here
+    file.write('hello world !')
+	
+import math as gfg
+
+print(gfg.factorial(5))
+
+Import and Module	import, from, as
+
+
+# import keyword
+from math import factorial
+import math
+print(math.factorial(10))
+
+# from keyword
+print(factorial(10))
+
+Scope and Namespace	global, nonlocal
+
+a = 15
+b = 10
+
+def add():
+  
+  	# Add global variables a and b
+    c = a + b  
+    print(c)
+
+add()  # Output: 25
+
+def fun():
+  
+  # Local variable in fun()
+    var = 10  
+
+    def gun():
+      
+      	# Modify var1 in the enclosing scope (fun)
+        nonlocal var  
+        var += 10  
+        print(var)  
+
+    gun() 
+
+fun() # Output: 20
+
+#a,b global var
+# to change the var --> using nonlocal to modify the var
+
+Async Programming	async, await
+
+async: Used to declare a function as asynchronous, allowing it to run concurrently with other tasks.
+
+import asyncio
+
+async def func():
+    print("Hello, async world!")
+
+await: Used to pause the execution of an async function until the awaited task is complete.
+
+
+
+
+import asyncio
+
+# Define an asynchronous main function
+async def main():
+    await func()
+
+# Define another async function that prints a message
+async def func():
+    print("Hello, async world!")  
+    
+# Run the main function using asyncio.run
+asyncio.run(main()) 
+
+
+
+
+
+
+
+
