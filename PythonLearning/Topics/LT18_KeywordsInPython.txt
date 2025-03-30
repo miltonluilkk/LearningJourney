@@ -123,9 +123,217 @@ async def func():
 asyncio.run(main()) 
 
 
+What is def __init__(self) in Python?
+
+def __init__(self) is the constructor method in Python, used in classes. 
+It initializes the object’s attributes when an instance of the class is created.
+
+Can a Python function have multiple return statements?
+Yes, a Python function can have multiple return statements. 
+However, once a return statement is executed, the function exits and subsequent code is not executed. 
+Each return statement can provide different outcomes based on conditions within the function.
+
+Returning Multiple Values
+it's ok 
+
+    return name, age
+
+name, age = fun()
+
+Returning List - also ok 
+return [n**2, n**3]
+
+*args (Non-Keyword Arguments)
+**kwargs (Keyword Arguments)
+Note: “We use the “wildcard” or “*” notation like this – *args OR **kwargs – 
+as our function’s argument when we have doubts about the number of  arguments we should pass in a function.” 
+
+The special syntax *args in function definitions is used to pass a variable number of arguments to a function. 
+It is used to pass a non-keyworded, variable-length argument list. 
+
+For example, we want to make a multiply function that takes any number of arguments and is able to multiply them all together. 
+It can be done using *args.
+
+Using * the variable that we associate with the * becomes iterable, meaning you can do things like iterate over it,
+ run some higher-order functions such as map and filter, etc.
+
+def fun(arg1, *argv):
+fun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
+First argument : Hello
+Argument *argv : Welcome
+Argument *argv : to
+Argument *argv : GeeksforGeeks
+
+Python **kwargs
+The special syntax **kwargs in function definitions is used to pass a variable length argument list.
+ We use the name kwargs with the double star **.
+
+A keyword argument is where you provide a name to the variable as you pass it into the function.
+It collects all the additional keyword arguments passed to the function and stores them in a dictionary.
 
 
+def fun(**kwargs):
+    for k, val in kwargs.items():
+        print("%s == %s" % (k, val))
 
 
+# Driver code
+fun(s1='Geeks', s2='for', s3='Geeks')
 
+
+def fun(*args, **kwargs):
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+
+fun(1, 2, 3, a=4, b=5)
+
+
+*args and **kwargs allow functions to accept a variable number of arguments:
+
+
+*args (arguments) allows you to pass a variable number of positional arguments to a function.
+**kwargs (keyword arguments) allows you to pass a variable number of keyword arguments (key-value pairs) to a function.
+
+
+*args collects additional positional arguments as a tuple, while **kwargs collects additional keyword arguments as a dictionary.
+def example_function(*args, **kwargs):
+    print(args)    # tuple of positional arguments
+    print(kwargs)  # dictionary of keyword arguments
+
+example_function(1, 2, 3, name='Alice', age=30)
+Output:
+(1, 2, 3)
+{'name': 'Alice', 'age': 30}
+
+*args collects additional positional arguments into a tuple, not a list. The arguments are accessible using tuple indexing and iteration.
+
+*args is used when you want to pass a variable number of arguments to a function without explicitly specifying each argument in a list. It allows for flexibility and simplicity when defining functions that may take an unknown number of arguments.
+
+
+def sum_values(*args):
+    total = sum(args)
+    return total
+result = sum_values(1, 2, 3, 4, 5)
+print(result)  # Output: 15
+
+To pass keyword arguments (**kwargs) to a function, you provide key-value pairs when calling the function.
+
+
+def example_function(**kwargs):
+    print(kwargs)
+example_function(name='Alice', age=30)
+Output:
+{'name': 'Alice', 'age': 30}
+
+Why Python Uses 'Self' as Default Argument
+
+In Python, when defining methods within a class, the first parameter is always self. 
+The parameter self is a convention not a keyword and it plays a key role in Python’s object-oriented structure.
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand  # Set instance attribute
+        self.model = model  # Set instance attribute
+
+    def display(self):
+        return self.brand, self.model
+
+# Create an instance of Car
+car1 = Car("Toyota", "Corolla")
+
+# Call the display_info method
+print(car1.display())  # Output: This car is a Toyota Corolla
+
+In Python, when defining methods within a class, the first parameter is always self. 
+The parameter self is a convention not a keyword and it plays a key role in Python’s object-oriented structure.
+
+The main reason Python uses self as the default argument is to make object-oriented programming explicit
+ rather than implicit. By requiring the instance of the class to be passed explicitly as the first 
+ parameter to every instance method, Python ensures that the code is clear and unambiguous. 
+ This explicit approach makes it immediately obvious that methods are operating on an instance of the class
+ which enhances code readability and avoids confusion, especially in complex inheritance scenarios.
+
+Unlike some other programming languages, Python requires self explicitly because:
+
+Clarity: Explicit is better than implicit (Python’s philosophy).
+Flexibility: You can name it anything, but self is a convention.
+Consistency: All instance methods in Python use this approach, making it uniform.
+
+Python map() function
+The map() function is used to apply a given function to every item of an iterable, such as a list or tuple, and returns a map object (which is an iterator).
+
+Let’s start with a simple example of using map() to convert a list of strings into a list of integers.
+s = ['1', '2', '3', '4']
+res = map(int, s)
+print(list(res))
+
+Explanation: Here, we used the built-in int function to convert each string in the list s into an integer. 
+The map() function takes care of applying int() to every element
+
+Syntax of the map() function
+The syntax for the map() function is as follows:
+
+map(function, iterable)
+
+function: The function we want to apply to every element of the iterable.
+iterable: The iterable whose elements we want to process.
+
+Converting map object to a list
+By default, the map() function returns a map object, which is an iterator. In many cases, we will need to convert this iterator to a list to work with the results directly.
+
+Example: Let’s see how to double each elements of the given list.
+
+a = [1, 2, 3, 4]
+
+# Using custom function in "function" parameter
+# This function is simply doubles the provided number
+def double(val):
+  return val*2
+
+res = list(map(double, a))
+print(res)
+
+map() with lambda
+We can use a lambda function instead of a custom function with map() to make the code shorter and easier.
+ Let’s see how to improve the above code for better readability.
+
+a = [1, 2, 3, 4]
+
+# Using lambda function in "function" parameter
+# to double each number in the list
+res = list(map(lambda x: x * 2, a))
+print(res)
+
+
+Using map() with multiple iterables
+We can use map() with multiple iterables if the function we are applying takes more than one argument.
+
+Example: In this example, map() takes two iterables
+ (a and b) and applies the lambda function to add corresponding elements from both lists.
+ 
+ a = [1, 2, 3]
+b = [4, 5, 6]
+res = map(lambda x, y: x + y, a, b)
+print(list(res))
+
+This example shows how we can use map() to convert a list of strings to uppercase.
+fruits = ['apple', 'banana', 'cherry']
+res = map(str.upper, fruits)
+print(list(res))
+
+In this example, we use map() to extract the first character from each string in a list.
+
+words = ['apple', 'banana', 'cherry']
+res = map(lambda s: s[0], words)
+print(list(res))
+
+
+s = ['  hello  ', '  world ', ' python  ']
+res = map(str.strip, s)
+print(list(res))
+
+
+celsius = [0, 20, 37, 100]
+fahrenheit = map(lambda c: (c * 9/5) + 32, celsius)
+print(list(fahrenheit))
 
