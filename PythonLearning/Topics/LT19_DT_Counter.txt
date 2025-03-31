@@ -1,0 +1,53 @@
+Counters are a subclass of the dict class 
+
+#Count the occurrences of elements in an iterable or to count the frequency of items in a mapping.
+
+from collections import Counter
+
+# Example list of elements
+val = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+
+# Creating a Counter
+ctr = Counter(val)
+
+print(ctr)  ## Counter({4: 4, 3: 3, 2: 2, 1: 1})
+
+
+in Python, you can say that Counter is actually a dict (or more precisely, a subclass of dict).
+
+In Python's collections module, Counter is a subclass of the built-in dict class. This means:
+
+It inherits all dictionary methods (keys(), values(), items(), etc.).
+
+It adds specialized functionality for counting hashable objects (like elements in a list).
+
+from collections import Counter
+
+# Counter works like a dictionary
+count = Counter(['a', 'b', 'a', 'c'])
+print(count)  # Output: Counter({'a': 2, 'b': 1, 'c': 1})
+
+# It is a subclass of dict
+print(isinstance(count, dict))  # Output: True
+print(type(count))  # Output: <class 'collections.Counter'>
+
+Default Missing Keys:
+
+In a regular dict, accessing a missing key raises a KeyError.
+
+In Counter, missing keys return 0 (since counts start at 0).
+
+Special Methods:
+
+elements(): Returns an iterator over repeated elements.
+
+most_common(n): Returns the top n most frequent items.
+
+So, is Counter a dict?
+✅ Yes, but with extra counting features. You can even use it like a dictionary:
+
+python
+复制
+count['a'] += 1  # Works just like a dict!
+
+
