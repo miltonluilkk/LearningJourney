@@ -1,0 +1,42 @@
+Q. What does the time complexity O(n) mean for an algorithm?
+A: runtime of the algo increases linearly with the incrase in input size
+
+Q: most efficient
+O(1)
+
+Q: 2 loops - big O
+O(n^2)
+
+Q: space complexity is concerned with 
+A: the amount of memory an algo needs to complete its task (excluding input sizes and memory used up exclusively for reporting the answer)
+
+Q: algo dividing the input data in half each step - best description 
+O(log n) e.g. binary search
+
+return the squared sorted array , what are the issues below 
+
+def sorted_squared(array):
+    new_array = [0]*len(array)
+    for i in range(len(array) - 1):
+        new_array[i] = array[i] ** 2
+    new_array.sort()
+    return new_array
+	
+A1: the loop is incorrect due to len(array)-1
+
+def sorted_squared(array):
+    new_array = [0]*len(array)
+    for i in range(len(array)):
+        new_array[i] = array[i] * array[i]
+    return new_array.sort()
+
+A2 function should not return new_array.sort() as sort() returns None 
+
+def sorted_squared(array):
+    new_array = []
+    for i in range(len(array)):
+        new_array[i] = array[i] ** 2
+    new_array.sort()
+    return new_array
+	
+A3 the new_array with [] without the specific size, cant be assigned to any index 
