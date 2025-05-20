@@ -34,6 +34,7 @@ otherwords
 중국 China
 선생님 teacher
 학생 student
+여러분 everyone
 어느 which
 나라 country
 사람 person

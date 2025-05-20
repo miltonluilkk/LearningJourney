@@ -1,0 +1,128 @@
+from collections import defaultdict
+
+def parse_fix_message(message, delimiter=';'):
+    """Parse FIX message into a dictionary"""
+    # Handle both SOH (ASCII 1) and specified delimiter
+    message = message.replace('\x01', delimiter)
+    fields = [f for f in message.split(delimiter) if f]
+    fix_dict = {}
+    for field in fields:
+        if '=' in field:
+            tag, value = field.split('=', 1)
+            try:
+                fix_dict[int(tag)] = value
+            except ValueError:
+                fix_dict[tag] = value  # Handle non-numeric tags
+    return fix_dict
+
+def get_tag_description(tag):
+    """Returns description for known FIX tags"""
+    descriptions = {
+        # Header
+        8: "BeginString", 9: "BodyLength", 35: "MsgType", 49: "SenderCompID",
+        56: "TargetCompID", 34: "MsgSeqNum", 52: "SendingTime",
+        
+        # Common
+        1: "Account", 11: "ClOrdID", 55: "Symbol", 54: "Side", 
+        38: "OrderQty", 40: "OrdType", 44: "Price", 59: "TimeInForce",
+        58: "Text", 10: "CheckSum",
+        
+        # Options
+        167: "SecurityType", 200: "StrikeMonth", 201: "PutOrCall",
+        202: "StrikePrice", 205: "MaturityDay", 206: "OptAttribute",
+        
+        # Multi-leg/multi-account
+        600: "LegSymbol", 601: "LegSecurityID", 604: "LegSide",
+        610: "LegPrice", 618: "LegPositionEffect",
+        
+        # Allocation
+        78: "NoAllocs", 79: "AllocAccount", 80: "AllocQty",
+        81: "ProcessCode", 736: "AllocPrice",
+        
+        # Execution
+        14: "CumQty", 17: "ExecID", 20: "ExecTransType",
+        31: "LastPx", 32: "LastQty", 37: "OrderID",
+        39: "OrdStatus", 150: "ExecType", 151: "LeavesQty",
+        
+        # Trading Session
+        75: "TradeDate", 60: "TransactTime", 168: "EffectiveTime",
+        
+        # Risk Management
+        114: "LocateReqd", 432: "ExpireDate", 126: "ExpireTime",
+        
+        # Commission
+        12: "Commission", 13: "CommType", 120: "SettlCurrency",
+        
+        # Position
+        710: "NoPositions", 715: "PositionEffect", 723: "PositionQty"
+    }
+    return descriptions.get(tag, f"Tag {tag}")
+
+def compare_fix_messages(msg1, msg2, important_tags=None):
+    """Compare two FIX messages with enhanced visual output"""
+    if important_tags is None:
+        # Default important tags covering all asset classes
+        important_tags = [
+            1, 11, 35, 38, 40, 44, 54, 55, 58, 59,  # Common
+            167, 200, 201, 202, 205, 206,             # Options
+            78, 79, 80, 81, 736,                      # Allocation
+            600, 601, 604, 610, 618,                  # Multi-leg
+            14, 17, 31, 32, 37, 39, 150, 151          # Execution
+        ]
+    
+    d1 = parse_fix_message(msg1)
+    d2 = parse_fix_message(msg2)
+    
+    all_tags = set(d1.keys()).union(set(d2.keys()))
+    
+    print("\n=== FIX Message Comparison ===")
+    print(f"{'Tag':<5} | {'Description':<20} | {'Message1':<25} | {'Message2':<25} | {'Status'}")
+    print("-" * 100)
+    
+    for tag in sorted(all_tags):
+        val1 = d1.get(tag, "N/A")
+        val2 = d2.get(tag, "N/A")
+        desc = get_tag_description(tag)
+        
+        # Determine status and color
+        if tag not in d1:
+            status = "Only in Msg2"
+            color = "\033[93m"  # Yellow
+        elif tag not in d2:
+            status = "Only in Msg1"
+            color = "\033[93m"  # Yellow
+        elif val1 == val2:
+            status = "Match"
+            color = "\033[92m"  # Green
+        else:
+            status = "DIFFERENT"
+            color = "\033[91m"  # Red
+            
+        # Highlight important tags
+        importance = " *" if tag in important_tags else ""
+        
+        # Special formatting for key fields
+        if tag == 55:  # Symbol
+            val1 = f"\033[96m{val1}\033[0m"
+            val2 = f"\033[96m{val2}\033[0m"
+        elif tag in (44, 202, 610, 736):  # Price fields
+            val1 = f"\033[95m{val1}\033[0m"
+            val2 = f"\033[95m{val2}\033[0m"
+        elif tag in (38, 80, 32, 151):  # Quantity fields
+            val1 = f"\033[94m{val1}\033[0m"
+            val2 = f"\033[94m{val2}\033[0m"
+        
+        print(f"{tag:<5} | {desc:<20} | {str(val1):<25} | {str(val2):<25} | {color}{status}{importance}\033[0m")
+
+# Example usage with complex messages
+if __name__ == "__main__":
+    # Equity order with allocation
+    msg1 = "8=FIX.4.4;35=D;55=MSFT;38=1000;44=250.50;54=1;40=2;78=2;79=ACC1;80=400;79=ACC2;80=600;"
+    
+    # Options order with multi-leg
+    msg2 = "8=FIX.4.4;35=D;55=AAPL;167=OPT;202=150.00;201=1;200=12;38=500;44=5.50;54=2;40=1;600=AAPL;601=123;604=1;610=150.00;"
+    
+    print("Message 1 (Equity):", msg1)
+    print("Message 2 (Options):", msg2)
+    
+    compare_fix_messages(msg1, msg2)
