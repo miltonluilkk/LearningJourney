@@ -13,11 +13,47 @@ Grammar
 선생님하고 / 동생과 / 학교와 /학교하고
 10. 의 ## 's ,  shows that the first noun possesses the second noun. 
 선생님의
-** 11. 동사, 형용사 + -어요/-아요
 
+11. 동사, 형용사 + -어요/-아요
+ㅏ, ㅗ X 있다, 없다 있어요, 없어요
+ㅏ, ㅗ O 맑다, 많다 맑아요, 많아요
+하다 좋아하다, 공부하다 좋아해요, 공부해요
 
+● 덥다,춥다의경우‘더워요,추워요’로씁니다.
+덥다:덥+어요 =더워요
+춥다:춥 +어요 = 추워요
+● 동사,형용사가‘ㅏ’로 끝나면‘가요’처럼씁니다.
+ㅏㅇ/받침X 가- + -아요 =가요
+● 동사,형용사가‘ㅗ’로 끝나면‘와요’처럼씁니다.
+ㅗㅇ/받침X 오- + -아요 =와요
+● 동사 ,형용사가‘ㅣ’로 끝나면‘-ㅕ요’로 씁니다.
+가르치- + -어요 =가르치어요 =가르쳐요
+● 동사 ,형용사가‘ㅡ’로 끝나면그앞의모음을 봅니다
+나쁘- + -아요 =나빠요
 
+가다 (to go)	가	가요	I go / You go
+오다 (to come)	오	와요	I come / You come
+먹다 (to eat)	먹	먹어요	I eat / You eat
+마시다 (to drink)	마시	마셔요 (shortened)	I drink / You drink
+보다 (to see)	보	봐요	I see / You see
+있다 (to exist)	있	있어요	It exists / I have
+없다 (to not exist)	없	없어요	It doesn’t exist / I don’t have
+하다 (to do)	하	해요	I do / You do
+공부하다 (to study)	공부하	공부해요	I study / You study
 
+Irregular Cases:
+ㄷ-irregular verbs: Some verbs change ㄷ to ㄹ before adding 어요.
+듣다 (to listen) → 들어요 (not 듣어요)
+걷다 (to walk) → 걸어요 (but 걷다 as "to fold" stays 걷어요)
+르-irregular verbs: If 르 is in the stem, add 러요 and double the consonant before it.
+빠르다 (to be fast) → 빨라요
+부르다 (to sing/call) → 불러요
+ㅂ-irregular verbs: Some ㅂ verbs change to 워요.
+춥다 (to be cold) → 추워요
+쉽다 (to be easy) → 쉬워요
+
+12. -지 않다      // 안 좋아요  // 좋지 않아요 # It is attached to a verb or an adjective to deny the situation.
+13 
 
 Common words 
 그리고 and
@@ -54,9 +90,12 @@ otherwords
 의사 doctor
 여기는 우리 가족이에요. This is my family
 직업이 뭐예요? What’s your job?
+안녕하세요? 만나서 반갑습니다. Hello? Nice to meet you.
+이름이 뭐예요? What’s your name?
 부모님 parents
 사진 picture
 대학생 university student
+그리고 and
 노래 song
 드라마 drama
 음식 food
@@ -70,7 +109,9 @@ otherwords
 작다 small
 예쁘다 pretty
 좋다 good
+지금 now 
 야채 vegetable
+자주 often
 공부하다 study
 만나다 meet
 학교 school
@@ -82,13 +123,13 @@ otherwords
 없다 there is[are] no
 많다 a lot of
 넓다 wide (big)
+여러분, 따라 하세요 Everyone, repeat after me.
 질문 question
 모르다 do not know, don’t understand
 책상 desk
 지도 map
 시계 clock
 의자 chair
-칠판 blackboard
 칠판 blackboard
 날씨 weather
 맑다 clear
@@ -104,8 +145,21 @@ otherwords
 여름 summer
 가을 autumn
 겨울 winter
+오다 fall #눈이 옵니다
 날씨가 어떻습니까? # How is the weather?
 눈이 내립니까? # Is it snowing?
+선물 present
+카드 card
+편지 letter
+주다 give ( 선물을 줘요 )
+보내다 send  (카드를 보내요) 
+쓰다 write (편지를 써요.)
+
+
+
+
+
+
 
 
 
