@@ -53,7 +53,9 @@ Irregular Cases:
 쉽다 (to be easy) → 쉬워요
 
 12. -지 않다      // 안 좋아요  // 좋지 않아요 # It is attached to a verb or an adjective to deny the situation.
-13 
+13  에게, 한테  # It is attached after a noun to indicate the action’s target. 
+동생한테 책을 줘요 ### give the book to 동생
+14 만  # only / It is attached after a noun to exclude everything else
 
 Common words 
 그리고 and
@@ -154,6 +156,35 @@ otherwords
 주다 give ( 선물을 줘요 )
 보내다 send  (카드를 보내요) 
 쓰다 write (편지를 써요.)
+반갑다 glad # 반갑습니다 
+실례하다 Excuse me
+고맙다 thank
+감사하다 thank
+미안하다 sorry
+죄송하다 sorry
+괜찮다 It’s okay
+안녕히 가세요 Goodbye
+안녕히 계세요 Goodbye
+생일 birthday
+요즘 recently
+건강 health
+이번은 this time 
+정말 really 
+어디 where
+기숙사 dormitory
+서점 bookstore
+책 book
+공책 notebook (paper) 
+연필 pencil
+책상 desk
+의자 chair
+앞 front
+뒤 behind
+옆 next to
+위 on
+아래 under
+
+
 
 
 
