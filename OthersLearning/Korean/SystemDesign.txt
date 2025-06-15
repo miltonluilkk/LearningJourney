@@ -1,0 +1,845 @@
+Control 
+
+
+Separation of concerns : Microservices , API
+Asynchrincity : distributed message queues, push notifications
+parallel processing: load balancing, map reduce, spark 
+platforms : cloud computing , vms , containers, serverless functions
+
+db :
+relational vs nosql
+caching , content delivery networks 
+
+--------------------------------------------------------------------------
+scalability 
+input data size "n" gets bigger, program should run quickly
+list program runtime as a function of input size 
+
+service is different than a simple program , because it listens for requests from clients and users , 
+may handle requests concurrently
+
+service runs constantly, waiting for requests that it should process - it's always ON !
+
+Scalability : measures of work throughput 
+requests per second 
+concurrent users 
+monthly active users 
+
+--> so far no cost concerns 
+coordinating multiple machine - difficult
+sharing data among multiple machines - difficult (where's data, how to manage the data sharing)
+more machines - easy to die
+services components (firewalls) 
+no downtime 
+users workwide
+
+--->
+Vertical scaling : (making your machines bigger and stronger and faster ) 
+--> better machines better network better of everything of hardware 
+
+number of CPU cores
+speed of CPU cores 
+competing processes running on same machine
+
+RAM 
+SSD / magnetic 
+number of disks (parallel access) 
+network connectivity 
+GPUs , TPUs and other special purpose accelerators 
+
+--->
+100 processes (programs) (4CPU cores)
+OS Kernel schedules process  -> take turn using CPU
+--> often processes block (wait) while doing I/O (input / output) 
+for example : reading a file from disk or waiting for a message to arrive from the network
+process is blocked -> another process can take over the CPU
+a single process can have multiple threads which execute concurrently while hsaring the same memory 
+--> called shared memory parallelism 
+top /htop 
+
+-> take turns running of the memory parallelism 
+
+Clouding computing making it easier 
+Vertical t3.nano 0.0052hour  --> m5d.24large 5.424 / hour 
+-> just requires a reboot of the VM 
+
+Horizontal scaling 
+purchase more VM Instances 
+new instance will be available to use in just in a few minutes
+
+cloud computing resources -> elastic because you can quickly change the size and quantity 
+of the computing resources you are using 
+
+verticial pros and cons 
+
+pros 
+easy to write program 
+supportive mutli-thread 
+programs supporting 
+servers can do a lot of work in parallel 
+connect hundreds of disks to a machine before overwhelming the IO bandwidth 
+avoid slow communication over machines 
+
+cons
+really huge loads 
+cant be scales quickly in a fine grained manner 
+single point of failure 
+price / performance ratio is poor 
+
+
+
+
+Basic service definition 
+computer program takes a symbolic inputs and returns a symboloic output - then stops 
+service received requests and returns a response 
+service can handle concurrent requests 
+
+from program to service
+
+simple program can be translated into a service by 
+- listening to requests that arrive from the network 
+- running many copies of the program concurrently (threads of process - of the OS features)
+
+queues to store unhandled requests and unsent responses 
+queues allow competing threads to share a single network "socket" - one ip port 
+first in first out - > coming into the queue, and 
+response in the same queue 
+
+the program on each thread an infinite loop 
+
+
+while true: {
+	request = requestQ.pop();  # waits if the queue empty 
+	response = dowork(request);
+	responseQ.push(response); # wait if the queue too full 
+	}
+## waits also said to block
+
+queue (pop to app) ----> app app app app (push to queue)---> responseQ
+
+many requests can be processed at the same time (concurrently)
+CPU cores to be used in parallel
+theaded design helpful if there is only 1 CPU core 
+block request data from disk or over the networking (I/O)
+one thread waiting for IO to complete , another can use the CPU
+
+WebHTTP provides basic framework 
+Python : Flask Django
+plug in the app code 
+
+HTTP (Hyper text transport protocol) 
+client server data exchange protocol
+invented for web browesers to fetch pages from webservers
+
+requests: 
+URL / method 
+body /datatypes
+
+response 
+human readable header with response code 
+optional body
+
+Wikipedia architecture
+main application is mediawiki
+70% php and 30% javascript
+db = mariadb
+
+
+squid - caching http proxy on frontend
+apache httpd: webservers running the main application 
+sql db : for wiki text 
+file servers : servers
+
+HTTP --> HTML --> MEDIAWIKI --> MEDIAFILES 
+
+1. run pho code in apache httpdweb framework 
+2. Input request 
+http request from browser
+get /wiki/embioptreta
+3. output response 
+HTML -> client
+
+Media Wiki -> generate article HTML 
+
+get corresponsding wiki text frm DB 
+treanslate wiki text to HTML 
+add wrapping content and banners 
+add user specific page header , based on cookies in rueqeust 
+
+Stateless Services, Proxies, and Caches
+A stateless thread/process/service remembers nothing from past requests. (state == memory)
+Has no local state.
+Behavior is determined entirely by two things: 〈input request, request handling code〉.
+Different copies of the service are running the same code, so they will give the exact same response for a given request.
+---> same reply 
+---> NO difference for the app reply 
+A stateful thread (or service) changes over time, as a side effect of handling requests.
+Persistent, global variables are modified by the request processing code.
+
+Stateless code has no long-term “memory”
+It’s almost a “pure function” in programming language terminology.
+stateless code 
+Indepedent to the previous executions, indepedent code 
+We do not say “output is determined entirely by the current input,” because we allow nondeterministic (random) behavior.
+Eg:
+float cosine(float x)
+int sum(int a, int b)
+List sort(List myList)
+List<T> listAppend(List<T> myList, T newItem)
+float generateRandomNumber() (Real random number generators actually do keep some state, but ideally they would not.)
+
+Stateful code has side effects (long-term memory)
+It’s like an object or a code that changes global variables.
+just like the variable is globally stored and got changed 
+
+Object-oriented mutator:
+Class Counter {
+  private int count;
+  public Counter() {
+    count = 0;
+  }
+  public void increment() {
+    count++;
+  }
+}
+Imperative code changing globals:
+int count;
+
+void increment() {
+    count++;
+}
+
+Side note on OOP
+
+You probably learned:
+Inheritance:
+This allows strong typing without losing abstraction.
+Creates generic, abstract interfaces, enabling abstraction.
+Modeling real-world concepts.
+Animal  Mammal  Cow!)
+But another major OOP benefit is:
+Grouping sets of related state (memory/variables).
+Well-defined, limited side effects.
+A class defines a set of member functions whose side-effects are limited to a small set of variables (the object’s data members).
+
+
+
+
+Stateless code (has “no memory”):
+All copies will give same response,it does not matter which copy processes a given request.
+""""""Parallelism is trivially easy!""""""""
+
+
+Stateful code (does have “memory”):
+Since different copies handled different past requests, their state differs, and they may give a different response to the exact same request.
+Related requests (from the same client) must go to same handler.
+
+Stateful example : SMTP (remember cc to all the info , etc)
+
+
+----
+
+WikiPedia - stateful or stateless? 
+which tasks have side effects? 
+
+--> Page edit would have side effects in mediawiki 
+--> can it be stateless 
+
+sign in might have side effects in media wiki 
+MediaWiki
+
+---> Cookies solve the problem 
+sign-in leads to a cookie being stored in the DB and re-turned to hte client browser 
+DB keep the sign-in state
+---> Cookie is provided as an input to MediaWiki, and MediaWiki checks the cookie against cookies stored in the shared database.
+
+Cookies are how web applications track state, often to track user identity.
+Cookies becomign a password
+
+Stateless like NO memory 
+
+How does statelessness help 
+
+200 instances of MediaWiki can be run behind a load balancer.
+Load balancing is done both by DNS and by efficient, simple software proxies.
+Any of the 200 instances can handle any request.
+Each of those 200 machines also has many CPU cores and dozens of software threads.
+Coordination only happens by writing to shared databases.
+
+Design website : chess website 
+Simplest design is to store game state in memory (eg., in a dictionary)
+
+----> if expanding 
+If a server fails, 1/n games are lost (or at least interrupted).
+These are stateful web apps.
+
+
+DB<--> APP <--> USER ( the data not storing in the app, but not storing in the app)
+
+acheived parallelism and distributed execution while avoiding difficult coordination
+push away all shared state 
+push state up to client or push down to DB
+ first lesson of scalability - not share 
+----------------------
+
+Proxies
+A proxy server is an intermediary router for requests. ( middle point) 
+The proxy does not know how to answer requests, but it knows who to ask. 
+The request is relayed to another server and the response relayed back.
+Proxies can be transparently added to any stateless service, like HTTP:
+****A load balancer is a type of proxy that connects to many app servers.
+The work done by the load balancer is very simple, so it can handle much more load than an application server.
+Creates a single point of contact for a large cluster of app servers.
+virtual * load balancer 
+
+
+-------------
+Squid is a caching proxy.
+(A cache stores recently retrieved items for reuse) ( so frequent request just went to cache and see )
+remember the old responses and reply 
+Frequent requests are found in (hit) the cache, without re-asking MediaWiki and accessing the shared database.
+Unusual requests are not in (miss) the cache, and are relayed to MediaWiki. 
+
+Cache basics
+Caching is a general concept that applies to web browsers, computer memory, filesystems, databases, etc.
+any time you wish to improve performance of data access.
+A cache is a small data storage structure designed to improve performance when accessing a large data store.
+For now, think of our data set as a dictionary or map (storing key-value pairs).
+The cache stores the most recently or most frequently accessed data.
+Because it’s small, the cache can be accessed more quickly than the main data store.
+
+stall in a quick place to retreive 
+(you can just think like a quick hashmap )
+cache is small - cannot contain everything 
+
+The cache is small, so it cannot contain every item in the data set!
+
+When reading data:
+Check cache first, hopefully the data will be there (called a cache hit).
+Record in the cache that this entry was accessed at this time.
+If the data was not in the cache, it’s a cache miss.
+Get the data from the main data store.
+Make room in the cache by evicting another data element.
+Store the data in the cache and repeat Step 1.
+
+*****The most common eviction policy is LRU: least recently used *****
+
+re-accessed frequenetly - / repetitively 
+
+------------------
+Managed Cache
+
+Client has direct access to both the small and large data store.
+Client is responsible for implementing the caching logic.
+Eg.: Redis, Memcached
+very command - to cache everything first 
+****
+
+Transparent Cache
+Client connects to one data store.
+Caching is implemented inside storage “black box.”
+Eg.:
+Squid caching proxy, CDNs
+Database server.
+
+
+Longtail theory - small portion of webpages actually furnish most of the volumes
+A small fraction of Wikipedia pages account for a large fraction of traffic.
+Optimize performance for these pages.
+These will naturally be stored in the frontend cache.
+The "long tail" is the large number of rarely-accessed pages.
+Most accesses to these rare pages involve a database access
+long tail 
+
+-----------------
+Data writes cause cache to be out of date!
+
+data changes -> what to do?
+Three basic solutions:
+Expire cache entries after a certain TTL (time to live) (expire as for sometimes)
+After writes, send new data or an invalidation message to all caches.
+This creates a coherent cache.  But it adds performance overhead.
+Don’t every change your data!  For example, create a new 
+filename every time you add new data.  This is called **versioned data**
+
+HTTP support caching well
+HTTP is stateless, so the same response can be saved and reused for repeats of the same request.
+HTTP has different methods GET/PUT/POST/DELETE.
+GET requests can be cached, others may not because they modify data.
+HTTP has Cache-Control headers for both client and server to enable/disable caching and control expiration time.
+
+These features allow a web browser to skip repeated requests.
+Also, an HTTP caching proxy, like Squid, is compatible with any web server and can be transparently added.
+
+----------
+
+Application Programming Interfaces (APIs)
+
+An API defines how software can be used by other software.
+The API for a code library is the list of functions/classes it provides. 
+Software services provide network remote procedure call (RPC) APIs.
+Network-level APIs can have any format, but most commonly:
+REST            built on top of HTTP
+SOAP (old)
+Thrift                     binary protocols, more efficient than REST.
+Protocol buffers
+GraphQL
+Usually includes some form of authentication:
+Service must identify you to give access or personalized data
+
+(Elastic search) 
+Methods
+GET: to request a data
+POST: to post data to the server, and perhaps get data back, too.
+Less commonly:
+PUT: to create a new document on the server.
+DELETE: to delete a document.
+HEAD: like GET, but just return headers
+
+Response
+200 OK: success
+301 Moved Permanently: redirects to another URL
+403 Forbidden: lack permission
+404 Not Found: URL is bad
+500 Internal Server Error
+
+
+----------------
+
+An idempotent request can be repeated without changing the result.
+HTTP expects every method except POST to be idempotent.
+HTTP proxies/servers may repeat your PUT or DELETE requests, and your REST API implementations should be OK with this.
+For example, creating an Elasticsearch document:
+PUT /my-index/_doc/2345{"title": "My Great Article", "txt": "Hi everyone. I'm here to write about…"}
+POST /my-index/_doc{"title": "My Great Article", "txt": "Hi everyone. I'm here to write about…"}
+The PUT variation can be repeated and it will just overwrite the doc.
+The POST variation would create duplicate docs if repeated.
+多次執行與一次執行效果相同：: 即使重複多次，對系統狀態的影響也與只執行一次相同.
+可以重複使用：: 可以在不擔心副作用的情況下，重複使用相同的參數進行操作.
+對系統狀態無影響：: 幂等操作不會修改系統的狀態.
+
+REST API semantics must work with HTTP's rules
+Let's say we're developing a a social media application.
+What's wrong with this API definition for deleting my latest post?
+DELETE /user/[user-id]/feed/posts/latest
+
+Http DELETE should be idempotent.
+However, repeating the request above changes the system state.
+From the services' perspective, repetition of one deletion looks the same as if the user had purposely deleted multiple latest posts.
+What's the solution?  Make each deletion look different:
+DELETE /user/[user-id]/feed/post/[post-id]
+
+
+Choice of Method:
+GET for reading data
+POST/PUT/DELETE for editing
+Path
+Usually identifies the type of request, but may also supply parameters:
+GET /tweets/connor4real
+Query parameters after the main URL
+Written after a “?” character.
+GET /search?startDate=2018-10-10&search=best+restaurant&api_key=3iur20du9302o3i0d
+Headers
+Cookies, custom headers
+Body
+Usually form-encoded or JSON
+
+Status code
+200, 404, 403, etc.
+Headers
+Body
+Usually JSON encoded
+
+
+Custom HTTP headers are frowned upon.Goal is to build on top of HTTP, not alter it.
+Many APIs require that you provide an API key or  access token somewhere your request.
+This is like a password that identifies you to the service.
+Is this secure?
+
+A data format returned by most REST APIs
+Allows an arbitrary amount of nesting
+Spaces are ignored, except within quotes.
+
+Basic components are:
+[] for ordered lists
+Items are separated by commas
+Items can be any JSON
+{} for unordered dictionaries/objects
+Key: value pairs are separated by commas
+Keys must be strings (text)
+Values can be any JSON
+Numbers, true, false, null
+Strings (text) in double quotes "..."
+
+[  {    "name": "John",    "age": 30,    "cars":        ["Ford", "BMW", "Fiat"]  },  {    "name": "Alicia",    "age": 32,    "hometown": "Seattle"  }]
+
+XML – eXtensible Markup Language
+
+Older than JSON, and now is less common than JSON because many people think XML is unnecessarily complicated.
+HTML is an XML document that defines a web page.
+
+Basic components are:
+Text
+Tags
+<tagname>…</tagname> or just <tagname>
+Have a name, and have XML inside
+Each start tag has a corresponding end tag, but only if it has data inside.
+Attributes
+<tag attr="value" …>
+Appear within tags
+Attribute name and value must be text
+Tag can have multiple attributes, but each must have a unique name
+
+
+JSON and XML are data serialization formats
+
+Computer memory is one big array, but programs and databases use references to organize data into complex structures:
+Data files are arrays of bytes.
+Messages sent over the network are serial streams of bytes.
+Serialization is converting a data object into a sequence of bytes:
+
+----------------------
+Wikipedia is mostly one big PHP app
+
+The app uses a monolithic architecture.
+Roughly means “one big thing.”
+
+Each of instance of Mediawiki (  ) can handle any request on its own.
+Caveat: it needs the help of the centralized database, but let’s ignore the DB for now.
+The only reason we have 200 of instances isto handle many independent requestsin parallel.
+They’re interchangeable clones.
+When a developer is testing newcode, they can just run oneinstance locally.
+
+Advantages of a Monolithic design
+Easy to build, deploy, test, coordinate, share data.
+Certainly, the best choice for simple apps.
+Even some very large services (eg., Facebook) use a monolithic design.
+
+Disadvantages
+Creates bottlenecks in SW development processes.
+Lots of developers working on one codebase – lots of coordination/merging.
+One huge codebase can lead to messy, fragile code.
+A change here can cause unexpected bugs there.
+The whole app must be redeployed for small new functionality.
+Must choose one programming language, build system, runtime env.
+
+---------------------------------------------------
+Microservices 
+
+In a Service Oriented Architecture many smaller services work together.  Recently, this idea has been re-branded as Microservices.
+Responsibilities are split among specialized services.
+
+To the outside world it still looks like one app, but internally there are many different apps working together.
+Notice that microservices may interact with other services, databases, etc. to do their job.
+
+Each microservice is a black box to the rest of the system.  It’s an independent service.
+Microservice handles requests from the network.
+Implementation (and programming language) details are hidden from the rest of the system.
+
+However, a clear and language-independent network-level API is needed to specify the format of requests and responses.
+From last lecture, could be:REST, Thrift, ProtoBuf, GraphQL, etc.
+
+Microservices isolate codebases with clear network API boundaries, allowing work to proceed in parallel.
+When starting a new project, a typical design process will:
+Organize the system into several services and databases.
+Agree on the network-level API for each service.
+Assign engineers to each service, and build them independently!
+If your application interacts with a service that is under construction, then you can build a quick mock of the service.
+Mock services obey the network-level API, but return hard-coded data for testing purposes.
+
+
+
+Traditional web app     vs.    JavaScript Single-Page app
+Server generates HTML dynamically.
+Browser doesn’t run much JS.
+Eg., Wikipedia.
+
+JS app runs in the browser, makes REST requests and generates HTML.
+Eg., Facebook & other React apps.
+
+Cross-platform architecture
+
+A service API (eg., REST or GraphQL) is essential for supporting mobile and desktop apps with cloud-based data and services.
+A single API can handle all client types.
+
+JS SPA
+mobile 
+desktop
+webbrowser
+
+-------------
+Introduced microservices as an alternative to monolithic design.
+Services are black boxes, exposing network APIs.
+Decouples development of different parts of the system.
+Network APIs define the format and meaning of requests and responses.
+In a cross-platform system design, the same backend service/API can serve mobile, web, and desktop apps.
+
+1 function -> multiple functions in order to complete the programs
+
+Loadbalancing 
+Load balancer is a single point of contact for a service.
+Proxy
+Load balancer does very little work:
+Just forward request/response and remember the request source.
+Load balancer can relay requestsfor 10s-100s of application servers.
+Makes one IP address appear likeone huge machine, but it’s actually a cluster.
+
+Make a cluster of servers look like one superior server.
+The load balancer provides the same interface as a single server.(An HTTP server operating on a single IP address)
+
+more pros:
+Individual servers can be replaced without affecting overall service.
+Deploy “rolling” app updates.		• Or deploy a synchronized update
+
+update 1 by 1 , take some offline some on line
+easier to maintain the services
+heatlh check of the servers
+
+Two types of local load balancers
+
+Network Address Translation
+Works at the TCP/IP layer.
+Called a Layer-4 load balancer
+Forwards packets one-by-one, but remembers which server was assigned to each client.
+Is compatible with any type of service, not just HTTP.
+
+Reverse Proxy
+Works at the HTTP layer.
+Called an application-layer LB. (level 7) 
+Stores full requests/response before forwarding.
+Eg., Nginx (or maybe Squid)
+Reverse Proxy can also do:
+SSL termination.
+Caching.
+Compression.
+
+
+NAT Load Balancer
+For details, take CS-340.
+A type of NAT device that relays requests to multiple equivalent servers.
+NAT LB changes IP addresses and ports of packets in both directions.
+Load balancer maintains IP address and port mappings, like a traditional NAT.
+Simpler and more efficient than reverse proxy because it need not implement TCP, HTTP, or store full request/responses.
+
+Nginx is can be used as a Reverse Proxy Load Balancer
+Client sends request to the LB.
+LB choses an “upstream” server.
+LB relays request to upstream server.
+Upstream server sends response to LB.
+LB accepts response and looks up the client associated with this connection.
+LB relays response to client.
+
+TLS/SSL cert can be stored just on the proxy 
+Internal communication maybe unencrypted
+
+Proxy also cache responses
+limits its scalability 
+Squid 
+
+Local load balancer limitations
+ - Load balancer machine is a single point of failure.
+ - Can only handle ~1M requests/sec. (single machine) 
+ - Resides in one data center, thus:
+>>> It’s not near all your customers.
+>>> The data center is also a single point of failure.
+>>> Huge services need more than just local load balancers.
+>>> Can clients find a service replica without contacting a central bottleneck?
+>>>> We have a distributed service discovery problem.
+
+Domain Name Service (DNS)
+DNS is a distributed directory that maps hostnames to IP addresses.
+mail.stevetarzia.com  54.245.121.172
+DNS uses a distributed, hierarchical, caching architecture for scalability.
+On campus, my machine sends queries to NU’s DNS server.
+This local DNS resolver has cached copies of recent (common) answers.
+gmail.com, northwestern.edu, facebook.com, etc…
+Local DNS resolver asks up the hierarchy if answer is not in its cache.
+Need to ask the nameserver for “stevetarzia.com” for IP address of  “mail”.
+To get IP address of that nameserver, would ask the “com” nameserver.
+IP address of “com” TLD nameserver is almost certainly cached, but if not then query one of the few hard-coded root nameservers.
+For more details, take CS-340 Intro. to Computer Networking.
+AWS outage on October 22nd, 2019 was due to a DDoS attack on AWS DNS.
+
+
+ROUND ROBIN DNS for load balancing 
+
+
+DNS allows multiple answers to be given for a query(multiple IP addresses per domain name).
+Client can then randomly choose one of the IP addresses.
+Even better, DNS server can store multiple answers, but give different responses to different users (either randomly, or cyclically).
+Remember that DNS is a cached, distributed system.
+Northwestern’s DNS resolver may have been told google.com = 172.217.9.78.
+UChicago’s DNS resolver may have been told google.com = 172.217.9.80.
+Comcast Chicago’s DNS resolver was told google.com = 172.217.7.83.
+Different answers are cached and relayed to all the users on the 3 networks.
+Each of those three IP addresses are different reverse-proxying load balancers sitting in front of hundreds of app servers.
+Is there a limit to scaling by DNS?
+
+Geographic load balancing with DNS
+More than just balancing load, DNS can also connect user to the closest replica of a service.
+Clever DNS server examines IP address of requester and resolves to the server that it thinks is closest to the client (IP address geolocation).
+In other words, the IP address answers are not just different, but customized for the particular client.
+
+
+Origin Server is the original, central web server.  (Sets cache-control HTTP headers in responses).
+Edge Servers are caching proxies.Ask origin server if don’t have a cached response.
+
+8.8.8.8 is the one IP address for Google’s huge public DNS service.
+Handles >400 billion DNS requests per day!  Anyone here use it?
+Cannot rely on DNS for load balancing, because it is the DNS server!
+
+IP Anycast load balancing is implemented with BGP.  (Details in CS-340)
+Basic idea is that many of Google’s routers (around the world) all advertise to their neighbors that they can reach 8.8.8.8 in just one hop.
+Thus, traffic destined for 8.8.8.8 is sent to whichever of these Google routers are closest to the customer.
+Technically, this violates the principle that an IP address is a particular destination, but for DNS this doesn’t matter because it’s UDP and stateless.
+
+------------------
+Recall that we pushed all app state to the DB, allowing MediaWiki app to be stateless and thus trivially parallelizable.
+Databases provide both persistent storageand coordination in large-scale system.
+In general, these are our two biggest scalability challenges and both are the concerns of databases.
+
+CPU Registers  0.3ns
+CPU Caches (L2)  5ns
+Random Access Memory (RAM)  50ns
+Flash Storage (SSD)  100μs
+Magnetic Disk 5ms
+
+Disk is about ten billion times larger than registers, but has about ten million times larger delay (latency).
+Goal is to work as much as possible in the top levels.
+Large, rarely-needed data is stored at the bottom level
+
+All types of computer storage are limited to reading/writing just a small fraction at once.
+Magnetic disks:
+The read/write head can read the charges on a tiny portion of the magnetic disk.
+RAM (memory):
+Memory and flash chips store lots of data, but only a few bytes can be transferred at once, because there are only a couple hundred electrical connections at the edge.
+SSDs (flash) is similar, with even fewer electrical connections.
+
+Redundant Array of Independent Disks (RAID)
+Disks have a few shortcomings:
+Limited capacity (~12TB)
+Limited throughput (~150MB/s)
+Likelihood of failure (especially for magnetic/rotating disks)
+RAID uses multiple disks to solve these problems
+Many different variations of RAID, depending on your budget and which of the above three problems are most important.
+Basic ideas are:
+--Increase capacity by making multiple disks available to store data.
+--Increase throughput by accessing data in parallel on multiple disks.
+--Reduce impact of a disk failure by storing data redundantly on multiple disks.
+--Disk interface is very simple (just an array of sectors), so it’s easy to create a logical/virtual disk made of sectors from multiple physical disks.
+several disks in doing the job actually 
+
+Capacity is practically unlimited, but a single computer has:
+Limited compute power.
+Limited I/O bandwidth(theoretical max of~80 GB/s onPCI-express v4).
+This single-machine designcan actually scale pretty well!
+
+
+
+Relational (aka SQL) DBs use this design
+-------------------------------------------------------------------------
+Programming languages rarely deal with storage directly (except SQL).
+Programmer must write code to move data from memory to disk.
+Disks are slow, so making the programmer think before using it is OK.
+But it’s also really tedious to operate on large data sets, where data is constantly shuffled between disk and RAM.
+Normal way of accessing persistent storage:
+Pass data into and out of files using system's open/read/write functions.
+
+Databases let the programmer use persistent storage w/out worrying about file-level transfers, with advanced performance optimizations.
+Usually interact with DB using a special query language (eg., SQL).
+
+
+-----------------------------------------------------------------------------
+
+
+Relational databases store data in multiple tables.
+Each table has pre-definedset of columns (schema).
+Rows are added over time.
+Rows can refer to otherrows through foreign keys.(the arrows)
+“Philanthropy” is definedonce, but referenced by theindustry id 131 in many user rows.
+The final LinkedIn page may be generated by JOINing rows from many tables.
+
+Relations - just mean TABLES
+set of columns - schemas 
+rows added over time 
+foriegn keys 
+primary keys 
+final linked in page maybe generated by JOIN *
+
+
+Regions:
+Allows many users to refer to shared region data without repetition or inconsistency.
+Positions:
+Allows a user to have an arbitrary number of positions (zero to infinity).
+Industries? Education? Contact_info?
+In summary:
+A multi-table (relational) DB allows many-to-one and many-to-many relationships while keeping columns finite and clearly defined.
+
+** consistency
+**
+
+Most importantly:
+Scalability – work with data larger than computer’s RAM.
+Persistence – keep data around after your program finishes.
+Indexing – efficiently sort & search along various dimensions.
+Concurrency – multiple users or applications can read/write.
+Analysis – SQL query language is concise yet powerful.
+And also:
+Integrity – restrict data type, disallow duplicate entries, transactions.
+Deduplication – save space, keep common data consistent.
+Security – different users can have access to specific data.
+
+
+Filesystems are similar but it does not have the analysis , integrity deduplication  part 
+
+---------
+
+When working with large amounts of data it can be a challenge to find an item of interest.
+We don’t want to read every storage address to find what we’re looking for.
+Sorting the data can help tremendously, because it allows binary search.
+
+You can’t sort in multiple dimensions
+Let’s say you want to find a product quickly according to either it’s name, manufacturer, or price.  You can only sort by one of the there three columns.
+Can’t insert new data without shifting everything over to make room.
+Shifting data in storage would require rewriting about half of it (on average).
+That’s incredibly amount of work to accommodate just one tiny addition.
+Sorting doesn’t take advantage of the hardware’s storage hierarchy.
+The binary search will have to access the disk in every step because the index is distributed over the full data set.
+It would be better to put all the index data close together (spatial locality).
+
+DB indexes use a tree or hashtable instead of sorting
+Self-balanced binary trees give the log(N) speed of a binary search,while also allowing entries to be quickly added and deleted.
+This is all review of CS-214 Data Structures.
+
+--
+Create Index for easier search ? 
+
+Basic syntax:
+CREATE INDEX index_name ON table_name (column_name)
+
+Indexes are usually defined when the table is created
+Primary key must be unique for each row.
+We must be able to quickly check that new value does not already exist.
+Thus, unique/primary keys are indexed.
+But you may later realize that certain queries are too slow
+Without proper indexes, DBMS will have to examine every row in the table to find the relevant rows.
+Adding one or more indexes may dramatically speed up a query.
+
+Allow finding rows quickly based on multiple criteria
+Need two indexes to quickly get results for both:
+SELECT * FROM Person WHERE SSN=543230921
+SELECT * FROM Person  WHERE birthYear BETWEEN 1979 AND 1983
+Useful when WHERE clauses involves pairs of column values:
+SELECT * FROM Person WHERE firstName = “Alice” AND lastName = “Sanders”
+Unlike two separate indexes, you can find the matching pair of values with one lookup.
+Otherwise, would have to first find results for firstName = “Alice” and scan through all the Alices checking for lastName = “Sanders”
+However, example below does not allow you to quickly find rows by lastName
+
+Don’t add indexes unless you need them.
+Rookie mistake is to index every column “just in case.”
+Indexes consume storage space (storage overhead),
+Indexes must be updated when data is modified (performance overhead).
+
+
+
+

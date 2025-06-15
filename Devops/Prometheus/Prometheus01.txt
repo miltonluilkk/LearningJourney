@@ -1,0 +1,90 @@
+Prometheus
+
+Prometheus: Your Monitoring Starting Point
+Prometheus is an open-source monitoring and alerting toolkit designed for reliability and scalability. 
+It excels at collecting and storing time-series data.
+
+
+Cloud Native : built on K8S, easy to create , destroy , scaled 
+Pull Model : pull model - scrapes (puls) metrics from the confugired targets at regular intervals
+simplifies configs , management, changing envs
+Powerful Query language : PromQL - slice dice aggregate and analysize metrics in flexible wways
+
+Uses cases 
+Server/Infrastructure Monitoring: CPU, memory, disk I/O, network usage.
+Application Performance Monitoring (APM): Request rates, error rates, latency of your applications.
+Service Health: Checking if services are up and running correctly.
+Microservices Monitoring: Essential for understanding the performance of individual services in a distributed system.
+
+Prometheus server 
+heart of the system 
+responsible for scraping 
+stores the collected timeseries data locally on disk 
+webUI for running the promql
+generate alerts based on the defined rules 
+
+Exporters
+cannot undertand all internal workings for every apps 
+exporter is the small piece of software that runs alongside the service or system 
+expose metrrics from the service and system in a prometheus - compatible format 
+
+Targets 
+target is the dest that we trying to get the data 
+typically the endpoint where an exporter exposing the metrics
+example : node exproter running on my-server:9100, then my-server:9100/metrics is the prometheus target
+
+Scraping:
+
+This is the pull mechanism.
+Prometheus periodically makes an HTTP request to the /metrics endpoint of each configured target.
+The target (via its exporter) responds with the current state of its metrics.
+Prometheus then ingests and stores this data.
+
+Metrics Types:
+Prometheus defines four basic types of metrics:
+
+Counter: A cumulative metric that only ever goes up. Useful for counting things like total requests served, errors, or tasks completed. (e.g., http_requests_total).
+Gauge: A metric that can go up and down. Useful for measurements like current CPU utilization, memory usage, temperature, or the number of active users. (e.g., node_cpu_usage_percentage).
+Histogram: Samples observations (like request durations or response sizes) and counts them in configurable buckets. Provides insights into distributions (e.g., how many requests took 0-100ms, 100-200ms).
+Summary: Similar to a Histogram but calculates configurable quantiles (like p99 latency) over a sliding time window.
+
+Labels:
+
+This is a super important concept in Prometheus!
+Labels are key-value pairs that provide dimensions to your metrics. They allow you to filter, aggregate, and group your data in powerful ways.
+Example without labels: http_requests_total (just a total count)
+Example with labels: http_requests_total{method="GET", endpoint="/api/users", status="200"}
+Here, method, endpoint, and status are labels. This allows you to query for GET requests to /api/users that returned a 200 status, separately from other requests.
+
+PromQL (Prometheus Query Language):
+
+This is Prometheus's functional query language.
+It allows you to select and aggregate time series data. You'll spend a lot of time writing PromQL queries.
+Examples:
+http_requests_total (gets all time series for this metric)
+http_requests_total{status="500"} (filters by label)
+rate(http_requests_total[5m]) (calculates the per-second rate of increase over the last 5 minutes - crucial for counters!)
+sum(node_cpu_seconds_total) by (instance) (aggregates CPU across different modes for each instance).
+
+Alertmanager:
+
+While Prometheus generates alerts based on rules, Alertmanager is a separate component that handles the actual sending and routing of those alerts.
+It can group similar alerts, deduplicate them, suppress alerts during maintenance windows, and send notifications to various channels (email, Slack, PagerDuty, etc.).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

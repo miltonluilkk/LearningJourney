@@ -57,6 +57,65 @@ Irregular Cases:
 동생한테 책을 줘요 ### give the book to 동생
 14 만  # only / It is attached after a noun to exclude everything else
 
+15. (장소)에  : It is attached after a location noun to indicate the person or the object’s existence and location.
+가: 휴대 전화가 어디에 있어요?
+나: 휴대 전화가 책상 위에 있어요.
+
+16. 에서 / 나: 방에서 쉬어요 
+It is attached after a location noun to indicate where the action is happening.
+It can be used with various action verbs
+ 
+17. -었-  : It is attached after a verb, an adjective, ‘이다’, or ‘아니다’ to indicate that the situation or the
+action has taken place in the past  / 날씨가 좋았어요
+
+먹었다, 썼다
+갔다, 만났다
+공부했다, 운동했다
+
+18. (시간)에 It is attached after a noun to indicate when the action or the state has taken/will take place.
+
+19. 부터 : It is attached after a noun to indicate when the action or the state has started/will start.
+명사 + 부터 Noun+ 부터
+
+20. -지 못하다 : It is attached after a verb to deny the situation or show inability for the action.
+동사 + -지 못하다 Verb+ -지 못하다
+
+먹지 못하다, 만들지 못하다
+못 먹다, 못 만들다
+
+21. -을까 : It is attached after a verb to ask for others’ opinion on doing the action.
+
+동사 + -을까요/-ㄹ까요 Verb+ -을까요/-ㄹ까요 
+
+먹을까요
+갈까요
+
+22. -읍시다 : It is attached after a verb to suggest others to do the action together.
+It is used in formal situations, but not used towards the elderly or superiors.
+Can be used as an answer to ‘-을까요?
+동사 + -읍시다/-ㅂ시다 Verb+ -읍시다/-ㅂ시다
+
+23. -고 :  It is attached after a verb or an adjective to list actions or states.
+나: 저는 밥을 먹고 동생은 우유를 마셔요.
+
+24. -어서 : it is attached after a verb or an adjective to indicate that the context before it is the
+reason or the cause of the context after it.
+
+먹어서
+
+나: 배가 고파서 식당에 가요.
+
+25. -고 싶다 : It is attached after a verb to show desire for the action of the speaker
+
+가: 쯔엉 씨, 방학 때 뭐 하고 싶어요?
+나: 한정식 맛집에 가고 싶어요.
+
+26. -고 싶다 :  It is attached after a verb to show desire for the action of the speaker.
+
+가: 쯔엉 씨, 방학 때 뭐 하고 싶어요?
+나: 한정식 맛집에 가고 싶어요.
+
+
 Common words 
 그리고 and
 자주 often
@@ -166,7 +225,7 @@ otherwords
 안녕히 가세요 Goodbye
 안녕히 계세요 Goodbye
 생일 birthday
-요즘 recently
+요즘 recentl `y
 건강 health
 이번은 this time 
 정말 really 
@@ -183,8 +242,88 @@ otherwords
 옆 next to
 위 on
 아래 under
+(명사)와/과 (명사) 사이에 between (noun) and (noun)
+책과 공책 사이에 연필이 있습니다.
+가운데 있다 in the middle of
+운동장 가운데 나타샤 씨가 있습니다
+언제 when
+월 month
+일 day
+주말 weekend
+오전 a.m
+오전 a.m
+며칠이에요? What date is it?
+무슨 요일이에요? What day is it?
+운동 exercises
+수영 swimming
+축구 soccer
+농구 basketball
+야구 baseball
+잘하다 be good at
+연습 practice
+시작하다 start
+자주 often
+매일 every day
+다시 again
+하지만 but
+선수 player 
 
-
+하나 one
+일곱 seven
+셋 three
+아홉 nine
+다섯 five
+둘 two
+여덟 eight
+넷 four
+열 ten
+시 hours
+분 minutes
+몇 what time
+아침 morning
+점심 lunch
+저녁 evening
+시간이 있다 have time
+이번 주말에 시간이 있어요? Do you have time this weekend?
+미안해요. 오후에 시간이 없어요. I’m sorry. I have no time this afternoon
+떡볶이 tteokbokki
+김밥 gimbap
+음료수 drink
+메뉴 menu
+인분 serving
+주세요 I’ll order
+맛있다 tasty
+맛없다 bad
+맵다 spicy
+달다 sweet
+싱겁다 bland
+짜다 salty
+쓰다 bitter
+(명사)은/는 어때요? How about?
+방학 vacation
+김치 Kimchi
+라면 Ramen
+고향 hometown
+괜찮다 It’s okay
+생각나다 think about
+선물 present, gift
+가방 bag
+모자 hat
+신발 shoes
+옷 clothes
+가게 store
+원 won (KRW)
+점원 clerk
+가격 price
+쇼핑 shopping
+얼마예요? How much is it?
+가: 이 옷은 얼마예요? How much is this dress?
+나: 할인해서 사만 원 입니다. It’s on sale for 40,000 won.
+(물건)을 고르다 choose (something)
+오렌지 주스를 골랐어요
+(값)이 비싸다/싸다 expensive / cheap
+할인하다 discount
+계산해 주세요 Can I have the bill, please?
 
 
 
